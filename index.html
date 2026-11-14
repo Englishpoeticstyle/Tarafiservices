@@ -3,431 +3,1122 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Algerian digital services directory and computer and laptop repair services by Bouzaher Noureddine.">
-  <title>Bouzaher Noureddine Comptutorist Services</title>
+  <meta name="description" content="Educational activities for primary and middle school students in Algeria: videos, alphabet puzzles, mazes, coloring, drawing and painting. By Tarafi Services.">
+  <title>Tarafi Kids · Educational</title>
   <style>
     :root {
       --green: #006633;
+      --green-dark: #004d26;
       --red: #d21034;
-      --ink: #1d2922;
-      --muted: #647168;
-      --paper: #f7f8f6;
+      --white: #ffffff;
+      --black: #111111;
+      --gray: #6b6b6b;
+      --light: #f5f7f5;
       --line: #e2e8e3;
-      --white: #fff;
     }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", "Noto Naskh Arabic", sans-serif; }
-    a { color: inherit; }
-    .flag-stripe { height: 7px; background: linear-gradient(to right, var(--green) 50%, var(--white) 50%); border-bottom: 2px solid var(--red); }
-    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    body { margin: 0; background: var(--light); color: var(--black); font: 17px/1.55 system-ui, -apple-system, "Segoe UI", "Noto Sans", "Noto Naskh Arabic", sans-serif; }
+    h1, h2, h3 { margin: 0; line-height: 1.2; }
+    button { font: inherit; cursor: pointer; }
+    .wrap { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
 
-    header { padding: 40px 0 34px; background: var(--white); border-bottom: 1px solid var(--line); }
-    .topbar { display: flex; justify-content: flex-end; margin-bottom: 18px; }
-    .lang { display: flex; gap: 6px; }
-    .lang button { min-height: 36px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); color: var(--ink); font: inherit; font-size: .88rem; cursor: pointer; }
-    .lang button[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: var(--white); }
+    header { background: var(--green); color: var(--white); padding: 20px 0 30px; border-bottom: 6px solid var(--red); }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.1rem; }
+    .flag { width: 54px; height: 36px; border-radius: 4px; border: 1px solid rgba(0,0,0,.2); background: linear-gradient(to right, var(--green) 50%, var(--white) 50%); position: relative; flex: 0 0 auto; }
+    .flag::after { content: ""; position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--red); top: 11px; left: 17px; box-shadow: 4px 0 0 -1px var(--red); }
+    .langs { display: flex; gap: 6px; flex-wrap: wrap; }
+    .langs button { padding: 6px 11px; border-radius: 999px; border: 2px solid rgba(255,255,255,.6); background: transparent; color: var(--white); font-size: .85rem; font-weight: 700; }
+    .langs button[aria-pressed="true"] { background: var(--white); border-color: var(--white); color: var(--green); }
+    .hero { margin-top: 24px; }
+    .hero h1 { font-size: clamp(2rem, 5.5vw, 3.4rem); }
+    .hero p { margin: 12px 0 0; font-size: 1.1rem; max-width: 680px; }
+    nav.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    nav.tabs a { padding: 9px 15px; border-radius: 999px; background: var(--white); color: var(--green); font-weight: 700; text-decoration: none; font-size: .95rem; }
+    nav.tabs a:hover { background: #e6f2eb; }
 
-    .header-inner { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
-    .photo { flex: 0 0 auto; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--green); background: #edf5ef; }
-    .header-text { flex: 1 1 420px; }
-    .eyebrow { margin: 0 0 10px; color: var(--green); font-size: .82rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
-    h1 { max-width: 850px; margin: 0; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.08; letter-spacing: -.04em; }
-    .intro { max-width: 700px; margin: 16px 0 0; color: var(--muted); font-size: 1.05rem; }
-    .hero-mark { display: inline-block; width: 42px; height: 4px; margin-top: 20px; background: var(--red); border-radius: 4px; }
-    .contact-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
-    .contact-bar a { display: inline-block; padding: 9px 16px; border-radius: 999px; background: var(--green); color: var(--white); font-weight: 700; font-size: .92rem; text-decoration: none; }
-    .contact-bar a.secondary { background: var(--white); color: var(--green); border: 1px solid var(--green); }
-    .contact-bar a:hover { background: var(--red); color: var(--white); border-color: var(--red); }
+    main { padding: 10px 0 60px; }
+    section { margin-top: 40px; background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+    .sec-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .sec-head .bar { width: 6px; height: 26px; background: var(--green); border-radius: 3px; }
+    .sec-head .bar.red { background: var(--red); }
+    .desc { margin: 0 0 14px; color: var(--gray); }
+    .parent { margin: 0 0 18px; padding: 12px 16px; border-left: 5px solid var(--red); background: #fdf1f3; border-radius: 10px; font-size: .95rem; }
+    .parent strong { color: var(--red); }
+    h3 { font-size: 1.05rem; margin: 22px 0 10px; }
 
-    main { padding: 28px 0 64px; }
-    .contact-card { margin-bottom: 28px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); }
-    .contact-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 0; }
-    .contact-list div { padding: 12px 14px; border-radius: 12px; background: var(--paper); }
-    .contact-list dt { color: var(--muted); font-size: .8rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
-    .contact-list dd { margin: 4px 0 0; font-weight: 600; word-break: break-word; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+    .card { border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+    .card h3 { margin-top: 0; }
+    .pill { display: inline-block; margin-top: 10px; padding: 5px 10px; border-radius: 999px; background: #f0f0f0; color: var(--gray); font-size: .8rem; font-weight: 700; }
+    .video { aspect-ratio: 16 / 9; width: 100%; border: 0; border-radius: 12px; }
 
-    .repair { margin-bottom: 28px; padding: 24px; border: 1px solid #c8dfd0; border-left: 5px solid var(--green); border-radius: 16px; background: #edf5ef; }
-    .repair p { margin: 0; color: #48584d; }
-    .repair-items { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-    .repair-items span { padding: 7px 11px; border: 1px solid #c8dfd0; border-radius: 999px; background: var(--white); font-size: .88rem; }
+    .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 10px; }
+    .tile { aspect-ratio: 1; border-radius: 14px; display: grid; place-items: center; font-size: 1.6rem; font-weight: 800; color: var(--white); background: var(--c); }
+    .tile.bw { background: var(--white); color: var(--black); border: 3px solid var(--black); }
 
-    h2 { margin: 0 0 12px; font-size: 1.35rem; }
-    .toolbar { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
-    .search { flex: 1 1 260px; min-height: 48px; padding: 0 15px; border: 1px solid var(--line); border-radius: 12px; background: var(--white); color: var(--ink); font: inherit; }
-    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
-    .filter { min-height: 40px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); color: var(--ink); font: inherit; cursor: pointer; }
-    .filter[aria-pressed="true"] { border-color: var(--green); background: var(--green); color: var(--white); }
+    .quiz { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+    .prompt { font-size: 3rem; font-weight: 800; min-height: 1.4em; }
+    .choices { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .choices button { width: 72px; height: 72px; border-radius: 14px; border: 2px solid var(--black); background: var(--white); font-size: 1.8rem; font-weight: 800; }
+    .choices button:hover { background: #e6f2eb; }
+    .score { font-weight: 800; color: var(--green); }
+    .btn { padding: 9px 16px; border-radius: 10px; border: 2px solid var(--green); background: var(--white); color: var(--green); font-weight: 700; }
+    .btn:hover { background: var(--green); color: var(--white); }
+    .btn.red { border-color: var(--red); color: var(--red); }
+    .btn.red:hover { background: var(--red); color: var(--white); }
 
-    .notice { margin: 0 0 24px; padding: 13px 15px; border: 1px solid #eadca8; border-radius: 12px; background: #fff9e6; color: #66531a; font-size: .92rem; }
-    .section-title { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; margin: 28px 0 14px; }
-    .count { color: var(--muted); font-size: .9rem; }
+    .maze { display: grid; grid-template-columns: repeat(7, 36px); gap: 0; border: 3px solid var(--black); margin: 0 auto; width: max-content; }
+    .cell { width: 36px; height: 36px; background: var(--white); position: relative; }
+    .cell.wall { background: var(--black); }
+    .cell.start { background: #cfe6d8; }
+    .cell.end { background: #f6c9d2; }
+    .cell.player::after { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: var(--green); }
+    .dpad { display: grid; grid-template-columns: repeat(3, 56px); gap: 6px; justify-content: center; margin-top: 14px; }
+    .dpad button { height: 46px; border-radius: 10px; border: 2px solid var(--black); background: var(--white); font-size: 1.2rem; font-weight: 800; }
+    .dpad .blank { border: none; background: none; }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 14px; }
-    .card { display: flex; flex-direction: column; min-height: 190px; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); box-shadow: 0 4px 14px rgb(23 35 31 / 3%); }
-    .card-top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
-    h3 { margin: 0; font-size: 1.06rem; }
-    .category { margin: 3px 0 0; color: var(--muted); font-size: .83rem; }
-    .description { margin: 14px 0 18px; color: #46564f; font-size: .94rem; }
-    .badge { flex: 0 0 auto; padding: 4px 8px; border-radius: 999px; background: #edf2ee; color: #47574f; font-size: .72rem; font-weight: 700; }
-    .badge.pending { background: #fff4d5; color: #765900; }
-    .badge.approved { background: #e3f4ea; color: #1d6b3a; }
-    .visit { align-self: flex-start; margin-top: auto; color: var(--green); font-weight: 700; text-decoration: none; }
-    .visit:hover { color: var(--red); text-decoration: underline; }
-    .unavailable { margin-top: auto; color: var(--muted); font-size: .85rem; }
-    .empty { padding: 24px 0; color: var(--muted); }
+    .colorings { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .palette { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center; }
+    .palette button { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--black); background: var(--c); }
+    .palette button[aria-pressed="true"] { outline: 3px solid var(--red); outline-offset: 2px; }
+    .art { background: var(--white); border: 2px solid var(--black); border-radius: 12px; padding: 10px; max-width: 420px; margin: 0 auto; }
+    .art svg { width: 100%; height: auto; display: block; }
+    .art .fill { cursor: pointer; stroke: var(--black); stroke-width: 3; }
+    canvas { width: 100%; max-width: 760px; height: 360px; display: block; border-radius: 12px; background: var(--white); border: 2px solid var(--black); touch-action: none; }
 
-    footer { padding: 22px 0 34px; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
+    .icons { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .icons svg { width: 46px; height: 46px; background: var(--white); border-radius: 12px; padding: 4px; }
+    .word { padding: 12px 16px; border-radius: 12px; border: 2px solid var(--black); background: var(--white); font-size: 1.2rem; font-weight: 700; }
+    .word:hover { background: #e6f2eb; }
+    .btn[aria-pressed="true"] { background: var(--green); color: var(--white); }
+    .rmaze { display: grid; width: min(340px, 100%); margin: 0 auto; border: 3px solid var(--black); }
+    .rmaze .cell { width: auto; height: auto; aspect-ratio: 1; }
+    footer { background: var(--green-dark); color: #d8ead f; color: #e3f0e8; padding: 26px 0; margin-top: 40px; font-size: .92rem; text-align: center; border-top: 6px solid var(--red); }
     footer p { margin: 4px 0; }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .card { transition: transform .15s ease, box-shadow .15s ease; }
-      .card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgb(23 35 31 / 8%); }
-    }
   </style>
 </head>
 <body>
-  <div class="flag-stripe" aria-hidden="true"></div>
-
   <header>
     <div class="wrap">
       <div class="topbar">
-        <div class="lang" id="lang" role="group" aria-label="Language">
-          <button data-lang="en">EN</button>
-          <button data-lang="fr">FR</button>
-          <button data-lang="ar">عربي</button>
-        </div>
+        <div class="brand"><span class="flag" aria-hidden="true"></span><span>Tarafi Kids</span></div>
+        <div class="langs" id="langs" role="group" aria-label="Language"></div>
       </div>
-      <div class="header-inner">
-        <img class="photo" src="photo.jpg" alt="Bouzaher Noureddine" onerror="this.style.display='none'">
-        <div class="header-text">
-          <p class="eyebrow" data-i18n="eyebrow"></p>
-          <h1 data-i18n="title"></h1>
-          <p class="intro" data-i18n="intro"></p>
-          <span class="hero-mark" aria-hidden="true"></span>
-          <div class="contact-bar" id="contact-bar"></div>
-        </div>
+      <div class="hero">
+        <h1 data-i18n="title"></h1>
+        <p data-i18n="subtitle"></p>
+      </div>
+      <nav class="tabs">
+        <a href="#watch" data-i18n="navWatch"></a>
+        <a href="#learn" data-i18n="navLearn"></a>
+        <a href="#puzzle" data-i18n="navPuzzle"></a>
+        <a href="#maze" data-i18n="navMaze"></a>
+        <a href="#coloring" data-i18n="navColoring"></a>
+        <a href="#paint" data-i18n="navPaint"></a>
+        <a href="#parents" data-i18n="navParents"></a>
+        <a href="#lang" data-i18n="navLang"></a>
+        <a href="#games" data-i18n="navMaze"></a>
+        <a href="#quran" data-i18n="navQuran"></a>
+        <a href="#hsc" data-i18n="navHsc"></a>
+        <a href="#ticket" data-i18n="navTicket"></a>
+      </nav>
+      <div class="icons" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><path d="M18 50 Q32 40 46 50 L46 60 L18 60Z" fill="#006633"/><path d="M26 42 L32 52 L38 42Z" fill="#fff"/><circle cx="32" cy="27" r="13" fill="#f7d3b3"/><path d="M18 26 Q16 8 32 8 Q48 8 46 26 L43 19 L39 23 L34 15 L28 22 L22 16 L20 24Z" fill="#111"/><ellipse cx="27" cy="28" rx="2.4" ry="3.2" fill="#111"/><ellipse cx="37" cy="28" rx="2.4" ry="3.2" fill="#111"/></svg>
+        <svg viewBox="0 0 64 64"><path d="M18 50 Q32 40 46 50 L48 60 L16 60Z" fill="#d21034"/><path d="M26 42 L32 52 L38 42Z" fill="#fff"/><path d="M16 30 Q14 8 32 8 Q50 8 48 30 L48 50 Q44 56 40 48 L24 48 Q20 56 16 50Z" fill="#111"/><circle cx="32" cy="27" r="13" fill="#f7d3b3"/><ellipse cx="27" cy="28" rx="2.4" ry="3.2" fill="#111"/><ellipse cx="37" cy="28" rx="2.4" ry="3.2" fill="#111"/></svg>
+        <svg viewBox="0 0 64 64"><path d="M22 50 Q32 44 42 50 L42 60 L22 60Z" fill="#006633"/><circle cx="32" cy="30" r="12" fill="#f7d3b3"/><path d="M20 28 Q20 16 32 16 Q44 16 44 28 Q40 22 32 22 Q24 22 20 28Z" fill="#111"/><circle cx="28" cy="31" r="1.8" fill="#111"/><circle cx="36" cy="31" r="1.8" fill="#111"/></svg>
+        <svg viewBox="0 0 64 64"><rect x="8" y="26" width="48" height="12" rx="2" transform="rotate(-35 32 32)" fill="#f2c94c" stroke="#111" stroke-width="2"/></svg>
+        <svg viewBox="0 0 64 64"><path d="M10 16 Q32 10 32 16 L32 52 Q32 46 10 50Z" fill="#006633"/><path d="M54 16 Q32 10 32 16 L32 52 Q32 46 54 50Z" fill="#d21034"/></svg>
+        <svg viewBox="0 0 64 64"><ellipse cx="32" cy="40" rx="16" ry="12" fill="#f2c94c" stroke="#111" stroke-width="2"/><circle cx="32" cy="24" r="11" fill="#f2c94c" stroke="#111" stroke-width="2"/><polygon points="22,16 26,6 30,16" fill="#f2c94c" stroke="#111" stroke-width="2"/><polygon points="34,16 38,6 42,16" fill="#f2c94c" stroke="#111" stroke-width="2"/><circle cx="28" cy="24" r="1.8" fill="#111"/><circle cx="36" cy="24" r="1.8" fill="#111"/></svg>
+        <svg viewBox="0 0 64 64"><path d="M14 46 L14 30 Q14 22 22 22 L40 22 Q48 22 48 30 L48 46" fill="#d9a86c" stroke="#111" stroke-width="2"/><circle cx="46" cy="14" r="5" fill="#d9a86c" stroke="#111" stroke-width="2"/><rect x="16" y="44" width="6" height="10" fill="#c08a4d" stroke="#111" stroke-width="1.5"/><rect x="38" y="44" width="6" height="10" fill="#c08a4d" stroke="#111" stroke-width="1.5"/></svg>
+        <svg viewBox="0 0 64 64"><ellipse cx="28" cy="32" rx="18" ry="11" fill="#3a86ff" stroke="#111" stroke-width="2"/><polygon points="46,32 58,22 58,42" fill="#3a86ff" stroke="#111" stroke-width="2"/><circle cx="18" cy="30" r="2" fill="#111"/></svg>
       </div>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="contact-card" id="contact-card" aria-labelledby="contact-title">
-      <h2 id="contact-title" data-i18n="contactTitle"></h2>
-      <dl class="contact-list" id="contact-list"></dl>
+    <section id="watch">
+      <div class="sec-head"><span class="bar"></span><h2 data-i18n="watchTitle"></h2></div>
+      <p class="desc" data-i18n="watchDesc"></p>
+      <p class="parent"><strong data-i18n="parentLabel"></strong> <span data-i18n="parentTip"></span></p>
+      <div class="grid" id="videos"></div>
     </section>
 
-    <section class="repair" aria-labelledby="repair-title">
-      <h2 id="repair-title" data-i18n="repairTitle"></h2>
-      <p data-i18n="repairText"></p>
-      <div class="repair-items" id="repair-items"></div>
+    <section id="learn">
+      <div class="sec-head"><span class="bar"></span><h2 data-i18n="learnTitle"></h2></div>
+      <p class="desc" data-i18n="learnDesc"></p>
+      <p class="parent"><strong data-i18n="parentLabel"></strong> <span data-i18n="parentTip"></span></p>
+      <h3 data-i18n="arabicLetters"></h3>
+      <div class="tiles" id="arabic" dir="rtl"></div>
+      <h3 data-i18n="latinLetters"></h3>
+      <div class="tiles" id="latin"></div>
+      <h3 data-i18n="numbers"></h3>
+      <div class="tiles" id="numbers"></div>
     </section>
 
-    <div class="toolbar">
-      <input id="search" class="search" type="search">
-      <div id="filters" class="filters"></div>
-    </div>
+    <section id="puzzle">
+      <div class="sec-head"><span class="bar red"></span><h2 data-i18n="puzzleTitle"></h2></div>
+      <p class="desc" data-i18n="puzzleDesc"></p>
+      <p class="parent"><strong data-i18n="parentLabel"></strong> <span data-i18n="parentTip"></span></p>
+      <div class="quiz">
+        <div class="prompt" id="prompt"></div>
+        <div class="choices" id="letterChoices"></div>
+        <div class="score" id="puzzleScore"></div>
+      </div>
+    </section>
 
-    <p class="notice" data-i18n="notice"></p>
+    <section id="maze">
+      <div class="sec-head"><span class="bar"></span><h2 data-i18n="mazeTitle"></h2></div>
+      <p class="desc" data-i18n="mazeDesc"></p>
+      <p class="parent"><strong data-i18n="parentLabel"></strong> <span data-i18n="parentTip"></span></p>
+      <div class="maze" id="mazeBoard"></div>
+      <div class="dpad">
+        <span class="blank"></span><button id="up" aria-label="Up">▲</button><span class="blank"></span>
+        <button id="left" aria-label="Left">◀</button><span class="blank"></span><button id="right" aria-label="Right">▶</button>
+        <span class="blank"></span><button id="down" aria-label="Down">▼</button><span class="blank"></span>
+      </div>
+      <p class="score" id="mazeMsg" style="text-align:center;margin-top:12px"></p>
+      <div style="text-align:center"><button class="btn" id="mazeReset" data-i18n="restart"></button></div>
+    </section>
 
-    <div class="section-title">
-      <h2 data-i18n="directoryTitle"></h2>
-      <span id="count" class="count"></span>
-    </div>
+    <section id="lang">
+      <div class="sec-head"><span class="bar"></span><h2 data-i18n="langTrainTitle"></h2></div>
+      <p class="desc" data-i18n="langTrainDesc"></p>
+      <p class="parent"><strong data-i18n="parentLabel"></strong> <span data-i18n="parentTip"></span></p>
+      <div class="palette" id="trainButtons"></div>
+      <div class="quiz">
+        <div class="prompt" id="wordPic"></div>
+        <div class="choices" id="wordChoices"></div>
+        <div class="score" id="wordScore"></div>
+      </div>
+    </section>
 
-    <div id="services" class="grid"></div>
-    <p id="empty" class="empty" hidden data-i18n="noMatch"></p>
+    <section id="games">
+      <div class="sec-head"><span class="bar red"></span><h2 data-i18n="navMaze"></h2></div>
+      <p class="desc" data-i18n="mazeDesc"></p>
+      <p class="parent"><strong data-i18n="parentLabel"></strong> <span data-i18n="parentTip"></span></p>
+      <div class="palette" id="levelButtons"></div>
+      <div class="rmaze" id="rMaze"></div>
+      <div class="dpad">
+        <span class="blank"></span><button id="ru" aria-label="Up">▲</button><span class="blank"></span>
+        <button id="rl" aria-label="Left">◀</button><span class="blank"></span><button id="rr" aria-label="Right">▶</button>
+        <span class="blank"></span><button id="rd" aria-label="Down">▼</button><span class="blank"></span>
+      </div>
+      <p class="score" id="rMsg" style="text-align:center;margin-top:12px"></p>
+      <div style="text-align:center"><button class="btn" id="newMaze" data-i18n="newMaze"></button></div>
+    </section>
+
+    <section id="coloring">
+      <div class="sec-head"><span class="bar"></span><h2 data-i18n="coloringTitle"></h2></div>
+      <p class="desc" data-i18n="coloringDesc"></p>
+      <p class="parent"><strong data-i18n="parentLabel"></strong> <span data-i18n="parentTip"></span></p>
+      <div class="colorings" id="drawingButtons"></div>
+      <div class="palette" id="palette1"></div>
+      <div class="art" id="art"></div>
+    </section>
+
+    <section id="paint">
+      <div class="sec-head"><span class="bar red"></span><h2 data-i18n="paintTitle"></h2></div>
+      <p class="desc" data-i18n="paintDesc"></p>
+      <p class="parent"><strong data-i18n="parentLabel"></strong> <span data-i18n="parentTip"></span></p>
+      <div class="palette" id="palette2"></div>
+      <canvas id="pad" width="760" height="360"></canvas>
+      <div style="margin-top:12px"><button class="btn red" id="clear" data-i18n="clear"></button></div>
+    </section>
+
+    <section id="hsc">
+      <div class="sec-head"><span class="bar"></span><h2 data-i18n="hscTitle"></h2></div>
+      <p class="desc" data-i18n="hscDesc"></p>
+      <h3 data-i18n="home"></h3>
+      <div class="grid" id="homeList"></div>
+      <h3 data-i18n="school"></h3>
+      <div class="grid" id="schoolList"></div>
+      <h3 data-i18n="street"></h3>
+      <div class="grid" id="streetList"></div>
+    </section>
+
+    <section id="ticket">
+      <div class="sec-head"><span class="bar red"></span><h2 data-i18n="ticketTitle"></h2></div>
+      <p class="desc" data-i18n="ticketDesc"></p>
+      <p class="parent"><strong data-i18n="parentLabel"></strong> <span data-i18n="ticketTip"></span></p>
+      <div class="card">
+        <h3 data-i18n="bookTitle"></h3>
+        <p class="desc" data-i18n="bookDesc"></p>
+        <span class="pill" data-i18n="comingSoon"></span>
+      </div>
+    </section>
+
+    <section id="parents">
+      <div class="sec-head"><span class="bar"></span><h2 data-i18n="parentsTitle"></h2></div>
+      <p data-i18n="parentsText"></p>
+      <h3 data-i18n="quranTitle"></h3>
+      <div class="grid" id="quranList"></div>
+      <h3 data-i18n="otherTitle"></h3>
+      <div class="grid" id="otherList"></div>
+    </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <p data-i18n="footer"></p>
+      <p data-i18n="rights"></p>
+      <p data-i18n="purpose"></p>
       <p data-i18n="credit"></p>
     </div>
   </footer>
 
   <script>
-    // ---------- CONTACT (edit here; leave a value "" to hide it) ----------
-    const contact = {
-      phone: "",
-      whatsapp: "",   // digits only with country code, e.g. "213555000000"
-      email: "",
-      address: "",
-      hours: ""
+    // ---------- VIDEOS ----------
+    // Add a YouTube video ID and set approved: true only after you have checked
+    // the video on virustotal.com and reviewed it. Until then it shows "Coming soon".
+    const videos = [
+      { title: "Learn the Alphabet", videoId: "", approved: false },
+      { title: "Learn the Numbers", videoId: "", approved: false },
+      { title: "Shapes and Colours", videoId: "", approved: false },
+      { title: "Counting Songs", videoId: "", approved: false }
+    ];
+
+    // ---------- MAZE (1 = wall, 0 = path) ----------
+    // Start is top-left, goal is bottom-right.
+    const MAZE = [
+      "S..#...",
+      "#.#.#.#",
+      "..#...#",
+      ".###.#.",
+      ".#...#.",
+      ".#.#.#.",
+      "...#..E"
+    ];
+
+    // ---------- COLORING DRAWINGS (black & white outlines) ----------
+    const DRAWINGS = {
+      house: `<svg viewBox="0 0 300 260">
+        <rect class="fill" x="60" y="110" width="180" height="130" fill="#fff"/>
+        <polygon class="fill" points="40,115 150,25 260,115" fill="#fff"/>
+        <rect class="fill" x="130" y="165" width="40" height="75" fill="#fff"/>
+        <rect class="fill" x="80" y="135" width="36" height="36" fill="#fff"/>
+        <rect class="fill" x="184" y="135" width="36" height="36" fill="#fff"/>
+        <circle class="fill" cx="235" cy="45" r="16" fill="#fff"/>
+      </svg>`,
+      sun: `<svg viewBox="0 0 300 300">
+        <circle class="fill" cx="150" cy="150" r="60" fill="#fff"/>
+        <polygon class="fill" points="150,20 165,70 135,70" fill="#fff"/>
+        <polygon class="fill" points="150,280 165,230 135,230" fill="#fff"/>
+        <polygon class="fill" points="20,150 70,135 70,165" fill="#fff"/>
+        <polygon class="fill" points="280,150 230,135 230,165" fill="#fff"/>
+        <polygon class="fill" points="55,55 90,90 65,115" fill="#fff"/>
+        <polygon class="fill" points="245,245 210,210 235,185" fill="#fff"/>
+        <polygon class="fill" points="245,55 210,90 235,115" fill="#fff"/>
+        <polygon class="fill" points="55,245 90,210 65,185" fill="#fff"/>
+      </svg>`,
+      fish: `<svg viewBox="0 0 320 200">
+        <ellipse class="fill" cx="150" cy="100" rx="105" ry="60" fill="#fff"/>
+        <polygon class="fill" points="250,100 310,50 310,150" fill="#fff"/>
+        <circle class="fill" cx="100" cy="90" r="12" fill="#fff"/>
+        <path class="fill" d="M130 60 Q150 40 170 60" fill="#fff"/>
+        <path class="fill" d="M130 140 Q150 160 170 140" fill="#fff"/>
+      </svg>`,
+      flower: `<svg viewBox="0 0 300 320">
+        <circle class="fill" cx="150" cy="80" r="45" fill="#fff"/>
+        <circle class="fill" cx="90" cy="130" r="45" fill="#fff"/>
+        <circle class="fill" cx="210" cy="130" r="45" fill="#fff"/>
+        <circle class="fill" cx="110" cy="190" r="45" fill="#fff"/>
+        <circle class="fill" cx="190" cy="190" r="45" fill="#fff"/>
+        <circle class="fill" cx="150" cy="140" r="35" fill="#fff"/>
+        <rect class="fill" x="142" y="200" width="16" height="110" fill="#fff"/>
+      </svg>`
     };
 
-    // ---------- SECURITY APPROVAL ----------
-    // Every external link stays locked (approved: false) until you scan it on
-    // virustotal.com, confirm it is clean and the official site, then set
-    // approved to true. Only approved links become clickable.
-    const services = [
-      { name: "Awlyaa Education", cat: "edu", url: "https://awlyaa.education.dz", approved: false,
-        desc: { en: "Parents’ portal for grades, report cards, absences and school transfers.", fr: "Portail des parents pour les notes, bulletins, absences et transferts scolaires.", ar: "بوابة الأولياء للاطلاع على النقاط والكشوف والغيابات والتحويلات المدرسية." } },
-      { name: "DzExams", cat: "edu", url: "https://dzexams.com", approved: false, third: true,
-        desc: { en: "Third-party revision site with past exam papers and corrections from primary through secondary school, including the BAC.", fr: "Site de révision tiers avec anciens sujets et corrigés, du primaire au secondaire, dont le BAC.", ar: "موقع مراجعة من طرف ثالث يحتوي على امتحانات سابقة وتصحيحات من الابتدائي إلى الثانوي، بما في ذلك البكالوريا." } },
-      { name: "Downloaded BAC exams", cat: "edu", url: "https://dzexams.com/fr/bac", approved: false, third: true,
-        desc: { en: "Free BAC exam papers and corrections by subject. The official ONEC URL needs confirmation.", fr: "Sujets et corrigés du BAC gratuits par matière. L’adresse officielle de l’ONEC reste à confirmer.", ar: "مواضيع وتصحيحات البكالوريا مجانا حسب المادة. الرابط الرسمي للديوان الوطني للامتحانات يحتاج إلى تأكيد." } },
-      { name: "BAC ONEC (bac.onec.dz)", cat: "edu", url: "https://bac.onec.dz", approved: false,
-        desc: { en: "Official Baccalaureate exam portal of the National Office of Examinations and Competitions (ONEC).", fr: "Portail officiel du baccalauréat de l’Office national des examens et concours (ONEC).", ar: "البوابة الرسمية لامتحان البكالوريا التابعة للديوان الوطني للامتحانات والمسابقات." } },
-      { name: "BEM ONEC (bem.onec.dz)", cat: "edu", url: "https://bem.onec.dz", approved: false,
-        desc: { en: "Official BEM middle-school exam portal of the National Office of Examinations and Competitions (ONEC).", fr: "Portail officiel de l’examen du BEM de l’Office national des examens et concours (ONEC).", ar: "البوابة الرسمية لامتحان شهادة التعليم المتوسط التابعة للديوان الوطني للامتحانات والمسابقات." } },
-      { name: "Portail BAC", cat: "edu", approved: false,
-        desc: { en: "Baccalaureate registration and results. Exact service URL has not been confirmed.", fr: "Inscription au baccalauréat et résultats. L’adresse exacte du service n’est pas confirmée.", ar: "التسجيل في البكالوريا والنتائج. الرابط الدقيق للخدمة لم يتم تأكيده." } },
-      { name: "Progres (MESRS)", cat: "univ", url: "https://progres.mesrs.dz", approved: false,
-        desc: { en: "University registration, orientation, and payment of registration and accommodation fees. URL needs confirmation.", fr: "Inscription universitaire, orientation et paiement des frais d’inscription et d’hébergement. Adresse à confirmer.", ar: "التسجيل الجامعي والتوجيه ودفع رسوم التسجيل والإقامة. الرابط يحتاج إلى تأكيد." } },
-      { name: "Study in Algeria", cat: "univ", url: "https://studyinalgeria.dz", approved: false,
-        desc: { en: "Ministry of Higher Education portal for university admission and fee information.", fr: "Portail du ministère de l’Enseignement supérieur pour l’admission et les frais universitaires.", ar: "بوابة وزارة التعليم العالي للقبول الجامعي ومعلومات الرسوم." } },
-      { name: "Student-DZ", cat: "edu", approved: false,
-        desc: { en: "Student assistant for universities, schools, institutes and housing. Exact app link needs confirmation.", fr: "Assistant étudiant pour universités, écoles, instituts et logement. Lien exact de l’application à confirmer.", ar: "مساعد الطالب للجامعات والمدارس والمعاهد والسكن. رابط التطبيق الدقيق يحتاج إلى تأكيد." } },
-      { name: "MYBUS", cat: "transport", approved: false,
-        desc: { en: "University bus transport app. Exact app link needs confirmation.", fr: "Application de transport universitaire en bus. Lien exact à confirmer.", ar: "تطبيق النقل الجامعي بالحافلات. الرابط الدقيق يحتاج إلى تأكيد." } },
-      { name: "Takwin", cat: "training", url: "https://takwin-snsh.com", approved: false,
-        desc: { en: "Sonatrach union training and education institutes.", fr: "Instituts de formation et d’éducation du syndicat Sonatrach.", ar: "معاهد التكوين والتعليم التابعة لنقابة سوناطراك." } },
-      { name: "Apostille", cat: "legal", url: "https://apostille.gov.dz", approved: false,
-        desc: { en: "Apostille service for documents intended for use abroad.", fr: "Service d’apostille pour les documents destinés à l’étranger.", ar: "خدمة التصديق (أبوستي) للوثائق المخصصة للاستعمال بالخارج." } },
-      { name: "Foreign Affairs legalisation", cat: "legal", url: "https://services.mfa.gov.dz", approved: false,
-        desc: { en: "Consular services and document legalisation.", fr: "Services consulaires et légalisation de documents.", ar: "الخدمات القنصلية وتصديق الوثائق." } },
-      { name: "Ministry of Justice", cat: "legal", url: "https://mjustice.dz", approved: false,
-        desc: { en: "Judicial services. The listed domain needs confirmation.", fr: "Services judiciaires. Le domaine indiqué doit être confirmé.", ar: "الخدمات القضائية. النطاق المذكور يحتاج إلى تأكيد." } },
-      { name: "Dzair Digital Services", cat: "general", approved: false,
-        desc: { en: "National hub for government digital services, including civil status and tax documents. Exact portal URL needs confirmation.", fr: "Portail national des services numériques de l’État, dont état civil et documents fiscaux. Adresse exacte à confirmer.", ar: "المنصة الوطنية للخدمات الرقمية الحكومية، بما في ذلك الحالة المدنية والوثائق الجبائية. الرابط الدقيق يحتاج إلى تأكيد." } },
-      { name: "Tabioucom", cat: "payment", url: "https://tabioucom.mf.gov.dz", approved: false,
-        desc: { en: "Pay for and print tax stamps for passports, ID cards and driving licences.", fr: "Paiement et impression des timbres fiscaux pour passeports, cartes d’identité et permis de conduire.", ar: "دفع وطباعة الطوابع الجبائية لجوازات السفر وبطاقات التعريف ورخص السياقة." } },
-      { name: "Baridi Mob / E-CCP", cat: "payment", url: "https://www.poste.dz", approved: false,
-        desc: { en: "CCP balance, transfers, bill payments and online Golden Card requests.", fr: "Solde CCP, virements, paiement de factures et demandes de Carte Dorée en ligne.", ar: "رصيد الحساب البريدي، التحويلات، دفع الفواتير وطلب البطاقة الذهبية عبر الإنترنت." } },
-      { name: "Naftal e-mahata", cat: "payment", url: "https://e-mahata.naftal.dz", approved: false,
-        desc: { en: "Reserve tyres and pay with CIB or Edahabia.", fr: "Réservez des pneus et payez avec CIB ou Edahabia.", ar: "حجز الإطارات والدفع ببطاقة CIB أو الذهبية." } },
-      { name: "Naftal Khadamat", cat: "services", approved: false,
-        desc: { en: "App for finding fuel stations and Naftal services. Exact app link needs confirmation.", fr: "Application pour trouver les stations-service et les services Naftal. Lien exact à confirmer.", ar: "تطبيق للعثور على محطات الوقود وخدمات نفطال. الرابط الدقيق يحتاج إلى تأكيد." } },
-      { name: "Djezzy payments", cat: "telecom", url: "https://www.djezzy.dz", approved: false,
-        desc: { en: "Recharge and bill payment. Confirm the payment page on the provider’s official site.", fr: "Recharge et paiement de factures. Vérifiez la page de paiement sur le site officiel.", ar: "شحن الرصيد ودفع الفواتير. تأكد من صفحة الدفع على الموقع الرسمي للمزود." } },
-      { name: "Ooredoo payments", cat: "telecom", url: "https://www.ooredoo.dz", approved: false,
-        desc: { en: "Recharge and bill payment. Confirm the payment page on the provider’s official site.", fr: "Recharge et paiement de factures. Vérifiez la page de paiement sur le site officiel.", ar: "شحن الرصيد ودفع الفواتير. تأكد من صفحة الدفع على الموقع الرسمي للمزود." } },
-      { name: "Mobilis payments", cat: "telecom", url: "https://www.mobilis.dz", approved: false,
-        desc: { en: "Recharge and bill payment. Confirm the payment page on the provider’s official site.", fr: "Recharge et paiement de factures. Vérifiez la page de paiement sur le site officiel.", ar: "شحن الرصيد ودفع الفواتير. تأكد من صفحة الدفع على الموقع الرسمي للمزود." } },
-      { name: "Algérie Télécom payments", cat: "telecom", url: "https://www.algerietelecom.dz", approved: false,
-        desc: { en: "Internet bill payment. Confirm the payment page on the provider’s official site.", fr: "Paiement des factures Internet. Vérifiez la page de paiement sur le site officiel.", ar: "دفع فواتير الإنترنت. تأكد من صفحة الدفع على الموقع الرسمي للمزود." } },
-      { name: "WassitOnline (ANEM)", cat: "employment", url: "https://anem.dz", approved: false,
-        desc: { en: "Jobseeker registration, profile updates, job offers, CV and registration-card services. Confirm the exact platform link with ANEM.", fr: "Inscription des demandeurs d’emploi, mise à jour du profil, offres, CV et carte d’inscription. Confirmez le lien exact auprès de l’ANEM.", ar: "تسجيل طالبي العمل، تحديث الملف، عروض العمل، السيرة الذاتية وبطاقة الانخراط. أكد الرابط الدقيق مع الوكالة الوطنية للتشغيل." } },
-      { name: "Minha", cat: "employment", approved: false,
-        desc: { en: "Platform for unemployment allowance files. The official site URL has not been confirmed.", fr: "Plateforme pour les dossiers d’allocation chômage. L’adresse officielle n’est pas confirmée.", ar: "منصة ملفات منحة البطالة. الرابط الرسمي للموقع لم يتم تأكيده." } }
-    ];
+    Object.assign(DRAWINGS, {
+      doll: `<svg viewBox="0 0 240 320">
+        <circle class="fill" cx="120" cy="60" r="36" fill="#fff"/>
+        <path class="fill" d="M84 56 Q84 16 120 16 Q156 16 156 56 Q140 40 120 42 Q100 40 84 56Z" fill="#fff"/>
+        <polygon class="fill" points="90,110 150,110 185,260 55,260" fill="#fff"/>
+        <rect class="fill" x="98" y="260" width="18" height="50" fill="#fff"/>
+        <rect class="fill" x="124" y="260" width="18" height="50" fill="#fff"/>
+        <path class="fill" d="M90 118 Q60 150 70 190" fill="none"/>
+        <path class="fill" d="M150 118 Q180 150 170 190" fill="none"/>
+        <circle class="fill" cx="106" cy="60" r="5" fill="#fff"/>
+        <circle class="fill" cx="134" cy="60" r="5" fill="#fff"/>
+        <path d="M108 78 Q120 86 132 78" stroke="#111" stroke-width="3" fill="none"/>
+      </svg>`,
+      car: `<svg viewBox="0 0 320 180">
+        <path class="fill" d="M30 120 L60 80 L120 70 L200 70 L250 110 L290 120 L290 150 L30 150Z" fill="#fff"/>
+        <path class="fill" d="M80 80 L120 84 L120 110 L70 110Z" fill="#fff"/>
+        <path class="fill" d="M130 84 L195 84 L225 110 L130 110Z" fill="#fff"/>
+        <circle class="fill" cx="85" cy="150" r="24" fill="#fff"/>
+        <circle class="fill" cx="235" cy="150" r="24" fill="#fff"/>
+        <rect class="fill" x="265" y="118" width="22" height="10" fill="#fff"/>
+      </svg>`,
+      motorbike: `<svg viewBox="0 0 320 200">
+        <circle class="fill" cx="80" cy="150" r="38" fill="#fff"/>
+        <circle class="fill" cx="240" cy="150" r="38" fill="#fff"/>
+        <path class="fill" d="M80 150 L130 100 L200 100 L240 150 L200 130 L130 130Z" fill="#fff"/>
+        <path class="fill" d="M120 100 L140 60 L170 60 L160 100Z" fill="#fff"/>
+        <path class="fill" d="M240 150 L232 90 L256 80" fill="none"/>
+        <rect class="fill" x="110" y="52" width="60" height="16" rx="6" fill="#fff"/>
+        <path class="fill" d="M200 100 L210 84 L232 84 L220 100Z" fill="#fff"/>
+      </svg>`,
+      jet: `<svg viewBox="0 0 340 160">
+        <path class="fill" d="M20 80 Q40 58 90 60 L270 66 Q310 72 320 80 Q310 88 270 94 L90 100 Q40 102 20 80Z" fill="#fff"/>
+        <polygon class="fill" points="120,68 170,20 200,20 170,68" fill="#fff"/>
+        <polygon class="fill" points="120,92 170,140 200,140 170,92" fill="#fff"/>
+        <polygon class="fill" points="260,70 300,40 310,40 300,72" fill="#fff"/>
+        <circle class="fill" cx="250" cy="80" r="8" fill="#fff"/>
+      </svg>`,
+      cartoon: `<svg viewBox="0 0 240 300">
+        <circle class="fill" cx="120" cy="90" r="62" fill="#fff"/>
+        <circle class="fill" cx="96" cy="84" r="16" fill="#fff"/>
+        <circle class="fill" cx="144" cy="84" r="16" fill="#fff"/>
+        <circle cx="100" cy="88" r="6" fill="#111"/>
+        <circle cx="140" cy="88" r="6" fill="#111"/>
+        <path d="M100 118 Q120 136 140 118" stroke="#111" stroke-width="4" fill="none"/>
+        <rect class="fill" x="90" y="152" width="60" height="80" rx="18" fill="#fff"/>
+        <path class="fill" d="M90 170 Q50 200 60 240" fill="none"/>
+        <path class="fill" d="M150 170 Q190 200 180 240" fill="none"/>
+        <rect class="fill" x="96" y="232" width="20" height="50" rx="8" fill="#fff"/>
+        <rect class="fill" x="124" y="232" width="20" height="50" rx="8" fill="#fff"/>
+      </svg>`
+    });
+
+    // ---------- PALETTE (Algerian flag colors plus black, white, gray) ----------
+    const PAL = ["#006633", "#d21034", "#ffffff", "#111111", "#8a8a8a"];
+    const LETTERS_AR = "أبتثجحخدذرزسشصضطظعغفقكلمنهوي".split("");
+    const LETTERS_LA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
     // ---------- TRANSLATIONS ----------
     const I18N = {
-      en: {
-        eyebrow: "Algeria · Digital services · Computer support",
-        title: "Bouzaher Noureddine Comptutorist Services",
-        intro: "A directory of useful services in Algeria, plus computer and laptop repair information. Check links and service details before using them.",
-        contactTitle: "Contact", repairTitle: "Computer & Laptop Repair",
-        repairText: "Need help with a computer or laptop? Contact Bouzaher Noureddine Comptutorist Services for repair and technical support.",
-        repairItems: ["Computer repair", "Laptop repair", "Diagnosis & troubleshooting", "Software and system support", "Hardware support"],
-        search: "Search services…", directoryTitle: "Service directory",
-        notice: "Every external link is checked for security before it is opened. Links marked “Pending security check” are locked until verified. Some official statuses are unconfirmed; this directory is informational and not affiliated with the services listed.",
-        noMatch: "No services match your search.",
-        footer: "Bouzaher Noureddine Comptutorist Services · Algeria",
-        credit: "Website credit: Mr. Mohamed Tarafi",
-        all: "All",
-        visit: "Visit site ↗", pending: "Pending security check", approved: "Verified safe",
-        notConfirmed: "Official link not confirmed", thirdParty: "Third-party",
-        cats: { edu: "Education", univ: "University", transport: "Transport", training: "Training", legal: "Legal / documents", general: "General", payment: "Payment / tax", telecom: "Telecom", services: "Services", employment: "Employment" },
-        contactLabels: { phone: "Phone", whatsapp: "WhatsApp", email: "Email", address: "Address", hours: "Hours" },
-        call: "Call", count1: "service", countN: "services"
-      },
+      en: { title: "Learn, play and create", subtitle: "Educational activities for primary and middle school students in Algeria.", navWatch: "Videos", navLearn: "Learn", navPuzzle: "Puzzles", navMaze: "Mazes", navColoring: "Coloring", navPaint: "Paint", navParents: "For parents", watchTitle: "Educational videos", watchDesc: "Videos are chosen and checked by Tarafi Services.", learnTitle: "Learn the letters and numbers", learnDesc: "Tap a letter or number to hear its name in your head and say it out loud.", arabicLetters: "Arabic letters", latinLetters: "Latin letters", numbers: "Numbers", puzzleTitle: "Alphabet puzzle", puzzleDesc: "Look at the small letter and choose its capital letter.", mazeTitle: "Maze", mazeDesc: "Use the arrows to move from S (start) to E (end) without touching black walls.", mazeWin: "Well done! You reached the end.", restart: "Start again", coloringTitle: "Black and white coloring", coloringDesc: "Pick a picture, choose a color, and tap a part to color it.", paintTitle: "Drawing and painting", paintDesc: "Draw freely with the colors. Use Clear to start a new picture.", clear: "Clear", parentsTitle: "For parents", parentsText: "Sit with your child, ask them to tell you about what they are doing, and praise their effort. Help them when they ask, but let them try first. Ten to fifteen minutes a day is enough.", parentLabel: "Parent tip:", parentTip: "Sit beside your child, ask them to name what they see, and praise their effort.", rights: "© Tarafi Services. All rights reserved.", purpose: "This website is for educational purposes only.", credit: "Website credit: Mr. Mohamed Tarafi", pending: "Coming soon", score: "Score", cats: { alphabet: "Alphabet", numbers: "Numbers", stories: "Stories", science: "Science", math: "Math", drawing: "Drawing" }, drawings: { house: "House", sun: "Sun", fish: "Fish", flower: "Flower" }, colors: "Colors", up: "Up", down: "Down", left: "Left", right: "Right" },
+      fr: { title: "Apprendre, jouer et créer", subtitle: "Activités éducatives pour les élèves du primaire et du collège en Algérie.", navWatch: "Vidéos", navLearn: "Apprendre", navPuzzle: "Puzzles", navMaze: "Labyrinthes", navColoring: "Coloriage", navPaint: "Peinture", navParents: "Pour les parents", watchTitle: "Vidéos éducatives", watchDesc: "Les vidéos sont choisies et vérifiées par Tarafi Services.", learnTitle: "Apprendre les lettres et les chiffres", learnDesc: "Touche une lettre ou un chiffre et dis son nom à voix haute.", arabicLetters: "Lettres arabes", latinLetters: "Lettres latines", numbers: "Chiffres", puzzleTitle: "Puzzle de l’alphabet", puzzleDesc: "Regarde la petite lettre et choisis la majuscule correspondante.", mazeTitle: "Labyrinthe", mazeDesc: "Utilise les flèches pour aller de S (début) à E (fin) sans toucher les murs noirs.", mazeWin: "Bravo ! Tu es arrivé à la fin.", restart: "Recommencer", coloringTitle: "Coloriage en noir et blanc", coloringDesc: "Choisis un dessin, une couleur, puis touche une partie pour la colorier.", paintTitle: "Dessin et peinture", paintDesc: "Dessine librement avec les couleurs. Utilise Effacer pour recommencer.", clear: "Effacer", parentsTitle: "Pour les parents", parentsText: "Asseyez-vous avec votre enfant, demandez-lui de vous expliquer ce qu’il fait et félicitez ses efforts. Aidez-le quand il le demande, mais laissez-le essayer d’abord. Dix à quinze minutes par jour suffisent.", parentLabel: "Conseil parent :", parentTip: "Asseyez-vous à côté de votre enfant, demandez-lui de nommer ce qu’il voit et félicitez ses efforts.", rights: "© Tarafi Services. Tous droits réservés.", purpose: "Ce site est uniquement à usage éducatif.", credit: "Crédit du site : M. Mohamed Tarafi", pending: "Bientôt disponible", score: "Score", cats: { alphabet: "Alphabet", numbers: "Chiffres", stories: "Histoires", science: "Sciences", math: "Maths", drawing: "Dessin" }, drawings: { house: "Maison", sun: "Soleil", fish: "Poisson", flower: "Fleur" }, colors: "Couleurs", up: "Haut", down: "Bas", left: "Gauche", right: "Droite" },
+      ar: { title: "تعلّم والعب وأبدع", subtitle: "أنشطة تعليمية لتلاميذ الابتدائي والمتوسط في الجزائر.", navWatch: "فيديوهات", navLearn: "تعلّم", navPuzzle: "ألغاز", navMaze: "متاهات", navColoring: "تلوين", navPaint: "رسم", navParents: "للأولياء", watchTitle: "فيديوهات تعليمية", watchDesc: "الفيديوهات يختارها ويتحقق منها Tarafi Services.", learnTitle: "تعلّم الحروف والأرقام", learnDesc: "اضغط على حرف أو رقم وقل اسمه بصوت عالٍ.", arabicLetters: "الحروف العربية", latinLetters: "الحروف اللاتينية", numbers: "الأرقام", puzzleTitle: "لغز الحروف", puzzleDesc: "انظر إلى الحرف الصغير واختر الحرف الكبير المناسب.", mazeTitle: "المتاهة", mazeDesc: "استعمل الأسهم للانتقال من S (البداية) إلى E (النهاية) دون لمس الجدران السوداء.", mazeWin: "أحسنت! وصلت إلى النهاية.", restart: "ابدأ من جديد", coloringTitle: "تلوين بالأبيض والأسود", coloringDesc: "اختر رسمة ولونا ثم اضغط على جزء منها لتلوينه.", paintTitle: "الرسم والتلوين الحر", paintDesc: "ارسم بحرية بالألوان. استعمل مسح لبدء رسمة جديدة.", clear: "مسح", parentsTitle: "للأولياء", parentsText: "اجلس مع طفلك واطلب منه أن يخبرك بما يفعله، وشجّع جهوده. ساعده عندما يطلب، لكن دعه يحاول أولاً. عشر إلى خمس عشرة دقيقة يومياً تكفي.", parentLabel: "نصيحة للولي:", parentTip: "اجلس بجانب طفلك، واطلب منه تسمية ما يراه، وشجّع جهده.", rights: "© Tarafi Services. جميع الحقوق محفوظة.", purpose: "هذا الموقع لأغراض تعليمية فقط.", credit: "تصميم الموقع: السيد محمد طرفي", pending: "قريباً", score: "النتيجة", cats: { alphabet: "الحروف", numbers: "الأرقام", stories: "قصص", science: "علوم", math: "رياضيات", drawing: "رسم" }, drawings: { house: "بيت", sun: "شمس", fish: "سمكة", flower: "زهرة" }, colors: "الألوان", up: "أعلى", down: "أسفل", left: "يسار", right: "يمين" },
+      de: { title: "Lernen, spielen und gestalten", subtitle: "Lernaktivitäten für Grund- und Mittelschüler in Algerien.", navWatch: "Videos", navLearn: "Lernen", navPuzzle: "Rätsel", navMaze: "Labyrinthe", navColoring: "Ausmalen", navPaint: "Malen", navParents: "Für Eltern", watchTitle: "Lehrvideos", watchDesc: "Die Videos werden von Tarafi Services ausgewählt und geprüft.", learnTitle: "Buchstaben und Zahlen lernen", learnDesc: "Tippe auf einen Buchstaben oder eine Zahl und sprich den Namen laut aus.", arabicLetters: "Arabische Buchstaben", latinLetters: "Lateinische Buchstaben", numbers: "Zahlen", puzzleTitle: "Alphabet-Rätsel", puzzleDesc: "Schau dir den kleinen Buchstaben an und wähle den großen.", mazeTitle: "Labyrinth", mazeDesc: "Nutze die Pfeile, um von S (Start) zu E (Ende) zu kommen, ohne die schwarzen Wände zu berühren.", mazeWin: "Super! Du hast das Ziel erreicht.", restart: "Neu starten", coloringTitle: "Schwarz-weiß ausmalen", coloringDesc: "Wähle ein Bild und eine Farbe und tippe dann auf einen Teil, um ihn auszumalen.", paintTitle: "Zeichnen und Malen", paintDesc: "Zeichne frei mit den Farben. Mit Leeren beginnst du ein neues Bild.", clear: "Leeren", parentsTitle: "Für Eltern", parentsText: "Setzen Sie sich mit Ihrem Kind zusammen, bitten Sie es, Ihnen zu erzählen, was es macht, und loben Sie seine Anstrengung. Helfen Sie, wenn es fragt, aber lassen Sie es zuerst selbst versuchen. Zehn bis fünfzehn Minuten am Tag reichen.", parentLabel: "Tipp für Eltern:", parentTip: "Setzen Sie sich neben Ihr Kind, bitten Sie es, zu benennen, was es sieht, und loben Sie seine Mühe.", rights: "© Tarafi Services. Alle Rechte vorbehalten.", purpose: "Diese Website dient nur Bildungszwecken.", credit: "Website-Credit: Herr Mohamed Tarafi", pending: "Demnächst", score: "Punkte", cats: { alphabet: "Alphabet", numbers: "Zahlen", stories: "Geschichten", science: "Wissenschaft", math: "Mathe", drawing: "Malen" }, drawings: { house: "Haus", sun: "Sonne", fish: "Fisch", flower: "Blume" }, colors: "Farben", up: "Oben", down: "Unten", left: "Links", right: "Rechts" },
+      es: { title: "Aprender, jugar y crear", subtitle: "Actividades educativas para estudiantes de primaria y secundaria en Argelia.", navWatch: "Videos", navLearn: "Aprender", navPuzzle: "Rompecabezas", navMaze: "Laberintos", navColoring: "Colorear", navPaint: "Pintar", navParents: "Para padres", watchTitle: "Videos educativos", watchDesc: "Tarafi Services elige y revisa los videos.", learnTitle: "Aprender letras y números", learnDesc: "Toca una letra o un número y di su nombre en voz alta.", arabicLetters: "Letras árabes", latinLetters: "Letras latinas", numbers: "Números", puzzleTitle: "Rompecabezas del alfabeto", puzzleDesc: "Mira la letra pequeña y elige la mayúscula.", mazeTitle: "Laberinto", mazeDesc: "Usa las flechas para ir de S (inicio) a E (final) sin tocar las paredes negras.", mazeWin: "¡Muy bien! Llegaste al final.", restart: "Empezar de nuevo", coloringTitle: "Colorear en blanco y negro", coloringDesc: "Elige un dibujo, un color y toca una parte para colorearla.", paintTitle: "Dibujar y pintar", paintDesc: "Dibuja libremente con los colores. Usa Borrar para empezar un nuevo dibujo.", clear: "Borrar", parentsTitle: "Para padres", parentsText: "Siéntese con su hijo, pídale que le cuente lo que hace y elogie su esfuerzo. Ayúdelo cuando lo pida, pero déjelo intentar primero. Diez o quince minutos al día son suficientes.", parentLabel: "Consejo para padres:", parentTip: "Siéntese junto a su hijo, pídale que nombre lo que ve y elogie su esfuerzo.", rights: "© Tarafi Services. Todos los derechos reservados.", purpose: "Este sitio web es solo con fines educativos.", credit: "Crédito del sitio: Sr. Mohamed Tarafi", pending: "Próximamente", score: "Puntos", cats: { alphabet: "Alfabeto", numbers: "Números", stories: "Cuentos", science: "Ciencia", math: "Matemáticas", drawing: "Dibujo" }, drawings: { house: "Casa", sun: "Sol", fish: "Pez", flower: "Flor" }, colors: "Colores", up: "Arriba", down: "Abajo", left: "Izquierda", right: "Derecha" },
+      it: { title: "Imparare, giocare e creare", subtitle: "Attività educative per studenti di scuola primaria e media in Algeria.", navWatch: "Video", navLearn: "Impara", navPuzzle: "Puzzle", navMaze: "Labirinti", navColoring: "Colorare", navPaint: "Dipingere", navParents: "Per i genitori", watchTitle: "Video educativi", watchDesc: "I video sono scelti e verificati da Tarafi Services.", learnTitle: "Impara lettere e numeri", learnDesc: "Tocca una lettera o un numero e pronuncia il nome ad alta voce.", arabicLetters: "Lettere arabe", latinLetters: "Lettere latine", numbers: "Numeri", puzzleTitle: "Puzzle dell’alfabeto", puzzleDesc: "Guarda la lettera minuscola e scegli la maiuscola.", mazeTitle: "Labirinto", mazeDesc: "Usa le frecce per andare da S (inizio) a E (fine) senza toccare i muri neri.", mazeWin: "Bravo! Sei arrivato alla fine.", restart: "Ricomincia", coloringTitle: "Colorare in bianco e nero", coloringDesc: "Scegli un disegno, un colore e tocca una parte per colorarla.", paintTitle: "Disegnare e dipingere", paintDesc: "Disegna liberamente con i colori. Usa Cancella per iniziare un nuovo disegno.", clear: "Cancella", parentsTitle: "Per i genitori", parentsText: "Siediti con tuo figlio, chiedigli di raccontarti cosa sta facendo e lodane l’impegno. Aiutalo quando lo chiede, ma lascia che provi prima da solo. Dieci-quindici minuti al giorno bastano.", parentLabel: "Consiglio per i genitori:", parentTip: "Siediti accanto a tuo figlio, chiedigli di nominare ciò che vede e lodane l’impegno.", rights: "© Tarafi Services. Tutti i diritti riservati.", purpose: "Questo sito è solo a scopo educativo.", credit: "Credito del sito: Sig. Mohamed Tarafi", pending: "Presto disponibile", score: "Punteggio", cats: { alphabet: "Alfabeto", numbers: "Numeri", stories: "Storie", science: "Scienze", math: "Matematica", drawing: "Disegno" }, drawings: { house: "Casa", sun: "Sole", fish: "Pesce", flower: "Fiore" }, colors: "Colori", up: "Su", down: "Giù", left: "Sinistra", right: "Destra" },
+      zh: { title: "学习、游戏与创作", subtitle: "为阿尔及利亚小学和初中学生准备的教育活动。", navWatch: "视频", navLearn: "学习", navPuzzle: "拼图", navMaze: "迷宫", navColoring: "涂色", navPaint: "绘画", navParents: "家长专区", watchTitle: "教育视频", watchDesc: "视频由 Tarafi Services 挑选并检查。", learnTitle: "学习字母和数字", learnDesc: "点击一个字母或数字，并大声读出它的名字。", arabicLetters: "阿拉伯字母", latinLetters: "拉丁字母", numbers: "数字", puzzleTitle: "字母拼图", puzzleDesc: "看小写字母，选出对应的大写字母。", mazeTitle: "迷宫", mazeDesc: "用箭头从 S（起点）走到 E（终点），不要碰到黑色的墙。", mazeWin: "太棒了！你到达了终点。", restart: "重新开始", coloringTitle: "黑白涂色", coloringDesc: "选一张图画和一种颜色，然后点击某个部分给它上色。", paintTitle: "绘画", paintDesc: "用颜色自由画画。点击清空可以开始新的画。", clear: "清空", parentsTitle: "家长专区", parentsText: "和孩子坐在一起，请他讲讲自己在做什么，并表扬他的努力。孩子请求时再帮助，但先让他自己尝试。每天十到十五分钟就足够了。", parentLabel: "家长提示：", parentTip: "坐在孩子身边，请他说出看到的东西，并表扬他的努力。", rights: "© Tarafi Services. 版权所有。", purpose: "本网站仅用于教育目的。", credit: "网站制作：Mohamed Tarafi 先生", pending: "即将推出", score: "得分", cats: { alphabet: "字母", numbers: "数字", stories: "故事", science: "科学", math: "数学", drawing: "绘画" }, drawings: { house: "房子", sun: "太阳", fish: "鱼", flower: "花" }, colors: "颜色", up: "上", down: "下", left: "左", right: "右" },
+      ru: { title: "Учиться, играть и творить", subtitle: "Учебные занятия для учеников начальной и средней школы в Алжире.", navWatch: "Видео", navLearn: "Учиться", navPuzzle: "Пазлы", navMaze: "Лабиринты", navColoring: "Раскраски", navPaint: "Рисование", navParents: "Для родителей", watchTitle: "Учебные видео", watchDesc: "Видео выбраны и проверены Tarafi Services.", learnTitle: "Учим буквы и цифры", learnDesc: "Нажми на букву или цифру и произнеси её название вслух.", arabicLetters: "Арабские буквы", latinLetters: "Латинские буквы", numbers: "Цифры", puzzleTitle: "Пазл из букв", puzzleDesc: "Посмотри на маленькую букву и выбери заглавную.", mazeTitle: "Лабиринт", mazeDesc: "Используй стрелки, чтобы пройти от S (старт) до E (финиш), не касаясь чёрных стен.", mazeWin: "Молодец! Ты дошёл до финиша.", restart: "Начать заново", coloringTitle: "Раскраска чёрно-белая", coloringDesc: "Выбери рисунок и цвет, затем нажми на часть, чтобы раскрасить её.", paintTitle: "Рисование и живопись", paintDesc: "Рисуй свободно цветами. Очисть, чтобы начать новый рисунок.", clear: "Очистить", parentsTitle: "Для родителей", parentsText: "Сядьте рядом с ребёнком, попросите его рассказать, что он делает, и похвалите его старание. Помогайте, когда он попросит, но сначала пусть попробует сам. Достаточно десяти-пятнадцати минут в день.", parentLabel: "Совет родителям:", parentTip: "Сядьте рядом с ребёнком, попросите назвать то, что он видит, и похвалите его старание.", rights: "© Tarafi Services. Все права защищены.", purpose: "Этот сайт предназначен только для образовательных целей.", credit: "Автор сайта: г-н Мохамед Тарафи", pending: "Скоро", score: "Счёт", cats: { alphabet: "Алфавит", numbers: "Цифры", stories: "Истории", science: "Наука", math: "Математика", drawing: "Рисование" }, drawings: { house: "Дом", sun: "Солнце", fish: "Рыбка", flower: "Цветок" }, colors: "Цвета", up: "Вверх", down: "Вниз", left: "Влево", right: "Вправо" }
+    };
+
+    const LANG_NAMES = { en: "English", fr: "Français", ar: "العربية", de: "Deutsch", es: "Español", it: "Italiano", zh: "中文", ru: "Русский" };
+    let lang = "en";
+    try { lang = localStorage.getItem("kidsLang") || "en"; } catch (e) {}
+    const t = () => I18N[lang];
+    const $ = s => document.querySelector(s);
+
+    function renderLangs() {
+      const box = $("#langs");
+      box.replaceChildren();
+      Object.keys(LANG_NAMES).forEach(code => {
+        const b = document.createElement("button");
+        b.textContent = LANG_NAMES[code];
+        b.setAttribute("aria-pressed", String(code === lang));
+        b.addEventListener("click", () => {
+          lang = code;
+          try { localStorage.setItem("kidsLang", code); } catch (e) {}
+          applyLang();
+        });
+        box.append(b);
+      });
+    }
+
+    function renderVideos() {
+      const box = $("#videos");
+      box.replaceChildren();
+      videos.forEach(v => {
+        const card = document.createElement("div");
+        card.className = "card";
+        const h = document.createElement("h3");
+        h.textContent = vidTitle(v.title);
+        card.append(h);
+        if (v.approved && v.videoId) {
+          const f = document.createElement("iframe");
+          f.className = "video";
+          f.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.videoId)}?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3`;
+          f.title = vidTitle(v.title);
+          f.allow = "encrypted-media; picture-in-picture";
+          f.referrerPolicy = "strict-origin-when-cross-origin";
+          f.loading = "lazy";
+          card.append(f);
+        } else {
+          const p = document.createElement("span");
+          p.className = "pill";
+          p.textContent = t().pending;
+          card.append(p);
+        }
+        box.append(card);
+      });
+    }
+
+    // ---------- TILES (learn) ----------
+    function tile(text, cls, color) {
+      const d = document.createElement("div");
+      d.className = "tile " + (cls || "");
+      if (color) d.style.setProperty("--c", color);
+      d.textContent = text;
+      return d;
+    }
+    function buildTiles() {
+      const colors = ["#006633", "#d21034", "#111111"];
+      $("#arabic").replaceChildren(...LETTERS_AR.map((ch, i) => tile(ch, "", colors[i % 3])));
+      $("#latin").replaceChildren(...LETTERS_LA.map((ch, i) => tile(ch, "", colors[i % 3])));
+      $("#numbers").replaceChildren(...[1,2,3,4,5,6,7,8,9,10].map((n, i) => tile(n, "", colors[i % 3])));
+    }
+
+    // ---------- ALPHABET PUZZLE ----------
+    let puzzleAnswer = "", puzzleScore = 0;
+    function newPuzzle() {
+      const i = Math.floor(Math.random() * LETTERS_LA.length);
+      puzzleAnswer = LETTERS_LA[i];
+      $("#prompt").textContent = puzzleAnswer.toLowerCase();
+      const options = new Set([puzzleAnswer]);
+      while (options.size < 4) options.add(LETTERS_LA[Math.floor(Math.random() * LETTERS_LA.length)]);
+      const box = $("#letterChoices");
+      box.replaceChildren(...[...options].sort(() => Math.random() - 0.5).map(letter => {
+        const b = document.createElement("button");
+        b.textContent = letter;
+        b.addEventListener("click", () => {
+          if (letter === puzzleAnswer) puzzleScore++;
+          else puzzleScore = Math.max(0, puzzleScore - 1);
+          $("#puzzleScore").textContent = `${t().score}: ${puzzleScore}`;
+          newPuzzle();
+        });
+        return b;
+      }));
+    }
+
+    // ---------- MAZE ----------
+    let pos = { r: 0, c: 0 };
+    let won = false;
+    function findCell(ch) {
+      for (let r = 0; r < MAZE.length; r++)
+        for (let c = 0; c < MAZE[r].length; c++)
+          if (MAZE[r][c] === ch) return { r, c };
+    }
+    function drawMaze() {
+      const board = $("#mazeBoard");
+      board.replaceChildren();
+      MAZE.forEach((row, r) => {
+        [...row].forEach((ch, c) => {
+          const d = document.createElement("div");
+          d.className = "cell";
+          if (ch === "#") d.classList.add("wall");
+          if (ch === "S") d.classList.add("start");
+          if (ch === "E") d.classList.add("end");
+          if (r === pos.r && c === pos.c) d.classList.add("player");
+          board.append(d);
+        });
+      });
+      $("#mazeMsg").textContent = won ? t().mazeWin : "";
+    }
+    function move(dr, dc) {
+      if (won) return;
+      const nr = pos.r + dr, nc = pos.c + dc;
+      if (nr < 0 || nc < 0 || nr >= MAZE.length || nc >= MAZE[0].length) return;
+      if (MAZE[nr][nc] === "#") return;
+      pos = { r: nr, c: nc };
+      if (MAZE[nr][nc] === "E") won = true;
+      drawMaze();
+    }
+    function resetMaze() {
+      pos = findCell("S");
+      won = false;
+      drawMaze();
+    }
+
+    // ---------- COLORING ----------
+    let fillColor = PAL[2];
+    function buildColoring() {
+      const btns = $("#drawingButtons");
+      btns.replaceChildren();
+      Object.keys(DRAWINGS).forEach((key, i) => {
+        const b = document.createElement("button");
+        b.className = "btn";
+        b.dataset.key = key;
+        b.setAttribute("aria-pressed", String(i === 0));
+        b.addEventListener("click", () => showDrawing(key));
+        btns.append(b);
+      });
+      showDrawing("house");
+    }
+    function showDrawing(key) {
+      const art = $("#art");
+      art.innerHTML = DRAWINGS[key];
+      art.querySelector("svg").addEventListener("click", e => {
+        if (e.target.classList.contains("fill")) e.target.setAttribute("fill", fillColor);
+      });
+      document.querySelectorAll("#drawingButtons button").forEach(b => {
+        b.textContent = t().drawings[b.dataset.key];
+        b.setAttribute("aria-pressed", String(b.dataset.key === key));
+      });
+    }
+
+    // ---------- PALETTES ----------
+    function buildPalette(id, onPick, initial) {
+      const box = $(id);
+      box.replaceChildren();
+      PAL.forEach((c, i) => {
+        const b = document.createElement("button");
+        b.style.setProperty("--c", c);
+        b.setAttribute("aria-label", c);
+        b.setAttribute("aria-pressed", String(c === initial));
+        b.addEventListener("click", () => {
+          onPick(c);
+          box.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+        });
+        box.append(b);
+      });
+    }
+
+    // ---------- PAINT PAD ----------
+    let paintColor = PAL[0];
+    function setupPad() {
+      const canvas = $("#pad");
+      const ctx = canvas.getContext("2d");
+      let drawing = false;
+      buildPalette("#palette2", c => paintColor = c, paintColor);
+      const pos2 = e => {
+        const r = canvas.getBoundingClientRect();
+        return [(e.clientX - r.left) * canvas.width / r.width, (e.clientY - r.top) * canvas.height / r.height];
+      };
+      canvas.addEventListener("pointerdown", e => { drawing = true; ctx.beginPath(); ctx.moveTo(...pos2(e)); });
+      canvas.addEventListener("pointermove", e => {
+        if (!drawing) return;
+        ctx.lineWidth = 10; ctx.lineCap = "round"; ctx.strokeStyle = paintColor;
+        ctx.lineTo(...pos2(e)); ctx.stroke();
+      });
+      ["pointerup", "pointerleave"].forEach(ev => canvas.addEventListener(ev, () => drawing = false));
+      $("#clear").addEventListener("click", () => ctx.clearRect(0, 0, canvas.width, canvas.height));
+    }
+
+    // ---------- LANGUAGE ----------
+    function applyLang() {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const v = t()[el.dataset.i18n];
+        if (typeof v === "string") el.textContent = v;
+      });
+      renderLangs();
+      renderVideos();
+      renderActivities();
+      buildLevelButtons();
+      buildTrainButtons();
+      drawRMaze();
+      showDrawing(document.querySelector("#drawingButtons .btn[aria-pressed='true']")?.dataset.key || "house");
+      $("#puzzleScore").textContent = `${t().score}: ${puzzleScore}`;
+      drawMaze();
+    }
+
+    // ---------- ACTIVITY LISTS ----------
+    // Each activity shows as "Coming soon" until it is built.
+    const ACTIVITIES = [
+      { target: "#learn", items: ["Letter Tracing", "Number Tracing", "Letter Sounds", "Number Match"] },
+      { target: "#puzzle", items: ["Letter Puzzle", "Picture-Word Puzzle", "Missing Letter Puzzle"] },
+      { target: "#maze", items: ["Easy Maze", "Medium Maze", "Hard Maze"] },
+      { target: "#coloring", items: ["Animals Coloring", "Vehicles Coloring", "Numbers Coloring"] },
+      { target: "#paint", items: ["Step-by-Step Drawing", "Simple Painting", "Colour Mixing"] },
+      { target: "#quranList", items: ["Short Surahs for Children", "Arabic Letters with Quran", "Recitation Basics", "Daily Memorisation"] },
+      { target: "#otherList", items: ["Screen Time Tips", "Reading at Home", "Homework Help"] },
+      { target: "#homeList", items: ["Daily Routine Activities", "Family Games", "Cooking and Measuring"] },
+      { target: "#schoolList", items: ["Classroom Games", "Science Experiments", "Teacher Resources"] },
+      { target: "#streetList", items: ["Road Safety", "Traffic Signs", "Community Helpers"] }
+    ];
+
+    // Parent guide for each activity (written for parents to use at home).
+    const TIPS = {
+      "Letter Tracing": "Write each letter with your finger in sand or on paper, saying its sound aloud.",
+      "Number Tracing": "Trace the numbers 1 to 10 with a pencil, counting out loud as you go.",
+      "Letter Sounds": "Point to objects that start with a letter and say the sound together, like “b” for ball.",
+      "Number Match": "Lay out small objects such as coins or buttons and match each group to its number card.",
+      "Letter Puzzle": "Cut letter cards in half and ask your child to match the pieces back together.",
+      "Picture-Word Puzzle": "Show a picture and ask your child to find its written word among a set of cards.",
+      "Missing Letter Puzzle": "Write a short word with one letter left out and ask your child to fill it in.",
+      "Easy Maze": "Trace the path with a finger first, then with a pencil, saying each direction out loud.",
+      "Medium Maze": "Ask your child to plan the route before drawing it, and talk about any wrong turns.",
+      "Hard Maze": "Let your child try alone first, then check the route together and discuss how they solved it.",
+      "Animals Coloring": "Ask your child to name each animal and its sound while coloring.",
+      "Vehicles Coloring": "Talk about where each vehicle goes and who uses it.",
+      "Numbers Coloring": "Color each numbered section in order and say the number as your child colors it.",
+      "Step-by-Step Drawing": "Draw each step together, one line at a time, and let your child copy you.",
+      "Simple Painting": "Use big brushes, let your child choose the colors, and ask them to describe their painting.",
+      "Colour Mixing": "Mix two colors on paper and ask your child what new color they see.",
+      "Short Surahs for Children": "Listen to a short surah with your child from a teacher or reciter you trust, then repeat the verses together.",
+      "Arabic Letters with Quran": "Find Arabic letters in verses you read together and say each letter’s sound.",
+      "Recitation Basics": "Practise pronunciation slowly, a few verses at a time, ideally with a qualified teacher.",
+      "Daily Memorisation": "Choose one short verse a day, repeat it several times, and review the previous day’s verse.",
+      "Screen Time Tips": "Set a daily limit, keep screens out of the bedroom, and watch together when you can.",
+      "Reading at Home": "Read a short story together each evening and ask your child to guess what happens next.",
+      "Homework Help": "Sit nearby, ask questions instead of giving answers, and celebrate finished tasks.",
+      "Daily Routine Activities": "Make a simple picture chart of the day’s routine and check off each task together.",
+      "Family Games": "Play a counting or word game at dinner, taking turns and cheering for everyone.",
+      "Cooking and Measuring": "Let your child measure ingredients with cups or spoons while you name the amounts.",
+      "Classroom Games": "Ask your child which game they played at school and try it at home.",
+      "Science Experiments": "Try a safe experiment, such as mixing water and oil, with an adult supervising, and ask what your child expects to happen.",
+      "Teacher Resources": "Ask your child’s teacher which books or exercises they recommend for practice at home.",
+      "Road Safety": "Practise crossing at a crosswalk: look left, right, and left again, and explain why.",
+      "Traffic Signs": "Point out signs on your walk and ask your child what each one means.",
+      "Community Helpers": "Talk about helpers you see, like the baker, the doctor, or the police officer, and what they do."
+    };
+
+    // ---------- TRANSLATIONS FOR NEW CONTENT (8 languages) ----------
+    // Each activity: [name, parent guide]. Video titles: [title].
+    const LOC = {
       fr: {
-        eyebrow: "Algérie · Services numériques · Assistance informatique",
-        title: "Bouzaher Noureddine Comptutorist Services",
-        intro: "Un répertoire de services utiles en Algérie, ainsi que des informations sur la réparation d’ordinateurs et de portables. Vérifiez les liens et les détails avant de les utiliser.",
-        contactTitle: "Contact", repairTitle: "Réparation d’ordinateurs & portables",
-        repairText: "Besoin d’aide avec un ordinateur ou un portable ? Contactez Bouzaher Noureddine Comptutorist Services pour la réparation et le support technique.",
-        repairItems: ["Réparation d’ordinateurs", "Réparation de portables", "Diagnostic & dépannage", "Support logiciel et système", "Support matériel"],
-        search: "Rechercher un service…", directoryTitle: "Répertoire des services",
-        notice: "Chaque lien externe est vérifié avant d’être ouvert. Les liens marqués « Vérification de sécurité en attente » sont bloqués jusqu’à validation. Certains statuts officiels ne sont pas confirmés ; ce répertoire est informatif et non affilié aux services listés.",
-        noMatch: "Aucun service ne correspond à votre recherche.",
-        footer: "Bouzaher Noureddine Comptutorist Services · Algérie",
-        credit: "Crédit du site : M. Mohamed Tarafi",
-        all: "Tous",
-        visit: "Visiter le site ↗", pending: "Vérification de sécurité en attente", approved: "Vérifié sûr",
-        notConfirmed: "Lien officiel non confirmé", thirdParty: "Tiers",
-        cats: { edu: "Éducation", univ: "Université", transport: "Transport", training: "Formation", legal: "Juridique / documents", general: "Général", payment: "Paiement / fiscalité", telecom: "Télécom", services: "Services", employment: "Emploi" },
-        contactLabels: { phone: "Téléphone", whatsapp: "WhatsApp", email: "E-mail", address: "Adresse", hours: "Horaires" },
-        call: "Appeler", count1: "service", countN: "services"
+        "Learn the Alphabet": ["Apprendre l’alphabet"], "Learn the Numbers": ["Apprendre les chiffres"], "Shapes and Colours": ["Formes et couleurs"], "Counting Songs": ["Chansons de comptage"],
+        "Letter Tracing": ["Tracé des lettres", "Écrivez chaque lettre avec le doigt sur du sable ou du papier, en disant son son à voix haute."],
+        "Number Tracing": ["Tracé des chiffres", "Tracez les chiffres de 1 à 10 avec un crayon, en comptant à voix haute."],
+        "Letter Sounds": ["Sons des lettres", "Montrez des objets qui commencent par une lettre et dites le son ensemble, par exemple « b » pour ballon."],
+        "Number Match": ["Association des chiffres", "Disposez de petits objets et associez chaque groupe à sa carte-chiffre."],
+        "Letter Puzzle": ["Puzzle des lettres", "Coupez des cartes de lettres en deux et demandez à votre enfant de reconstituer les morceaux."],
+        "Picture-Word Puzzle": ["Puzzle image-mot", "Montrez une image et demandez à votre enfant de trouver son mot écrit parmi les cartes."],
+        "Missing Letter Puzzle": ["Puzzle de la lettre manquante", "Écrivez un mot court avec une lettre absente et demandez à votre enfant de la compléter."],
+        "Easy Maze": ["Labyrinthe facile", "Suivez le chemin d’abord avec le doigt, puis au crayon, en disant chaque direction à voix haute."],
+        "Medium Maze": ["Labyrinthe moyen", "Demandez à votre enfant de planifier le chemin avant de le dessiner et parlez des fausses routes."],
+        "Hard Maze": ["Labyrinthe difficile", "Laissez-le essayer seul d’abord, puis vérifiez le chemin ensemble et discutez de sa méthode."],
+        "Animals Coloring": ["Coloriage des animaux", "Demandez à votre enfant de nommer chaque animal et son cri pendant qu’il colorie."],
+        "Vehicles Coloring": ["Coloriage des véhicules", "Parlez de la destination de chaque véhicule et de ceux qui l’utilisent."],
+        "Numbers Coloring": ["Coloriage des chiffres", "Coloriez chaque zone numérotée dans l’ordre et dites le chiffre en coloriant."],
+        "Step-by-Step Drawing": ["Dessin étape par étape", "Dessinez chaque étape ensemble, un trait à la fois, et laissez votre enfant vous imiter."],
+        "Simple Painting": ["Peinture simple", "Utilisez de gros pinceaux, laissez votre enfant choisir les couleurs et demandez-lui de décrire son tableau."],
+        "Colour Mixing": ["Mélange des couleurs", "Mélangez deux couleurs sur une feuille et demandez à votre enfant quelle nouvelle couleur il voit."],
+        "Short Surahs for Children": ["Courtes sourates pour enfants", "Écoutez une courte sourate avec un enseignant ou un récitant de confiance, puis répétez les versets ensemble."],
+        "Arabic Letters with Quran": ["Lettres arabes avec le Coran", "Repérez les lettres arabes dans les versets lus ensemble et prononcez le son de chaque lettre."],
+        "Recitation Basics": ["Bases de la récitation", "Travaillez la prononciation lentement, quelques versets à la fois, idéalement avec un enseignant qualifié."],
+        "Daily Memorisation": ["Mémorisation quotidienne", "Choisissez un verset court par jour, répétez-le plusieurs fois et révisez le verset de la veille."],
+        "Screen Time Tips": ["Conseils sur le temps d’écran", "Fixez une limite quotidienne, gardez les écrans hors de la chambre et regardez ensemble quand c’est possible."],
+        "Reading at Home": ["Lire à la maison", "Lisez ensemble une courte histoire chaque soir et demandez à votre enfant de deviner la suite."],
+        "Homework Help": ["Aide aux devoirs", "Restez à proximité, posez des questions au lieu de donner les réponses et félicitez les tâches terminées."],
+        "Daily Routine Activities": ["Activités de routine quotidienne", "Faites un tableau illustré de la journée et cochez chaque tâche ensemble."],
+        "Family Games": ["Jeux en famille", "Jouez à un jeu de comptage ou de mots pendant le dîner, à tour de rôle et en encourageant chacun."],
+        "Cooking and Measuring": ["Cuisine et mesures", "Laissez votre enfant mesurer les ingrédients avec des tasses ou des cuillères pendant que vous nommez les quantités."],
+        "Classroom Games": ["Jeux de classe", "Demandez à votre enfant à quel jeu il a joué à l’école et essayez-le à la maison."],
+        "Science Experiments": ["Expériences scientifiques", "Faites une expérience sans danger, comme mélanger de l’eau et de l’huile, sous la surveillance d’un adulte."],
+        "Teacher Resources": ["Ressources des enseignants", "Demandez à l’enseignant quels livres ou exercices il recommande pour s’entraîner à la maison."],
+        "Road Safety": ["Sécurité routière", "Entraînez-vous à traverser sur un passage piéton : regardez à gauche, à droite, puis encore à gauche, et expliquez pourquoi."],
+        "Traffic Signs": ["Panneaux de signalisation", "Montrez les panneaux pendant votre promenade et demandez à votre enfant ce que signifie chacun."],
+        "Community Helpers": ["Les métiers utiles à la communauté", "Parlez des personnes que vous croisez, comme le boulanger, le médecin ou le policier, et de ce qu’ils font."]
       },
       ar: {
-        eyebrow: "الجزائر · خدمات رقمية · دعم تقني",
-        title: "بوزاهر نور الدين - خدمات كومبتوتريست",
-        intro: "دليل لخدمات مفيدة في الجزائر، مع معلومات عن إصلاح الحواسيب والحواسيب المحمولة. تحقق من الروابط وتفاصيل الخدمات قبل استخدامها.",
-        contactTitle: "اتصل بنا", repairTitle: "إصلاح الحواسيب والحواسيب المحمولة",
-        repairText: "هل تحتاج إلى مساعدة في حاسوبك أو حاسوبك المحمول؟ تواصل مع بوزاهر نور الدين للإصلاح والدعم التقني.",
-        repairItems: ["إصلاح الحواسيب", "إصلاح الحواسيب المحمولة", "التشخيص وحل الأعطال", "دعم البرمجيات والنظام", "دعم العتاد"],
-        search: "ابحث عن خدمة…", directoryTitle: "دليل الخدمات",
-        notice: "يتم فحص كل رابط خارجي من ناحية الأمان قبل فتحه. الروابط المعلّمة «بانتظار فحص الأمان» مقفلة حتى يتم التحقق منها. بعض الصفات الرسمية غير مؤكدة؛ هذا الدليل إخباري وغير تابع للخدمات المدرجة.",
-        noMatch: "لا توجد خدمات تطابق بحثك.",
-        footer: "بوزاهر نور الدين - خدمات كومبتوتريست · الجزائر",
-        credit: "تصميم الموقع: السيد محمد طرفي",
-        all: "الكل",
-        visit: "زيارة الموقع ↗", pending: "بانتظار فحص الأمان", approved: "تم التحقق: آمن",
-        notConfirmed: "الرابط الرسمي غير مؤكد", thirdParty: "طرف ثالث",
-        cats: { edu: "التعليم", univ: "الجامعة", transport: "النقل", training: "التكوين", legal: "قانوني / وثائق", general: "عام", payment: "الدفع / الضرائب", telecom: "الاتصالات", services: "خدمات", employment: "التشغيل" },
-        contactLabels: { phone: "الهاتف", whatsapp: "واتساب", email: "البريد الإلكتروني", address: "العنوان", hours: "ساعات العمل" },
-        call: "اتصال", count1: "خدمة", countN: "خدمات"
+        "Learn the Alphabet": ["تعلّم الحروف"], "Learn the Numbers": ["تعلّم الأرقام"], "Shapes and Colours": ["الأشكال والألوان"], "Counting Songs": ["أغاني العد"],
+        "Letter Tracing": ["تتبع الحروف", "اكتب كل حرف بإصبعك على الرمل أو الورق، وقل صوته بصوت عالٍ."],
+        "Number Tracing": ["تتبع الأرقام", "تتبع الأرقام من 1 إلى 10 بالقلم، وعدّ بصوت عالٍ."],
+        "Letter Sounds": ["أصوات الحروف", "أشر إلى أشياء تبدأ بحرف وقل صوته معاً، مثل «ب» لكرة."],
+        "Number Match": ["مطابقة الأرقام", "ضع أشياء صغيرة مثل القطع النقدية أو الأزرار، وطابق كل مجموعة ببطاقة رقمها."],
+        "Letter Puzzle": ["لغز الحروف", "قص بطاقات الحروف إلى نصفين واطلب من طفلك تركيب القطع."],
+        "Picture-Word Puzzle": ["لغز الصورة والكلمة", "أرِه صورة واطلب منه إيجاد كلمتها المكتوبة بين البطاقات."],
+        "Missing Letter Puzzle": ["لغز الحرف الناقص", "اكتب كلمة قصيرة بحرف ناقص واطلب من طفلك إكمالها."],
+        "Easy Maze": ["متاهة سهلة", "تتبع المسار بإصبعك أولاً، ثم بالقلم، وقل كل اتجاه بصوت عالٍ."],
+        "Medium Maze": ["متاهة متوسطة", "اطلب من طفلك التخطيط للمسار قبل رسمه، وتحدثا عن الطرق الخاطئة."],
+        "Hard Maze": ["متاهة صعبة", "دعه يحاول وحده أولاً، ثم راجعا المسار معاً وناقشا طريقة حله."],
+        "Animals Coloring": ["تلوين الحيوانات", "اطلب من طفلك تسمية كل حيوان وصوته أثناء التلوين."],
+        "Vehicles Coloring": ["تلوين المركبات", "تحدثا عن وجهة كل مركبة ومن يستعملها."],
+        "Numbers Coloring": ["تلوين الأرقام", "لوّن كل جزء مرقّم بالترتيب واذكر الرقم أثناء التلوين."],
+        "Step-by-Step Drawing": ["الرسم خطوة بخطوة", "ارسموا كل خطوة معاً، خطاً خطاً، ودع طفلك يقلدك."],
+        "Simple Painting": ["الرسم بالألوان البسيط", "استعمل فرشاة كبيرة، ودع طفلك يختار الألوان، واطلب منه وصف لوحته."],
+        "Colour Mixing": ["مزج الألوان", "امزج لونين على ورقة واسأل طفلك عن اللون الجديد الذي يراه."],
+        "Short Surahs for Children": ["سور قصيرة للأطفال", "استمع مع طفلك إلى سورة قصيرة من معلم أو مقرئ تثق به، ثم كرّرا الآيات معاً."],
+        "Arabic Letters with Quran": ["الحروف العربية مع القرآن", "ابحث عن الحروف العربية في الآيات التي تقرؤونها معاً، وانطق صوت كل حرف."],
+        "Recitation Basics": ["أساسيات التلاوة", "تدرّبوا على النطق ببطء، بضع آيات في كل مرة، ويفضل مع معلم مؤهل."],
+        "Daily Memorisation": ["الحفظ اليومي", "اختر آية قصيرة كل يوم، وكررها عدة مرات، وراجع آية الأمس."],
+        "Screen Time Tips": ["نصائح لوقت الشاشة", "ضع حداً يومياً، وأبعد الشاشات عن غرفة النوم، وشاهدوا معاً كلما أمكن."],
+        "Reading at Home": ["القراءة في البيت", "اقرأ قصة قصيرة معه كل مساء، واطلب منه أن يتوقع ما سيحدث بعد ذلك."],
+        "Homework Help": ["مساعدة في الواجبات", "اجلس بقربه، واطرح الأسئلة بدل إعطاء الإجابات، واحتفل بإنجاز المهام."],
+        "Daily Routine Activities": ["أنشطة الروتين اليومي", "أعدّ جدولاً مصوراً ليوم طفلك، وضع علامة على كل مهمة معاً."],
+        "Family Games": ["ألعاب العائلة", "العبوا لعبة عدّ أو كلمات على العشاء، بالتناوب وتشجيع الجميع."],
+        "Cooking and Measuring": ["الطبخ والقياس", "دع طفلك يقيس المكونات بالأكواب أو الملاعق، بينما تذكر أنت الكميات."],
+        "Classroom Games": ["ألعاب الصف", "اسأل طفلك عن اللعبة التي لعبها في المدرسة، وجرّبوها في البيت."],
+        "Science Experiments": ["تجارب علمية", "جرّبوا تجربة آمنة كخلط الماء والزيت تحت إشراف شخص بالغ."],
+        "Teacher Resources": ["موارد المعلم", "اسأل معلم طفلك عن الكتب أو التمارين التي ينصح بها للتدريب في البيت."],
+        "Road Safety": ["السلامة على الطريق", "تدرّبوا على العبور من الممر الخاص: انظر يساراً ويميناً ثم يساراً مجدداً، واشرح السبب."],
+        "Traffic Signs": ["إشارات المرور", "أشر إلى الإشارات أثناء المشي، واسأل طفلك عن معنى كل واحدة."],
+        "Community Helpers": ["مساعدو المجتمع", "تحدثوا عن الأشخاص الذين تراهم، كالخباز والطبيب والشرطي، وعما يفعلونه."]
+      },
+      de: {
+        "Learn the Alphabet": ["Das Alphabet lernen"], "Learn the Numbers": ["Zahlen lernen"], "Shapes and Colours": ["Formen und Farben"], "Counting Songs": ["Zähllieder"],
+        "Letter Tracing": ["Buchstaben nachspuren", "Schreiben Sie jeden Buchstaben mit dem Finger in Sand oder auf Papier und sprechen Sie den Laut laut aus."],
+        "Number Tracing": ["Zahlen nachspuren", "Zeichnen Sie die Zahlen 1 bis 10 mit dem Stift nach und zählen Sie laut mit."],
+        "Letter Sounds": ["Buchstabenlaute", "Zeigen Sie auf Dinge, die mit einem Buchstaben beginnen, und sprechen Sie den Laut zusammen, z. B. „B“ wie Ball."],
+        "Number Match": ["Zahlen zuordnen", "Legen Sie kleine Gegenstände aus und ordnen Sie jede Gruppe der passenden Zahlenkarte zu."],
+        "Letter Puzzle": ["Buchstabenpuzzle", "Schneiden Sie Buchstabenkarten in zwei Hälften und lassen Sie Ihr Kind die Teile wieder zusammensetzen."],
+        "Picture-Word Puzzle": ["Bild-Wort-Puzzle", "Zeigen Sie ein Bild und lassen Sie Ihr Kind das passende Wort unter den Karten finden."],
+        "Missing Letter Puzzle": ["Fehlender-Buchstabe-Puzzle", "Schreiben Sie ein kurzes Wort mit einem fehlenden Buchstaben und lassen Sie Ihr Kind ihn ergänzen."],
+        "Easy Maze": ["Leichtes Labyrinth", "Verfolgen Sie den Weg zuerst mit dem Finger, dann mit dem Stift, und sprechen Sie jede Richtung laut aus."],
+        "Medium Maze": ["Mittleres Labyrinth", "Lassen Sie Ihr Kind den Weg planen, bevor es ihn zeichnet, und besprechen Sie die Irrwege."],
+        "Hard Maze": ["Schweres Labyrinth", "Lassen Sie Ihr Kind zuerst allein versuchen, dann den Weg gemeinsam prüfen und die Lösung besprechen."],
+        "Animals Coloring": ["Tiere ausmalen", "Bitten Sie Ihr Kind, jedes Tier und seinen Laut beim Ausmalen zu benennen."],
+        "Vehicles Coloring": ["Fahrzeuge ausmalen", "Sprechen Sie darüber, wohin jedes Fahrzeug fährt und wer es benutzt."],
+        "Numbers Coloring": ["Zahlen ausmalen", "Malen Sie die nummerierten Felder der Reihe nach aus und sagen Sie beim Ausmalen die Zahl."],
+        "Step-by-Step Drawing": ["Schritt-für-Schritt-Zeichnen", "Zeichnen Sie jeden Schritt zusammen, Linie für Linie, und lassen Sie Ihr Kind nachmachen."],
+        "Simple Painting": ["Einfaches Malen", "Nehmen Sie große Pinsel, lassen Sie Ihr Kind die Farben wählen und bitten Sie es, sein Bild zu beschreiben."],
+        "Colour Mixing": ["Farben mischen", "Mischen Sie zwei Farben auf einem Blatt und fragen Sie Ihr Kind, welche neue Farbe es sieht."],
+        "Short Surahs for Children": ["Kurze Suren für Kinder", "Hören Sie mit Ihrem Kind eine kurze Sure von einem vertrauenswürdigen Lehrer und wiederholen Sie die Verse gemeinsam."],
+        "Arabic Letters with Quran": ["Arabische Buchstaben mit dem Koran", "Suchen Sie gemeinsam arabische Buchstaben in den gelesenen Versen und sprechen Sie den Laut jedes Buchstabens."],
+        "Recitation Basics": ["Grundlagen der Rezitation", "Üben Sie die Aussprache langsam, einige Verse auf einmal, am besten mit einem qualifizierten Lehrer."],
+        "Daily Memorisation": ["Tägliches Auswendiglernen", "Wählen Sie täglich einen kurzen Vers, wiederholen Sie ihn mehrmals und wiederholen Sie den Vers vom Vortag."],
+        "Screen Time Tips": ["Tipps zur Bildschirmzeit", "Setzen Sie ein tägliches Limit, halten Sie Bildschirme aus dem Schlafzimmer und schauen Sie wenn möglich gemeinsam."],
+        "Reading at Home": ["Zuhause lesen", "Lesen Sie jeden Abend gemeinsam eine kurze Geschichte und lassen Sie Ihr Kind raten, wie es weitergeht."],
+        "Homework Help": ["Hilfe bei den Hausaufgaben", "Bleiben Sie in der Nähe, stellen Sie Fragen statt Antworten zu geben, und feiern Sie erledigte Aufgaben."],
+        "Daily Routine Activities": ["Tägliche Routine", "Erstellen Sie eine einfache Bildtafel für den Tagesablauf und haken Sie jede Aufgabe gemeinsam ab."],
+        "Family Games": ["Familienspiele", "Spielen Sie beim Abendessen ein Zähl- oder Wortspiel, wechseln Sie sich ab und feuern Sie alle an."],
+        "Cooking and Measuring": ["Kochen und Messen", "Lassen Sie Ihr Kind Zutaten mit Tassen oder Löffeln abmessen, während Sie die Mengen nennen."],
+        "Classroom Games": ["Klassenspiele", "Fragen Sie Ihr Kind, welches Spiel es in der Schule gespielt hat, und probieren Sie es zu Hause aus."],
+        "Science Experiments": ["Wissenschaftliche Experimente", "Machen Sie ein sicheres Experiment, etwa Wasser und Öl mischen, unter Aufsicht eines Erwachsenen."],
+        "Teacher Resources": ["Materialien der Lehrkraft", "Fragen Sie die Lehrkraft, welche Bücher oder Übungen sich für zu Hause eignen."],
+        "Road Safety": ["Verkehrssicherheit", "Üben Sie das Überqueren am Zebrastreifen: links, rechts, dann nochmals links schauen, und erklären Sie warum."],
+        "Traffic Signs": ["Verkehrszeichen", "Zeigen Sie unterwegs auf Schilder und fragen Sie Ihr Kind, was jedes bedeutet."],
+        "Community Helpers": ["Helfer in der Gemeinschaft", "Sprechen Sie über Helfer, die Sie sehen, wie Bäcker, Arzt oder Polizist, und was sie tun."]
+      },
+      es: {
+        "Learn the Alphabet": ["Aprender el alfabeto"], "Learn the Numbers": ["Aprender los números"], "Shapes and Colours": ["Formas y colores"], "Counting Songs": ["Canciones para contar"],
+        "Letter Tracing": ["Trazar letras", "Escriba cada letra con el dedo en arena o papel, diciendo su sonido en voz alta."],
+        "Number Tracing": ["Trazar números", "Trace los números del 1 al 10 con un lápiz, contando en voz alta."],
+        "Letter Sounds": ["Sonidos de letras", "Señale objetos que empiecen con una letra y digan el sonido juntos, como «b» de balón."],
+        "Number Match": ["Emparejar números", "Coloque objetos pequeños y empareje cada grupo con su tarjeta numérica."],
+        "Letter Puzzle": ["Rompecabezas de letras", "Corte las tarjetas de letras por la mitad y pida al niño que una las piezas."],
+        "Picture-Word Puzzle": ["Rompecabezas imagen-palabra", "Muestre una imagen y pida al niño que encuentre su palabra escrita entre las tarjetas."],
+        "Missing Letter Puzzle": ["Rompecabezas de letra faltante", "Escriba una palabra corta con una letra omitida y pida al niño que la complete."],
+        "Easy Maze": ["Laberinto fácil", "Siga el camino primero con el dedo y luego con el lápiz, diciendo cada dirección en voz alta."],
+        "Medium Maze": ["Laberinto medio", "Pida al niño que planifique la ruta antes de dibujarla y hablen de los caminos equivocados."],
+        "Hard Maze": ["Laberinto difícil", "Deje que lo intente solo primero y luego revisen juntos la ruta y cómo la resolvió."],
+        "Animals Coloring": ["Colorear animales", "Pida al niño que nombre cada animal y su sonido mientras colorea."],
+        "Vehicles Coloring": ["Colorear vehículos", "Hablen de adónde va cada vehículo y quién lo usa."],
+        "Numbers Coloring": ["Colorear números", "Coloree cada zona numerada en orden y diga el número mientras colorea."],
+        "Step-by-Step Drawing": ["Dibujo paso a paso", "Dibujen cada paso juntos, una línea a la vez, y deje que el niño le copie."],
+        "Simple Painting": ["Pintura sencilla", "Use pinceles grandes, deje que el niño elija los colores y pídale que describa su pintura."],
+        "Colour Mixing": ["Mezcla de colores", "Mezcle dos colores en papel y pregunte al niño qué color nuevo ve."],
+        "Short Surahs for Children": ["Suras cortas para niños", "Escuchen juntos una sura corta de un maestro o recitador de confianza y repitan los versículos."],
+        "Arabic Letters with Quran": ["Letras árabes con el Corán", "Busquen letras árabes en los versículos que leen juntos y digan el sonido de cada una."],
+        "Recitation Basics": ["Fundamentos de la recitación", "Practiquen la pronunciación despacio, unos versículos cada vez, idealmente con un maestro calificado."],
+        "Daily Memorisation": ["Memorización diaria", "Elija un versículo corto al día, repítalo varias veces y repase el de ayer."],
+        "Screen Time Tips": ["Consejos sobre el tiempo de pantalla", "Ponga un límite diario, saque las pantallas del dormitorio y miren juntos cuando sea posible."],
+        "Reading at Home": ["Leer en casa", "Lean juntos un cuento corto cada noche y pida al niño que adivine qué pasará después."],
+        "Homework Help": ["Ayuda con la tarea", "Siéntese cerca, haga preguntas en lugar de dar respuestas y celebre las tareas terminadas."],
+        "Daily Routine Activities": ["Actividades de rutina diaria", "Haga un cuadro con imágenes de la rutina del día y marquen juntos cada tarea."],
+        "Family Games": ["Juegos familiares", "Jueguen un juego de contar o de palabras en la cena, turnándose y animando a todos."],
+        "Cooking and Measuring": ["Cocina y medidas", "Deje que el niño mida los ingredientes con tazas o cucharas mientras usted dice las cantidades."],
+        "Classroom Games": ["Juegos de clase", "Pregunte al niño a qué jugó en la escuela y pruébenlo en casa."],
+        "Science Experiments": ["Experimentos científicos", "Hagan un experimento seguro, como mezclar agua y aceite, con un adulto presente."],
+        "Teacher Resources": ["Recursos del docente", "Pregunte al maestro qué libros o ejercicios recomienda para practicar en casa."],
+        "Road Safety": ["Seguridad vial", "Practiquen cruzar por el paso de peatones: mirar a la izquierda, a la derecha y otra vez a la izquierda, y expliquen por qué."],
+        "Traffic Signs": ["Señales de tráfico", "Señale las señales durante el paseo y pregunte al niño qué significa cada una."],
+        "Community Helpers": ["Ayudantes de la comunidad", "Hablen de las personas que ven, como el panadero, el médico o el policía, y de lo que hacen."]
+      },
+      it: {
+        "Learn the Alphabet": ["Imparare l’alfabeto"], "Learn the Numbers": ["Imparare i numeri"], "Shapes and Colours": ["Forme e colori"], "Counting Songs": ["Canzoni per contare"],
+        "Letter Tracing": ["Tracciare le lettere", "Scrivi ogni lettera con il dito sulla sabbia o su un foglio, dicendo il suono ad alta voce."],
+        "Number Tracing": ["Tracciare i numeri", "Traccia i numeri da 1 a 10 con la matita, contando ad alta voce."],
+        "Letter Sounds": ["Suoni delle lettere", "Indica oggetti che iniziano con una lettera e pronunciate insieme il suono, come «b» di bambola."],
+        "Number Match": ["Abbinare i numeri", "Disponi piccoli oggetti e abbina ogni gruppo al cartellino del numero."],
+        "Letter Puzzle": ["Puzzle delle lettere", "Taglia le carte delle lettere a metà e fai ricomporre i pezzi a tuo figlio."],
+        "Picture-Word Puzzle": ["Puzzle immagine-parola", "Mostra un’immagine e chiedi di trovare la parola scritta tra le carte."],
+        "Missing Letter Puzzle": ["Puzzle della lettera mancante", "Scrivi una parola corta con una lettera mancante e chiedi di completarla."],
+        "Easy Maze": ["Labirinto facile", "Segui il percorso prima con il dito, poi con la matita, dicendo ogni direzione."],
+        "Medium Maze": ["Labirinto medio", "Chiedi di pianificare il percorso prima di disegnarlo e parlate delle strade sbagliate."],
+        "Hard Maze": ["Labirinto difficile", "Lascialo provare da solo, poi controllate insieme il percorso e come l’ha risolto."],
+        "Animals Coloring": ["Colorare gli animali", "Chiedi di nominare ogni animale e il suo verso mentre colora."],
+        "Vehicles Coloring": ["Colorare i veicoli", "Parlate di dove va ogni veicolo e di chi lo usa."],
+        "Numbers Coloring": ["Colorare i numeri", "Colora ogni zona numerata in ordine e dici il numero mentre colora."],
+        "Step-by-Step Drawing": ["Disegno passo passo", "Disegnate ogni passo insieme, una linea alla volta, e lascia che copi."],
+        "Simple Painting": ["Pittura semplice", "Usa pennelli grandi, lascia scegliere i colori e chiedi di descrivere il dipinto."],
+        "Colour Mixing": ["Mescolare i colori", "Mescola due colori su un foglio e chiedi quale nuovo colore vede."],
+        "Short Surahs for Children": ["Brevi sure per bambini", "Ascoltate insieme una breve sura da un insegnante o recitatore di fiducia e ripetete i versetti."],
+        "Arabic Letters with Quran": ["Lettere arabe con il Corano", "Cercate lettere arabe nei versetti che leggete insieme e pronunciate il suono di ciascuna."],
+        "Recitation Basics": ["Basi della recitazione", "Esercitate la pronuncia lentamente, qualche versetto alla volta, possibilmente con un insegnante qualificato."],
+        "Daily Memorisation": ["Memorizzazione quotidiana", "Scegli un versetto breve al giorno, ripetilo più volte e rivedi quello del giorno prima."],
+        "Screen Time Tips": ["Consigli sul tempo di schermo", "Stabilisci un limite giornaliero, tieni gli schermi fuori dalla camera e guardate insieme quando puoi."],
+        "Reading at Home": ["Leggere a casa", "Leggete insieme una breve storia ogni sera e chiedi di indovinare cosa succede dopo."],
+        "Homework Help": ["Aiuto con i compiti", "Stai vicino, fai domande invece di dare risposte e festeggia i compiti completati."],
+        "Daily Routine Activities": ["Attività di routine quotidiana", "Prepara una tabella illustrata della giornata e spunta insieme ogni attività."],
+        "Family Games": ["Giochi in famiglia", "Giocate a un gioco di conteggio o di parole a cena, a turno e incoraggiando tutti."],
+        "Cooking and Measuring": ["Cucina e misure", "Lascia che misuri gli ingredienti con tazze o cucchiai mentre tu dici le quantità."],
+        "Classroom Games": ["Giochi in classe", "Chiedi a tuo figlio a quale gioco ha giocato a scuola e provatelo a casa."],
+        "Science Experiments": ["Esperimenti scientifici", "Fate un esperimento sicuro, come mescolare acqua e olio, con un adulto che sorveglia."],
+        "Teacher Resources": ["Risorse per gli insegnanti", "Chiedi all’insegnante quali libri o esercizi consiglia per esercitarsi a casa."],
+        "Road Safety": ["Sicurezza stradale", "Esercitatevi ad attraversare sulle strisce: guarda a sinistra, a destra e di nuovo a sinistra, e spiega perché."],
+        "Traffic Signs": ["Segnali stradali", "Indica i segnali durante la passeggiata e chiedi cosa significa ciascuno."],
+        "Community Helpers": ["Aiutanti della comunità", "Parlate delle persone che vedete, come il panettiere, il medico o il poliziotto, e di cosa fanno."]
+      },
+      zh: {
+        "Learn the Alphabet": ["学习字母"], "Learn the Numbers": ["学习数字"], "Shapes and Colours": ["形状与颜色"], "Counting Songs": ["数数歌"],
+        "Letter Tracing": ["描写字母", "用手指在沙子或纸上写每个字母，同时大声读出它的发音。"],
+        "Number Tracing": ["描写数字", "用铅笔描写1到10的数字，同时大声数数。"],
+        "Letter Sounds": ["字母发音", "指着以某个字母开头的物品，一起读出发音，比如“b”对应“ball”（球）。"],
+        "Number Match": ["数字配对", "摆出小物件，如硬币或纽扣，把每组和对应的数字卡配对。"],
+        "Letter Puzzle": ["字母拼图", "把字母卡片剪成两半，让孩子把它们拼回去。"],
+        "Picture-Word Puzzle": ["图片单词拼图", "展示一张图片，让孩子从一组卡片中找出对应的单词。"],
+        "Missing Letter Puzzle": ["缺失字母拼图", "写一个缺少一个字母的短词，让孩子补全。"],
+        "Easy Maze": ["简单迷宫", "先用手指、再用铅笔走一遍路线，同时大声说出每个方向。"],
+        "Medium Maze": ["中等迷宫", "让孩子先规划路线再画，并讨论走错的路。"],
+        "Hard Maze": ["困难迷宫", "先让孩子独立尝试，然后一起检查路线，讨论他是如何解出的。"],
+        "Animals Coloring": ["动物涂色", "涂色时让孩子说出每种动物的名字和叫声。"],
+        "Vehicles Coloring": ["交通工具涂色", "讨论每种交通工具去哪里，由谁使用。"],
+        "Numbers Coloring": ["数字涂色", "按顺序给带编号的区域涂色，涂的时候说出数字。"],
+        "Step-by-Step Drawing": ["分步绘画", "一起一笔一笔地画每一步，让孩子跟着你画。"],
+        "Simple Painting": ["简单绘画", "用大画笔，让孩子自己选颜色，并请他描述自己的画。"],
+        "Colour Mixing": ["混色", "在纸上混合两种颜色，问孩子看到了什么新颜色。"],
+        "Short Surahs for Children": ["儿童短篇古兰经章节", "与孩子一起听一位可信赖的老师或诵读者朗读一个短章，然后一起重复经文。"],
+        "Arabic Letters with Quran": ["古兰经中的阿拉伯字母", "在一起读的经文中找出阿拉伯字母，并读出每个字母的发音。"],
+        "Recitation Basics": ["诵读基础", "每次练习几节经文，放慢速度练习发音，最好有合格的老师指导。"],
+        "Daily Memorisation": ["每日背诵", "每天选一段短经文，反复诵读几遍，并复习前一天的经文。"],
+        "Screen Time Tips": ["屏幕时间建议", "设定每日时限，不要把屏幕带进卧室，有条件时一起观看。"],
+        "Reading at Home": ["在家阅读", "每晚和孩子一起读一个短故事，并让他猜接下来会发生什么。"],
+        "Homework Help": ["作业辅导", "在旁边陪伴，多提问而不是直接给答案，并为完成的作业表示祝贺。"],
+        "Daily Routine Activities": ["日常作息活动", "做一张简单的图片作息表，一起逐项打勾。"],
+        "Family Games": ["家庭游戏", "晚饭时玩数数或文字游戏，轮流进行，为每个人加油。"],
+        "Cooking and Measuring": ["烹饪与测量", "让孩子用杯子或勺子量取食材，你来说出分量。"],
+        "Classroom Games": ["课堂游戏", "问孩子在学校玩了什么游戏，然后在家里试一试。"],
+        "Science Experiments": ["科学实验", "在成人看护下做一个安全的实验，比如混合水和油。"],
+        "Teacher Resources": ["教师资源", "问问孩子的老师，推荐哪些书或练习适合在家练习。"],
+        "Road Safety": ["交通安全", "练习在斑马线过马路：先看左边，再看右边，然后再看左边，并说明原因。"],
+        "Traffic Signs": ["交通标志", "散步时指出路上的标志，问孩子每个标志是什么意思。"],
+        "Community Helpers": ["社区帮手", "谈谈你们见到的人，比如面包师、医生或警察，以及他们的工作。"]
+      },
+      ru: {
+        "Learn the Alphabet": ["Учим алфавит"], "Learn the Numbers": ["Учим цифры"], "Shapes and Colours": ["Формы и цвета"], "Counting Songs": ["Счётные песенки"],
+        "Letter Tracing": ["Обводка букв", "Пишите каждую букву пальцем на песке или на бумаге, произнося её звук вслух."],
+        "Number Tracing": ["Обводка цифр", "Обведите цифры от 1 до 10 карандашом, считая вслух."],
+        "Letter Sounds": ["Звуки букв", "Показывайте предметы, которые начинаются с буквы, и вместе произносите звук, например «б» — бабочка."],
+        "Number Match": ["Соотнесение цифр", "Разложите мелкие предметы и сопоставьте каждую группу с карточкой цифры."],
+        "Letter Puzzle": ["Пазл из букв", "Разрежьте карточки с буквами пополам и попросите ребёнка сложить части."],
+        "Picture-Word Puzzle": ["Пазл картинка-слово", "Покажите картинку и попросите найти её подпись среди карточек."],
+        "Missing Letter Puzzle": ["Пазл с пропущенной буквой", "Напишите короткое слово с пропущенной буквой и попросите ребёнка её вписать."],
+        "Easy Maze": ["Простой лабиринт", "Сначала проведите путь пальцем, потом карандашом, проговаривая каждое направление."],
+        "Medium Maze": ["Средний лабиринт", "Пусть ребёнок спланирует путь до рисования и обсудите ошибочные повороты."],
+        "Hard Maze": ["Сложный лабиринт", "Сначала пусть попробует сам, потом вместе проверьте путь и обсудите, как он решил."],
+        "Animals Coloring": ["Раскраска животных", "Попросите ребёнка называть каждое животное и его звук во время раскрашивания."],
+        "Vehicles Coloring": ["Раскраска транспорта", "Поговорите о том, куда едет каждая машина и кто ею пользуется."],
+        "Numbers Coloring": ["Раскраска цифр", "Раскрашивайте пронумерованные части по порядку и называйте цифру."],
+        "Step-by-Step Drawing": ["Рисование по шагам", "Рисуйте каждый шаг вместе, линия за линией, пусть ребёнок повторяет за вами."],
+        "Simple Painting": ["Простая живопись", "Используйте большие кисти, пусть ребёнок выбирает цвета и расскажет о своей картине."],
+        "Colour Mixing": ["Смешивание цветов", "Смешайте два цвета на бумаге и спросите ребёнка, какой новый цвет он видит."],
+        "Short Surahs for Children": ["Короткие суры для детей", "Послушайте вместе короткую суру в исполнении доверенного учителя или чтеца и повторите аяты вместе."],
+        "Arabic Letters with Quran": ["Арабские буквы в Коране", "Найдите арабские буквы в аятах, которые читаете вместе, и произнесите звук каждой."],
+        "Recitation Basics": ["Основы чтения Корана", "Медленно отрабатывайте произношение, по несколько аятов за раз, желательно с квалифицированным учителем."],
+        "Daily Memorisation": ["Ежедневное заучивание", "Выбирайте один короткий аят в день, повторяйте его несколько раз и повторяйте аят предыдущего дня."],
+        "Screen Time Tips": ["Советы по экранному времени", "Установите ежедневный лимит, уберите экраны из спальни и смотрите вместе, когда возможно."],
+        "Reading at Home": ["Чтение дома", "Читайте вместе короткую историю каждый вечер и пусть ребёнок угадает, что будет дальше."],
+        "Homework Help": ["Помощь с домашним заданием", "Будьте рядом, задавайте вопросы вместо готовых ответов и хвалите за выполненные задания."],
+        "Daily Routine Activities": ["Занятия по распорядку дня", "Сделайте простую картинку-расписание дня и отмечайте каждое дело вместе."],
+        "Family Games": ["Семейные игры", "Играйте в счёт или в слова за ужином, по очереди и поддерживая друг друга."],
+        "Cooking and Measuring": ["Готовка и измерения", "Пусть ребёнок отмеряет продукты чашками или ложками, а вы называете количество."],
+        "Classroom Games": ["Игры из класса", "Спросите ребёнка, во что играли в школе, и попробуйте поиграть дома."],
+        "Science Experiments": ["Научные опыты", "Проведите безопасный опыт, например смешайте воду и масло, под присмотром взрослого."],
+        "Teacher Resources": ["Материалы для учителей", "Спросите у учителя, какие книги или упражнения он рекомендует для занятий дома."],
+        "Road Safety": ["Безопасность на дороге", "Тренируйтесь переходить по пешеходному переходу: смотрите налево, направо и снова налево, и объясните почему."],
+        "Traffic Signs": ["Дорожные знаки", "Показывайте знаки во время прогулки и спрашивайте ребёнка, что каждый означает."],
+        "Community Helpers": ["Помощники в обществе", "Расскажите о людях, которых видите, например о пекаре, враче или полицейском, и о том, что они делают."]
       }
     };
 
-    let lang = localStorage ? (localStorage.getItem("lang") || "en") : "en";
-    let activeCat = "all";
+    const I18N_EXTRA = {
+      en: { navQuran: "Quran", navHsc: "Home · School · Street", navTicket: "E-Ticket", hscTitle: "Home, school and street learning", hscDesc: "Learning activities for home, the classroom, and the street.", home: "Home", school: "School", street: "Street", ticketTitle: "E-Ticket for Kids", ticketDesc: "A booking or activity pass for kids’ activities and events.", ticketTip: "Check the activity details with a parent before booking.", bookTitle: "Book an activity", bookDesc: "Booking is not connected yet. Once a booking page is ready, its link will go here.", comingSoon: "Coming soon", parentGuide: "Parent guide", quranTitle: "Quran learning", otherTitle: "Other parent resources" },
+      fr: { navQuran: "Coran", navHsc: "Maison · École · Rue", navTicket: "E-Ticket", hscTitle: "Apprendre à la maison, à l’école et dans la rue", hscDesc: "Activités d’apprentissage pour la maison, la classe et la rue.", home: "Maison", school: "École", street: "Rue", ticketTitle: "E-Ticket pour enfants", ticketDesc: "Un billet de réservation ou d’activité pour les activités et événements des enfants.", ticketTip: "Vérifiez les détails de l’activité avec un parent avant de réserver.", bookTitle: "Réserver une activité", bookDesc: "La réservation n’est pas encore connectée. Le lien sera ajouté ici dès qu’il sera prêt.", comingSoon: "Bientôt disponible", parentGuide: "Guide parent", quranTitle: "Apprentissage du Coran", otherTitle: "Autres ressources pour les parents" },
+      ar: { navQuran: "القرآن", navHsc: "البيت · المدرسة · الشارع", navTicket: "تذكرة إلكترونية", hscTitle: "التعلم في البيت والمدرسة والشارع", hscDesc: "أنشطة تعليمية للبيت والصف والشارع.", home: "البيت", school: "المدرسة", street: "الشارع", ticketTitle: "تذكرة إلكترونية للأطفال", ticketDesc: "تذكرة حجز أو نشاط للأنشطة والفعاليات الخاصة بالأطفال.", ticketTip: "تأكد من تفاصيل النشاط مع أحد الوالدين قبل الحجز.", bookTitle: "احجز نشاطاً", bookDesc: "الحجز غير مفعّل بعد. سيُضاف الرابط هنا عندما يكون جاهزاً.", comingSoon: "قريباً", parentGuide: "دليل الولي", quranTitle: "تعلّم القرآن", otherTitle: "موارد أخرى للأولياء" },
+      de: { navQuran: "Koran", navHsc: "Zuhause · Schule · Straße", navTicket: "E-Ticket", hscTitle: "Lernen zu Hause, in der Schule und auf der Straße", hscDesc: "Lernaktivitäten für Zuhause, Klassenzimmer und Straße.", home: "Zuhause", school: "Schule", street: "Straße", ticketTitle: "E-Ticket für Kinder", ticketDesc: "Ein Buchungs- oder Aktivitätsticket für Kinderaktivitäten und Veranstaltungen.", ticketTip: "Prüfen Sie die Details der Aktivität vor der Buchung mit einem Elternteil.", bookTitle: "Aktivität buchen", bookDesc: "Die Buchung ist noch nicht verbunden. Der Link wird hier eingefügt, sobald er bereit ist.", comingSoon: "Demnächst", parentGuide: "Elternhinweis", quranTitle: "Koranunterricht", otherTitle: "Weitere Ressourcen für Eltern" },
+      es: { navQuran: "Corán", navHsc: "Casa · Escuela · Calle", navTicket: "E-Ticket", hscTitle: "Aprender en casa, en la escuela y en la calle", hscDesc: "Actividades de aprendizaje para casa, el aula y la calle.", home: "Casa", school: "Escuela", street: "Calle", ticketTitle: "E-Ticket para niños", ticketDesc: "Un pase de reserva o actividad para las actividades y eventos infantiles.", ticketTip: "Revise los detalles de la actividad con un padre o madre antes de reservar.", bookTitle: "Reservar una actividad", bookDesc: "La reserva aún no está conectada. El enlace aparecerá aquí cuando esté listo.", comingSoon: "Próximamente", parentGuide: "Guía para padres", quranTitle: "Aprendizaje del Corán", otherTitle: "Otros recursos para padres" },
+      it: { navQuran: "Corano", navHsc: "Casa · Scuola · Strada", navTicket: "E-Ticket", hscTitle: "Imparare a casa, a scuola e per strada", hscDesc: "Attività di apprendimento per casa, aula e strada.", home: "Casa", school: "Scuola", street: "Strada", ticketTitle: "E-Ticket per bambini", ticketDesc: "Un pass di prenotazione o attività per le attività e gli eventi dei bambini.", ticketTip: "Controlla i dettagli dell’attività con un genitore prima di prenotare.", bookTitle: "Prenota un’attività", bookDesc: "La prenotazione non è ancora collegata. Il link sarà inserito qui quando sarà pronto.", comingSoon: "Presto disponibile", parentGuide: "Guida per genitori", quranTitle: "Studio del Corano", otherTitle: "Altre risorse per i genitori" },
+      zh: { navQuran: "古兰经", navHsc: "家 · 学校 · 街道", navTicket: "电子票", hscTitle: "在家、在学校和在街上学习", hscDesc: "适合家庭、课堂和街道的学习活动。", home: "家庭", school: "学校", street: "街道", ticketTitle: "儿童电子票", ticketDesc: "用于儿童活动和活动的预订或活动通行证。", ticketTip: "预订前请与家长一起确认活动详情。", bookTitle: "预订活动", bookDesc: "预订功能尚未接入。准备好后，预订链接将显示在这里。", comingSoon: "即将推出", parentGuide: "家长指南", quranTitle: "古兰经学习", otherTitle: "其他家长资源" },
+      ru: { navQuran: "Коран", navHsc: "Дом · Школа · Улица", navTicket: "Электронный билет", hscTitle: "Учимся дома, в школе и на улице", hscDesc: "Занятия для дома, класса и улицы.", home: "Дом", school: "Школа", street: "Улица", ticketTitle: "Электронный билет для детей", ticketDesc: "Билет на бронирование или участие в детских занятиях и мероприятиях.", ticketTip: "Перед бронированием уточните детали занятия у родителя.", bookTitle: "Забронировать занятие", bookDesc: "Бронирование пока не подключено. Ссылка появится здесь, когда будет готова.", comingSoon: "Скоро", parentGuide: "Совет для родителей", quranTitle: "Изучение Корана", otherTitle: "Другие ресурсы для родителей" }
+    };
+    Object.keys(I18N_EXTRA).forEach(code => Object.assign(I18N[code], I18N_EXTRA[code]));
 
-    const $ = sel => document.querySelector(sel);
-    const t = () => I18N[lang];
+    // ---------- LANGUAGE TRAINING ----------
+    const WORDS = [
+      { e: "🚗", en: "car", fr: "voiture", ar: "سيارة" },
+      { e: "🏍️", en: "motorbike", fr: "moto", ar: "دراجة نارية" },
+      { e: "✈️", en: "jet", fr: "avion", ar: "طائرة" },
+      { e: "🪆", en: "doll", fr: "poupée", ar: "دمية" },
+      { e: "🐱", en: "cat", fr: "chat", ar: "قطة" },
+      { e: "🐶", en: "dog", fr: "chien", ar: "كلب" },
+      { e: "🐪", en: "camel", fr: "chameau", ar: "جمل" },
+      { e: "🐟", en: "fish", fr: "poisson", ar: "سمكة" },
+      { e: "☀️", en: "sun", fr: "soleil", ar: "شمس" },
+      { e: "🏠", en: "house", fr: "maison", ar: "بيت" },
+      { e: "🍎", en: "apple", fr: "pomme", ar: "تفاحة" },
+      { e: "🦁", en: "lion", fr: "lion", ar: "أسد" }
+    ];
+    const TRAIN = { en: "English", fr: "Français", ar: "العربية" };
+    let trainLang = "en";
+    let wordScore = 0;
+    let wordTarget = null;
 
-    function applyLang() {
-      const html = document.documentElement;
-      html.lang = lang;
-      html.dir = lang === "ar" ? "rtl" : "ltr";
-
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.dataset.i18n;
-        if (typeof t()[key] === "string") el.textContent = t()[key];
-      });
-      document.querySelectorAll("#lang button").forEach(b => {
-        b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
-      });
-      $("#search").placeholder = t().search;
-      $("#search").setAttribute("aria-label", t().search);
-
-      const rep = $("#repair-items");
-      rep.replaceChildren(...t().repairItems.map(txt => {
-        const s = document.createElement("span");
-        s.textContent = txt;
-        return s;
-      }));
-
-      renderContact();
-      renderFilters();
-      renderServices();
-    }
-
-    function renderContact() {
-      const bar = $("#contact-bar");
-      const list = $("#contact-list");
-      bar.replaceChildren();
-      list.replaceChildren();
-
-      const addLink = (text, href, secondary) => {
-        const a = document.createElement("a");
-        a.textContent = text;
-        a.href = href;
-        if (secondary) a.className = "secondary";
-        bar.append(a);
-      };
-      if (contact.phone) addLink(t().call, `tel:${contact.phone.replace(/\s+/g, "")}`);
-      if (contact.whatsapp) addLink("WhatsApp", `https://wa.me/${contact.whatsapp}`, true);
-      if (contact.email) addLink("Email", `mailto:${contact.email}`, true);
-
-      const L = t().contactLabels;
-      [
-        [L.phone, contact.phone],
-        [L.whatsapp, contact.whatsapp ? "+" + contact.whatsapp : ""],
-        [L.email, contact.email],
-        [L.address, contact.address],
-        [L.hours, contact.hours]
-      ].filter(([, v]) => v).forEach(([label, value]) => {
-        const wrap = document.createElement("div");
-        const dt = document.createElement("dt");
-        dt.textContent = label;
-        const dd = document.createElement("dd");
-        dd.textContent = value;
-        wrap.append(dt, dd);
-        list.append(wrap);
-      });
-      $("#contact-card").hidden = list.children.length === 0;
-    }
-
-    function renderFilters() {
-      const filters = $("#filters");
-      filters.replaceChildren();
-      const keys = ["all", ...new Set(services.map(s => s.cat))];
-      keys.forEach(key => {
+    function newWordRound() {
+      wordTarget = WORDS[Math.floor(Math.random() * WORDS.length)];
+      $("#wordPic").textContent = wordTarget.e;
+      const opts = new Set([wordTarget]);
+      while (opts.size < 3) opts.add(WORDS[Math.floor(Math.random() * WORDS.length)]);
+      const box = $("#wordChoices");
+      box.dir = trainLang === "ar" ? "rtl" : "ltr";
+      box.replaceChildren(...[...opts].sort(() => Math.random() - 0.5).map(item => {
         const b = document.createElement("button");
-        b.className = "filter";
-        b.textContent = key === "all" ? t().all : t().cats[key];
-        b.setAttribute("aria-pressed", String(key === activeCat));
+        b.className = "word";
+        b.textContent = item[trainLang];
         b.addEventListener("click", () => {
-          activeCat = key;
-          renderFilters();
-          renderServices();
+          if (item === wordTarget) wordScore++;
+          else wordScore = Math.max(0, wordScore - 1);
+          $("#wordScore").textContent = `${t().score}: ${wordScore}`;
+          newWordRound();
         });
-        filters.append(b);
+        return b;
+      }));
+      $("#wordScore").textContent = `${t().score}: ${wordScore}`;
+    }
+
+    function buildTrainButtons() {
+      const box = $("#trainButtons");
+      box.replaceChildren();
+      Object.keys(TRAIN).forEach(code => {
+        const b = document.createElement("button");
+        b.className = "btn";
+        b.textContent = TRAIN[code];
+        b.setAttribute("aria-pressed", String(code === trainLang));
+        b.addEventListener("click", () => { trainLang = code; buildTrainButtons(); newWordRound(); });
+        box.append(b);
       });
     }
 
-    function renderServices() {
-      const term = $("#search").value.trim().toLowerCase();
-      const list = $("#services");
-      const shown = services.filter(s => {
-        const matchCat = activeCat === "all" || s.cat === activeCat;
-        const hay = `${s.name} ${t().cats[s.cat]} ${s.desc[lang]}`.toLowerCase();
-        return matchCat && hay.includes(term);
-      });
+    // ---------- RANDOM MAZES (new maze every time) ----------
+    const LEVELS = { easy: 5, medium: 7, hard: 9 };
+    let rLevel = "easy";
+    let rGrid = [];
+    let rPos = { r: 1, c: 1 };
+    let rWon = false;
 
-      list.replaceChildren();
-      shown.forEach(s => {
-        const card = document.createElement("article");
-        card.className = "card";
-
-        const top = document.createElement("div");
-        top.className = "card-top";
-        const heading = document.createElement("div");
-        const title = document.createElement("h3");
-        title.textContent = s.name;
-        const cat = document.createElement("p");
-        cat.className = "category";
-        cat.textContent = t().cats[s.cat] + (s.third ? " · " + t().thirdParty : "");
-        heading.append(title, cat);
-
-        const badge = document.createElement("span");
-        badge.className = "badge";
-        if (s.url) {
-          badge.classList.add(s.approved ? "approved" : "pending");
-          badge.textContent = s.approved ? t().approved : t().pending;
-        } else {
-          badge.textContent = t().notConfirmed;
-        }
-        top.append(heading, badge);
-
-        const desc = document.createElement("p");
-        desc.className = "description";
-        desc.textContent = s.desc[lang];
-        card.append(top, desc);
-
-        if (s.url && s.approved) {
-          const a = document.createElement("a");
-          a.className = "visit";
-          a.href = s.url;
-          a.target = "_blank";
-          a.rel = "noopener noreferrer";
-          a.textContent = t().visit;
-          card.append(a);
-        } else {
-          const note = document.createElement("span");
-          note.className = "unavailable";
-          note.textContent = s.url ? t().pending : t().notConfirmed;
-          card.append(note);
-        }
-        list.append(card);
-      });
-
-      $("#count").textContent = `${shown.length} ${shown.length === 1 ? t().count1 : t().countN}`;
-      $("#empty").hidden = shown.length !== 0;
+    function makeMaze(n) {
+      const g = 2 * n + 1;
+      const grid = Array.from({ length: g }, () => Array(g).fill(1));
+      const seen = Array.from({ length: n }, () => Array(n).fill(false));
+      const stack = [[0, 0]];
+      seen[0][0] = true;
+      grid[1][1] = 0;
+      while (stack.length) {
+        const [cx, cy] = stack[stack.length - 1];
+        const dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+          .filter(([dx, dy]) => {
+            const nx = cx + dx, ny = cy + dy;
+            return nx >= 0 && ny >= 0 && nx < n && ny < n && !seen[ny][nx];
+          })
+          .sort(() => Math.random() - 0.5);
+        if (!dirs.length) { stack.pop(); continue; }
+        const [dx, dy] = dirs[0];
+        const nx = cx + dx, ny = cy + dy;
+        seen[ny][nx] = true;
+        grid[2 * cy + 1 + dy][2 * cx + 1 + dx] = 0;
+        grid[2 * ny + 1][2 * nx + 1] = 0;
+        stack.push([nx, ny]);
+      }
+      return grid;
     }
 
-    document.querySelectorAll("#lang button").forEach(b => {
-      b.addEventListener("click", () => {
-        lang = b.dataset.lang;
-        try { localStorage.setItem("lang", lang); } catch (e) {}
-        applyLang();
+    function newRandomMaze() {
+      rGrid = makeMaze(LEVELS[rLevel]);
+      rPos = { r: 1, c: 1 };
+      rWon = false;
+      drawRMaze();
+    }
+
+    function drawRMaze() {
+      const board = $("#rMaze");
+      const g = rGrid.length;
+      board.style.gridTemplateColumns = `repeat(${g}, 1fr)`;
+      board.replaceChildren(...rGrid.flatMap((row, r) => row.map((v, c) => {
+        const d = document.createElement("div");
+        d.className = "cell" + (v ? " wall" : "");
+        if (r === rPos.r && c === rPos.c) d.classList.add("player");
+        if (r === g - 2 && c === g - 2) d.classList.add("end");
+        return d;
+      })));
+      $("#rMsg").textContent = rWon ? t().mazeWin : "";
+    }
+
+    function moveR(dr, dc) {
+      if (rWon) return;
+      const nr = rPos.r + dr, nc = rPos.c + dc;
+      const g = rGrid.length;
+      if (nr < 0 || nc < 0 || nr >= g || nc >= g || rGrid[nr][nc]) return;
+      rPos = { r: nr, c: nc };
+      if (nr === g - 2 && nc === g - 2) rWon = true;
+      drawRMaze();
+    }
+
+    function buildLevelButtons() {
+      const box = $("#levelButtons");
+      box.replaceChildren();
+      [["easy", t().easy], ["medium", t().medium], ["hard", t().hard]].forEach(([key, label]) => {
+        const b = document.createElement("button");
+        b.className = "btn";
+        b.textContent = label;
+        b.setAttribute("aria-pressed", String(key === rLevel));
+        b.addEventListener("click", () => { rLevel = key; buildLevelButtons(); newRandomMaze(); });
+        box.append(b);
       });
-    });
-    $("#search").addEventListener("input", renderServices);
+    }
+
+    // ---------- TRANSLATIONS FOR NEW GAMES AND DRAWINGS (8 languages) ----------
+    const I18N_GAMES = {
+      en: { newMaze: "New maze", easy: "Easy", medium: "Medium", hard: "Hard", navLang: "Language training", langTrainTitle: "Language training", langTrainDesc: "Look at the picture and tap the right word. Choose a language below.", trainLang: "Training language", drawings: { house: "House", sun: "Sun", fish: "Fish", flower: "Flower", doll: "Doll", car: "Car", motorbike: "Motorbike", jet: "Supersonic jet", cartoon: "Cartoon character" } },
+      fr: { newMaze: "Nouveau labyrinthe", easy: "Facile", medium: "Moyen", hard: "Difficile", navLang: "Apprendre les langues", langTrainTitle: "Apprentissage des langues", langTrainDesc: "Regarde l’image et touche le bon mot. Choisis une langue ci-dessous.", trainLang: "Langue d’entraînement", drawings: { house: "Maison", sun: "Soleil", fish: "Poisson", flower: "Fleur", doll: "Poupée", car: "Voiture", motorbike: "Moto", jet: "Avion supersonique", cartoon: "Personnage de dessin animé" } },
+      ar: { newMaze: "متاهة جديدة", easy: "سهل", medium: "متوسط", hard: "صعب", navLang: "تدريب اللغات", langTrainTitle: "تدريب على اللغات", langTrainDesc: "انظر إلى الصورة واختر الكلمة الصحيحة. اختر اللغة أدناه.", trainLang: "لغة التدريب", drawings: { house: "بيت", sun: "شمس", fish: "سمكة", flower: "زهرة", doll: "دمية", car: "سيارة", motorbike: "دراجة نارية", jet: "طائرة أسرع من الصوت", cartoon: "شخصية كرتونية" } },
+      de: { newMaze: "Neues Labyrinth", easy: "Leicht", medium: "Mittel", hard: "Schwer", navLang: "Sprachtraining", langTrainTitle: "Sprachtraining", langTrainDesc: "Schau dir das Bild an und tippe auf das richtige Wort. Wähle unten eine Sprache.", trainLang: "Trainingssprache", drawings: { house: "Haus", sun: "Sonne", fish: "Fisch", flower: "Blume", doll: "Puppe", car: "Auto", motorbike: "Motorrad", jet: "Überschalljet", cartoon: "Zeichentrickfigur" } },
+      es: { newMaze: "Nuevo laberinto", easy: "Fácil", medium: "Medio", hard: "Difícil", navLang: "Entrenamiento de idiomas", langTrainTitle: "Entrenamiento de idiomas", langTrainDesc: "Mira la imagen y toca la palabra correcta. Elige un idioma abajo.", trainLang: "Idioma de práctica", drawings: { house: "Casa", sun: "Sol", fish: "Pez", flower: "Flor", doll: "Muñeca", car: "Coche", motorbike: "Moto", jet: "Avión supersónico", cartoon: "Personaje de dibujos animados" } },
+      it: { newMaze: "Nuovo labirinto", easy: "Facile", medium: "Medio", hard: "Difficile", navLang: "Allenamento lingue", langTrainTitle: "Allenamento lingue", langTrainDesc: "Guarda l’immagine e tocca la parola giusta. Scegli una lingua sotto.", trainLang: "Lingua di allenamento", drawings: { house: "Casa", sun: "Sole", fish: "Pesce", flower: "Fiore", doll: "Bambola", car: "Auto", motorbike: "Moto", jet: "Jet supersonico", cartoon: "Personaggio dei cartoni" } },
+      zh: { newMaze: "新迷宫", easy: "简单", medium: "中等", hard: "困难", navLang: "语言训练", langTrainTitle: "语言训练", langTrainDesc: "看图片，点击正确的单词。在下方选择语言。", trainLang: "训练语言", drawings: { house: "房子", sun: "太阳", fish: "鱼", flower: "花", doll: "娃娃", car: "汽车", motorbike: "摩托车", jet: "超音速飞机", cartoon: "卡通人物" } },
+      ru: { newMaze: "Новый лабиринт", easy: "Легко", medium: "Средне", hard: "Сложно", navLang: "Языковая практика", langTrainTitle: "Языковая практика", langTrainDesc: "Посмотри на картинку и выбери правильное слово. Выбери язык ниже.", trainLang: "Язык тренировки", drawings: { house: "Дом", sun: "Солнце", fish: "Рыбка", flower: "Цветок", doll: "Кукла", car: "Машина", motorbike: "Мотоцикл", jet: "Сверхзвуковой самолёт", cartoon: "Персонаж мультфильма" } }
+    };
+    Object.keys(I18N_GAMES).forEach(code => Object.assign(I18N[code], I18N_GAMES[code]));
+
+    function actName(name) { return (LOC[lang] && LOC[lang][name] && LOC[lang][name][0]) || name; }
+    function actTip(name) { return (LOC[lang] && LOC[lang][name] && LOC[lang][name][1]) || TIPS[name] || ""; }
+    function vidTitle(name) { return actName(name); }
+
+    function renderActivities() {
+      ACTIVITIES.forEach(group => {
+        const parent = document.querySelector(group.target);
+        if (!parent) return;
+        let box = parent.matches(".grid") ? parent : parent.querySelector(":scope > .act");
+        if (!box) {
+          box = document.createElement("div");
+          box.className = "grid act";
+          box.style.marginTop = "18px";
+          parent.append(box);
+        }
+        box.replaceChildren(...group.items.map(name => {
+          const card = document.createElement("div");
+          card.className = "card";
+          const h = document.createElement("h3");
+          h.textContent = actName(name);
+          const p = document.createElement("p");
+          p.className = "desc";
+          p.textContent = actTip(name);
+          const label = document.createElement("span");
+          label.className = "pill";
+          label.textContent = t().parentGuide;
+          card.append(h, p, label);
+          return card;
+        }));
+      });
+    }
+
+    // ---------- SETUP ----------
+    document.querySelectorAll("[data-i18n='restart']").forEach(() => {});
+    $("#mazeReset").addEventListener("click", resetMaze);
+    $("#up").addEventListener("click", () => move(-1, 0));
+    $("#down").addEventListener("click", () => move(1, 0));
+    $("#left").addEventListener("click", () => move(0, -1));
+    $("#right").addEventListener("click", () => move(0, 1));
+
+    renderActivities();
+    buildTiles();
+    newWordRound();
+    newRandomMaze();
+    $("#ru").addEventListener("click", () => moveR(-1, 0));
+    $("#rd").addEventListener("click", () => moveR(1, 0));
+    $("#rl").addEventListener("click", () => moveR(0, -1));
+    $("#rr").addEventListener("click", () => moveR(0, 1));
+    $("#newMaze").addEventListener("click", newRandomMaze);
+    newPuzzle();
+    resetMaze();
+    buildColoring();
+    buildPalette("#palette1", c => fillColor = c, fillColor);
+    setupPad();
     applyLang();
   </script>
 </body>
