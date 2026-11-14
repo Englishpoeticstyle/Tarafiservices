@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Algerian digital services directory and computer and laptop repair services by Bouzaher Noureddine.">
+  <title>Bouzaher Noureddine Comptutorist Services</title>
+  <style>
+    :root {
+      --green: #006633;
+      --red: #d21034;
+      --ink: #1d2922;
+      --muted: #647168;
+      --paper: #f7f8f6;
+      --line: #e2e8e3;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", "Noto Naskh Arabic", sans-serif; }
+    a { color: inherit; }
+    .flag-stripe { height: 7px; background: linear-gradient(to right, var(--green) 50%, var(--white) 50%); border-bottom: 2px solid var(--red); }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    header { padding: 40px 0 34px; background: var(--white); border-bottom: 1px solid var(--line); }
+    .topbar { display: flex; justify-content: flex-end; margin-bottom: 18px; }
+    .lang { display: flex; gap: 6px; }
+    .lang button { min-height: 36px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); color: var(--ink); font: inherit; font-size: .88rem; cursor: pointer; }
+    .lang button[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: var(--white); }
+
+    .header-inner { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+    .photo { flex: 0 0 auto; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--green); background: #edf5ef; }
+    .header-text { flex: 1 1 420px; }
+    .eyebrow { margin: 0 0 10px; color: var(--green); font-size: .82rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+    h1 { max-width: 850px; margin: 0; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.08; letter-spacing: -.04em; }
+    .intro { max-width: 700px; margin: 16px 0 0; color: var(--muted); font-size: 1.05rem; }
+    .hero-mark { display: inline-block; width: 42px; height: 4px; margin-top: 20px; background: var(--red); border-radius: 4px; }
+    .contact-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+    .contact-bar a { display: inline-block; padding: 9px 16px; border-radius: 999px; background: var(--green); color: var(--white); font-weight: 700; font-size: .92rem; text-decoration: none; }
+    .contact-bar a.secondary { background: var(--white); color: var(--green); border: 1px solid var(--green); }
+    .contact-bar a:hover { background: var(--red); color: var(--white); border-color: var(--red); }
+
+    main { padding: 28px 0 64px; }
+    .contact-card { margin-bottom: 28px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); }
+    .contact-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 0; }
+    .contact-list div { padding: 12px 14px; border-radius: 12px; background: var(--paper); }
+    .contact-list dt { color: var(--muted); font-size: .8rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+    .contact-list dd { margin: 4px 0 0; font-weight: 600; word-break: break-word; }
+
+    .repair { margin-bottom: 28px; padding: 24px; border: 1px solid #c8dfd0; border-left: 5px solid var(--green); border-radius: 16px; background: #edf5ef; }
+    .repair p { margin: 0; color: #48584d; }
+    .repair-items { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .repair-items span { padding: 7px 11px; border: 1px solid #c8dfd0; border-radius: 999px; background: var(--white); font-size: .88rem; }
+
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .toolbar { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .search { flex: 1 1 260px; min-height: 48px; padding: 0 15px; border: 1px solid var(--line); border-radius: 12px; background: var(--white); color: var(--ink); font: inherit; }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter { min-height: 40px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); color: var(--ink); font: inherit; cursor: pointer; }
+    .filter[aria-pressed="true"] { border-color: var(--green); background: var(--green); color: var(--white); }
+
+    .notice { margin: 0 0 24px; padding: 13px 15px; border: 1px solid #eadca8; border-radius: 12px; background: #fff9e6; color: #66531a; font-size: .92rem; }
+    .section-title { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; margin: 28px 0 14px; }
+    .count { color: var(--muted); font-size: .9rem; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 14px; }
+    .card { display: flex; flex-direction: column; min-height: 190px; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); box-shadow: 0 4px 14px rgb(23 35 31 / 3%); }
+    .card-top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+    h3 { margin: 0; font-size: 1.06rem; }
+    .category { margin: 3px 0 0; color: var(--muted); font-size: .83rem; }
+    .description { margin: 14px 0 18px; color: #46564f; font-size: .94rem; }
+    .badge { flex: 0 0 auto; padding: 4px 8px; border-radius: 999px; background: #edf2ee; color: #47574f; font-size: .72rem; font-weight: 700; }
+    .badge.pending { background: #fff4d5; color: #765900; }
+    .badge.approved { background: #e3f4ea; color: #1d6b3a; }
+    .visit { align-self: flex-start; margin-top: auto; color: var(--green); font-weight: 700; text-decoration: none; }
+    .visit:hover { color: var(--red); text-decoration: underline; }
+    .unavailable { margin-top: auto; color: var(--muted); font-size: .85rem; }
+    .empty { padding: 24px 0; color: var(--muted); }
+
+    footer { padding: 22px 0 34px; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
+    footer p { margin: 4px 0; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .card { transition: transform .15s ease, box-shadow .15s ease; }
+      .card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgb(23 35 31 / 8%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="flag-stripe" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap">
+      <div class="topbar">
+        <div class="lang" id="lang" role="group" aria-label="Language">
+          <button data-lang="en">EN</button>
+          <button data-lang="fr">FR</button>
+          <button data-lang="ar">عربي</button>
+        </div>
+      </div>
+      <div class="header-inner">
+        <img class="photo" src="photo.jpg" alt="Bouzaher Noureddine" onerror="this.style.display='none'">
+        <div class="header-text">
+          <p class="eyebrow" data-i18n="eyebrow"></p>
+          <h1 data-i18n="title"></h1>
+          <p class="intro" data-i18n="intro"></p>
+          <span class="hero-mark" aria-hidden="true"></span>
+          <div class="contact-bar" id="contact-bar"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="contact-card" id="contact-card" aria-labelledby="contact-title">
+      <h2 id="contact-title" data-i18n="contactTitle"></h2>
+      <dl class="contact-list" id="contact-list"></dl>
+    </section>
+
+    <section class="repair" aria-labelledby="repair-title">
+      <h2 id="repair-title" data-i18n="repairTitle"></h2>
+      <p data-i18n="repairText"></p>
+      <div class="repair-items" id="repair-items"></div>
+    </section>
+
+    <div class="toolbar">
+      <input id="search" class="search" type="search">
+      <div id="filters" class="filters"></div>
+    </div>
+
+    <p class="notice" data-i18n="notice"></p>
+
+    <div class="section-title">
+      <h2 data-i18n="directoryTitle"></h2>
+      <span id="count" class="count"></span>
+    </div>
+
+    <div id="services" class="grid"></div>
+    <p id="empty" class="empty" hidden data-i18n="noMatch"></p>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p data-i18n="footer"></p>
+      <p data-i18n="credit"></p>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- CONTACT (edit here; leave a value "" to hide it) ----------
+    const contact = {
+      phone: "",
+      whatsapp: "",   // digits only with country code, e.g. "213555000000"
+      email: "",
+      address: "",
+      hours: ""
+    };
+
+    // ---------- SECURITY APPROVAL ----------
+    // Every external link stays locked (approved: false) until you scan it on
+    // virustotal.com, confirm it is clean and the official site, then set
+    // approved to true. Only approved links become clickable.
+    const services = [
+      { name: "Awlyaa Education", cat: "edu", url: "https://awlyaa.education.dz", approved: false,
+        desc: { en: "Parents’ portal for grades, report cards, absences and school transfers.", fr: "Portail des parents pour les notes, bulletins, absences et transferts scolaires.", ar: "بوابة الأولياء للاطلاع على النقاط والكشوف والغيابات والتحويلات المدرسية." } },
+      { name: "DzExams", cat: "edu", url: "https://dzexams.com", approved: false, third: true,
+        desc: { en: "Third-party revision site with past exam papers and corrections from primary through secondary school, including the BAC.", fr: "Site de révision tiers avec anciens sujets et corrigés, du primaire au secondaire, dont le BAC.", ar: "موقع مراجعة من طرف ثالث يحتوي على امتحانات سابقة وتصحيحات من الابتدائي إلى الثانوي، بما في ذلك البكالوريا." } },
+      { name: "Downloaded BAC exams", cat: "edu", url: "https://dzexams.com/fr/bac", approved: false, third: true,
+        desc: { en: "Free BAC exam papers and corrections by subject. The official ONEC URL needs confirmation.", fr: "Sujets et corrigés du BAC gratuits par matière. L’adresse officielle de l’ONEC reste à confirmer.", ar: "مواضيع وتصحيحات البكالوريا مجانا حسب المادة. الرابط الرسمي للديوان الوطني للامتحانات يحتاج إلى تأكيد." } },
+      { name: "BAC ONEC (bac.onec.dz)", cat: "edu", url: "https://bac.onec.dz", approved: false,
+        desc: { en: "Official Baccalaureate exam portal of the National Office of Examinations and Competitions (ONEC).", fr: "Portail officiel du baccalauréat de l’Office national des examens et concours (ONEC).", ar: "البوابة الرسمية لامتحان البكالوريا التابعة للديوان الوطني للامتحانات والمسابقات." } },
+      { name: "BEM ONEC (bem.onec.dz)", cat: "edu", url: "https://bem.onec.dz", approved: false,
+        desc: { en: "Official BEM middle-school exam portal of the National Office of Examinations and Competitions (ONEC).", fr: "Portail officiel de l’examen du BEM de l’Office national des examens et concours (ONEC).", ar: "البوابة الرسمية لامتحان شهادة التعليم المتوسط التابعة للديوان الوطني للامتحانات والمسابقات." } },
+      { name: "Portail BAC", cat: "edu", approved: false,
+        desc: { en: "Baccalaureate registration and results. Exact service URL has not been confirmed.", fr: "Inscription au baccalauréat et résultats. L’adresse exacte du service n’est pas confirmée.", ar: "التسجيل في البكالوريا والنتائج. الرابط الدقيق للخدمة لم يتم تأكيده." } },
+      { name: "Progres (MESRS)", cat: "univ", url: "https://progres.mesrs.dz", approved: false,
+        desc: { en: "University registration, orientation, and payment of registration and accommodation fees. URL needs confirmation.", fr: "Inscription universitaire, orientation et paiement des frais d’inscription et d’hébergement. Adresse à confirmer.", ar: "التسجيل الجامعي والتوجيه ودفع رسوم التسجيل والإقامة. الرابط يحتاج إلى تأكيد." } },
+      { name: "Study in Algeria", cat: "univ", url: "https://studyinalgeria.dz", approved: false,
+        desc: { en: "Ministry of Higher Education portal for university admission and fee information.", fr: "Portail du ministère de l’Enseignement supérieur pour l’admission et les frais universitaires.", ar: "بوابة وزارة التعليم العالي للقبول الجامعي ومعلومات الرسوم." } },
+      { name: "Student-DZ", cat: "edu", approved: false,
+        desc: { en: "Student assistant for universities, schools, institutes and housing. Exact app link needs confirmation.", fr: "Assistant étudiant pour universités, écoles, instituts et logement. Lien exact de l’application à confirmer.", ar: "مساعد الطالب للجامعات والمدارس والمعاهد والسكن. رابط التطبيق الدقيق يحتاج إلى تأكيد." } },
+      { name: "MYBUS", cat: "transport", approved: false,
+        desc: { en: "University bus transport app. Exact app link needs confirmation.", fr: "Application de transport universitaire en bus. Lien exact à confirmer.", ar: "تطبيق النقل الجامعي بالحافلات. الرابط الدقيق يحتاج إلى تأكيد." } },
+      { name: "Takwin", cat: "training", url: "https://takwin-snsh.com", approved: false,
+        desc: { en: "Sonatrach union training and education institutes.", fr: "Instituts de formation et d’éducation du syndicat Sonatrach.", ar: "معاهد التكوين والتعليم التابعة لنقابة سوناطراك." } },
+      { name: "Apostille", cat: "legal", url: "https://apostille.gov.dz", approved: false,
+        desc: { en: "Apostille service for documents intended for use abroad.", fr: "Service d’apostille pour les documents destinés à l’étranger.", ar: "خدمة التصديق (أبوستي) للوثائق المخصصة للاستعمال بالخارج." } },
+      { name: "Foreign Affairs legalisation", cat: "legal", url: "https://services.mfa.gov.dz", approved: false,
+        desc: { en: "Consular services and document legalisation.", fr: "Services consulaires et légalisation de documents.", ar: "الخدمات القنصلية وتصديق الوثائق." } },
+      { name: "Ministry of Justice", cat: "legal", url: "https://mjustice.dz", approved: false,
+        desc: { en: "Judicial services. The listed domain needs confirmation.", fr: "Services judiciaires. Le domaine indiqué doit être confirmé.", ar: "الخدمات القضائية. النطاق المذكور يحتاج إلى تأكيد." } },
+      { name: "Dzair Digital Services", cat: "general", approved: false,
+        desc: { en: "National hub for government digital services, including civil status and tax documents. Exact portal URL needs confirmation.", fr: "Portail national des services numériques de l’État, dont état civil et documents fiscaux. Adresse exacte à confirmer.", ar: "المنصة الوطنية للخدمات الرقمية الحكومية، بما في ذلك الحالة المدنية والوثائق الجبائية. الرابط الدقيق يحتاج إلى تأكيد." } },
+      { name: "Tabioucom", cat: "payment", url: "https://tabioucom.mf.gov.dz", approved: false,
+        desc: { en: "Pay for and print tax stamps for passports, ID cards and driving licences.", fr: "Paiement et impression des timbres fiscaux pour passeports, cartes d’identité et permis de conduire.", ar: "دفع وطباعة الطوابع الجبائية لجوازات السفر وبطاقات التعريف ورخص السياقة." } },
+      { name: "Baridi Mob / E-CCP", cat: "payment", url: "https://www.poste.dz", approved: false,
+        desc: { en: "CCP balance, transfers, bill payments and online Golden Card requests.", fr: "Solde CCP, virements, paiement de factures et demandes de Carte Dorée en ligne.", ar: "رصيد الحساب البريدي، التحويلات، دفع الفواتير وطلب البطاقة الذهبية عبر الإنترنت." } },
+      { name: "Naftal e-mahata", cat: "payment", url: "https://e-mahata.naftal.dz", approved: false,
+        desc: { en: "Reserve tyres and pay with CIB or Edahabia.", fr: "Réservez des pneus et payez avec CIB ou Edahabia.", ar: "حجز الإطارات والدفع ببطاقة CIB أو الذهبية." } },
+      { name: "Naftal Khadamat", cat: "services", approved: false,
+        desc: { en: "App for finding fuel stations and Naftal services. Exact app link needs confirmation.", fr: "Application pour trouver les stations-service et les services Naftal. Lien exact à confirmer.", ar: "تطبيق للعثور على محطات الوقود وخدمات نفطال. الرابط الدقيق يحتاج إلى تأكيد." } },
+      { name: "Djezzy payments", cat: "telecom", url: "https://www.djezzy.dz", approved: false,
+        desc: { en: "Recharge and bill payment. Confirm the payment page on the provider’s official site.", fr: "Recharge et paiement de factures. Vérifiez la page de paiement sur le site officiel.", ar: "شحن الرصيد ودفع الفواتير. تأكد من صفحة الدفع على الموقع الرسمي للمزود." } },
+      { name: "Ooredoo payments", cat: "telecom", url: "https://www.ooredoo.dz", approved: false,
+        desc: { en: "Recharge and bill payment. Confirm the payment page on the provider’s official site.", fr: "Recharge et paiement de factures. Vérifiez la page de paiement sur le site officiel.", ar: "شحن الرصيد ودفع الفواتير. تأكد من صفحة الدفع على الموقع الرسمي للمزود." } },
+      { name: "Mobilis payments", cat: "telecom", url: "https://www.mobilis.dz", approved: false,
+        desc: { en: "Recharge and bill payment. Confirm the payment page on the provider’s official site.", fr: "Recharge et paiement de factures. Vérifiez la page de paiement sur le site officiel.", ar: "شحن الرصيد ودفع الفواتير. تأكد من صفحة الدفع على الموقع الرسمي للمزود." } },
+      { name: "Algérie Télécom payments", cat: "telecom", url: "https://www.algerietelecom.dz", approved: false,
+        desc: { en: "Internet bill payment. Confirm the payment page on the provider’s official site.", fr: "Paiement des factures Internet. Vérifiez la page de paiement sur le site officiel.", ar: "دفع فواتير الإنترنت. تأكد من صفحة الدفع على الموقع الرسمي للمزود." } },
+      { name: "WassitOnline (ANEM)", cat: "employment", url: "https://anem.dz", approved: false,
+        desc: { en: "Jobseeker registration, profile updates, job offers, CV and registration-card services. Confirm the exact platform link with ANEM.", fr: "Inscription des demandeurs d’emploi, mise à jour du profil, offres, CV et carte d’inscription. Confirmez le lien exact auprès de l’ANEM.", ar: "تسجيل طالبي العمل، تحديث الملف، عروض العمل، السيرة الذاتية وبطاقة الانخراط. أكد الرابط الدقيق مع الوكالة الوطنية للتشغيل." } },
+      { name: "Minha", cat: "employment", approved: false,
+        desc: { en: "Platform for unemployment allowance files. The official site URL has not been confirmed.", fr: "Plateforme pour les dossiers d’allocation chômage. L’adresse officielle n’est pas confirmée.", ar: "منصة ملفات منحة البطالة. الرابط الرسمي للموقع لم يتم تأكيده." } }
+    ];
+
+    // ---------- TRANSLATIONS ----------
+    const I18N = {
+      en: {
+        eyebrow: "Algeria · Digital services · Computer support",
+        title: "Bouzaher Noureddine Comptutorist Services",
+        intro: "A directory of useful services in Algeria, plus computer and laptop repair information. Check links and service details before using them.",
+        contactTitle: "Contact", repairTitle: "Computer & Laptop Repair",
+        repairText: "Need help with a computer or laptop? Contact Bouzaher Noureddine Comptutorist Services for repair and technical support.",
+        repairItems: ["Computer repair", "Laptop repair", "Diagnosis & troubleshooting", "Software and system support", "Hardware support"],
+        search: "Search services…", directoryTitle: "Service directory",
+        notice: "Every external link is checked for security before it is opened. Links marked “Pending security check” are locked until verified. Some official statuses are unconfirmed; this directory is informational and not affiliated with the services listed.",
+        noMatch: "No services match your search.",
+        footer: "Bouzaher Noureddine Comptutorist Services · Algeria",
+        credit: "Website credit: Mr. Mohamed Tarafi",
+        all: "All",
+        visit: "Visit site ↗", pending: "Pending security check", approved: "Verified safe",
+        notConfirmed: "Official link not confirmed", thirdParty: "Third-party",
+        cats: { edu: "Education", univ: "University", transport: "Transport", training: "Training", legal: "Legal / documents", general: "General", payment: "Payment / tax", telecom: "Telecom", services: "Services", employment: "Employment" },
+        contactLabels: { phone: "Phone", whatsapp: "WhatsApp", email: "Email", address: "Address", hours: "Hours" },
+        call: "Call", count1: "service", countN: "services"
+      },
+      fr: {
+        eyebrow: "Algérie · Services numériques · Assistance informatique",
+        title: "Bouzaher Noureddine Comptutorist Services",
+        intro: "Un répertoire de services utiles en Algérie, ainsi que des informations sur la réparation d’ordinateurs et de portables. Vérifiez les liens et les détails avant de les utiliser.",
+        contactTitle: "Contact", repairTitle: "Réparation d’ordinateurs & portables",
+        repairText: "Besoin d’aide avec un ordinateur ou un portable ? Contactez Bouzaher Noureddine Comptutorist Services pour la réparation et le support technique.",
+        repairItems: ["Réparation d’ordinateurs", "Réparation de portables", "Diagnostic & dépannage", "Support logiciel et système", "Support matériel"],
+        search: "Rechercher un service…", directoryTitle: "Répertoire des services",
+        notice: "Chaque lien externe est vérifié avant d’être ouvert. Les liens marqués « Vérification de sécurité en attente » sont bloqués jusqu’à validation. Certains statuts officiels ne sont pas confirmés ; ce répertoire est informatif et non affilié aux services listés.",
+        noMatch: "Aucun service ne correspond à votre recherche.",
+        footer: "Bouzaher Noureddine Comptutorist Services · Algérie",
+        credit: "Crédit du site : M. Mohamed Tarafi",
+        all: "Tous",
+        visit: "Visiter le site ↗", pending: "Vérification de sécurité en attente", approved: "Vérifié sûr",
+        notConfirmed: "Lien officiel non confirmé", thirdParty: "Tiers",
+        cats: { edu: "Éducation", univ: "Université", transport: "Transport", training: "Formation", legal: "Juridique / documents", general: "Général", payment: "Paiement / fiscalité", telecom: "Télécom", services: "Services", employment: "Emploi" },
+        contactLabels: { phone: "Téléphone", whatsapp: "WhatsApp", email: "E-mail", address: "Adresse", hours: "Horaires" },
+        call: "Appeler", count1: "service", countN: "services"
+      },
+      ar: {
+        eyebrow: "الجزائر · خدمات رقمية · دعم تقني",
+        title: "بوزاهر نور الدين - خدمات كومبتوتريست",
+        intro: "دليل لخدمات مفيدة في الجزائر، مع معلومات عن إصلاح الحواسيب والحواسيب المحمولة. تحقق من الروابط وتفاصيل الخدمات قبل استخدامها.",
+        contactTitle: "اتصل بنا", repairTitle: "إصلاح الحواسيب والحواسيب المحمولة",
+        repairText: "هل تحتاج إلى مساعدة في حاسوبك أو حاسوبك المحمول؟ تواصل مع بوزاهر نور الدين للإصلاح والدعم التقني.",
+        repairItems: ["إصلاح الحواسيب", "إصلاح الحواسيب المحمولة", "التشخيص وحل الأعطال", "دعم البرمجيات والنظام", "دعم العتاد"],
+        search: "ابحث عن خدمة…", directoryTitle: "دليل الخدمات",
+        notice: "يتم فحص كل رابط خارجي من ناحية الأمان قبل فتحه. الروابط المعلّمة «بانتظار فحص الأمان» مقفلة حتى يتم التحقق منها. بعض الصفات الرسمية غير مؤكدة؛ هذا الدليل إخباري وغير تابع للخدمات المدرجة.",
+        noMatch: "لا توجد خدمات تطابق بحثك.",
+        footer: "بوزاهر نور الدين - خدمات كومبتوتريست · الجزائر",
+        credit: "تصميم الموقع: السيد محمد طرفي",
+        all: "الكل",
+        visit: "زيارة الموقع ↗", pending: "بانتظار فحص الأمان", approved: "تم التحقق: آمن",
+        notConfirmed: "الرابط الرسمي غير مؤكد", thirdParty: "طرف ثالث",
+        cats: { edu: "التعليم", univ: "الجامعة", transport: "النقل", training: "التكوين", legal: "قانوني / وثائق", general: "عام", payment: "الدفع / الضرائب", telecom: "الاتصالات", services: "خدمات", employment: "التشغيل" },
+        contactLabels: { phone: "الهاتف", whatsapp: "واتساب", email: "البريد الإلكتروني", address: "العنوان", hours: "ساعات العمل" },
+        call: "اتصال", count1: "خدمة", countN: "خدمات"
+      }
+    };
+
+    let lang = localStorage ? (localStorage.getItem("lang") || "en") : "en";
+    let activeCat = "all";
+
+    const $ = sel => document.querySelector(sel);
+    const t = () => I18N[lang];
+
+    function applyLang() {
+      const html = document.documentElement;
+      html.lang = lang;
+      html.dir = lang === "ar" ? "rtl" : "ltr";
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.dataset.i18n;
+        if (typeof t()[key] === "string") el.textContent = t()[key];
+      });
+      document.querySelectorAll("#lang button").forEach(b => {
+        b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+      });
+      $("#search").placeholder = t().search;
+      $("#search").setAttribute("aria-label", t().search);
+
+      const rep = $("#repair-items");
+      rep.replaceChildren(...t().repairItems.map(txt => {
+        const s = document.createElement("span");
+        s.textContent = txt;
+        return s;
+      }));
+
+      renderContact();
+      renderFilters();
+      renderServices();
+    }
+
+    function renderContact() {
+      const bar = $("#contact-bar");
+      const list = $("#contact-list");
+      bar.replaceChildren();
+      list.replaceChildren();
+
+      const addLink = (text, href, secondary) => {
+        const a = document.createElement("a");
+        a.textContent = text;
+        a.href = href;
+        if (secondary) a.className = "secondary";
+        bar.append(a);
+      };
+      if (contact.phone) addLink(t().call, `tel:${contact.phone.replace(/\s+/g, "")}`);
+      if (contact.whatsapp) addLink("WhatsApp", `https://wa.me/${contact.whatsapp}`, true);
+      if (contact.email) addLink("Email", `mailto:${contact.email}`, true);
+
+      const L = t().contactLabels;
+      [
+        [L.phone, contact.phone],
+        [L.whatsapp, contact.whatsapp ? "+" + contact.whatsapp : ""],
+        [L.email, contact.email],
+        [L.address, contact.address],
+        [L.hours, contact.hours]
+      ].filter(([, v]) => v).forEach(([label, value]) => {
+        const wrap = document.createElement("div");
+        const dt = document.createElement("dt");
+        dt.textContent = label;
+        const dd = document.createElement("dd");
+        dd.textContent = value;
+        wrap.append(dt, dd);
+        list.append(wrap);
+      });
+      $("#contact-card").hidden = list.children.length === 0;
+    }
+
+    function renderFilters() {
+      const filters = $("#filters");
+      filters.replaceChildren();
+      const keys = ["all", ...new Set(services.map(s => s.cat))];
+      keys.forEach(key => {
+        const b = document.createElement("button");
+        b.className = "filter";
+        b.textContent = key === "all" ? t().all : t().cats[key];
+        b.setAttribute("aria-pressed", String(key === activeCat));
+        b.addEventListener("click", () => {
+          activeCat = key;
+          renderFilters();
+          renderServices();
+        });
+        filters.append(b);
+      });
+    }
+
+    function renderServices() {
+      const term = $("#search").value.trim().toLowerCase();
+      const list = $("#services");
+      const shown = services.filter(s => {
+        const matchCat = activeCat === "all" || s.cat === activeCat;
+        const hay = `${s.name} ${t().cats[s.cat]} ${s.desc[lang]}`.toLowerCase();
+        return matchCat && hay.includes(term);
+      });
+
+      list.replaceChildren();
+      shown.forEach(s => {
+        const card = document.createElement("article");
+        card.className = "card";
+
+        const top = document.createElement("div");
+        top.className = "card-top";
+        const heading = document.createElement("div");
+        const title = document.createElement("h3");
+        title.textContent = s.name;
+        const cat = document.createElement("p");
+        cat.className = "category";
+        cat.textContent = t().cats[s.cat] + (s.third ? " · " + t().thirdParty : "");
+        heading.append(title, cat);
+
+        const badge = document.createElement("span");
+        badge.className = "badge";
+        if (s.url) {
+          badge.classList.add(s.approved ? "approved" : "pending");
+          badge.textContent = s.approved ? t().approved : t().pending;
+        } else {
+          badge.textContent = t().notConfirmed;
+        }
+        top.append(heading, badge);
+
+        const desc = document.createElement("p");
+        desc.className = "description";
+        desc.textContent = s.desc[lang];
+        card.append(top, desc);
+
+        if (s.url && s.approved) {
+          const a = document.createElement("a");
+          a.className = "visit";
+          a.href = s.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = t().visit;
+          card.append(a);
+        } else {
+          const note = document.createElement("span");
+          note.className = "unavailable";
+          note.textContent = s.url ? t().pending : t().notConfirmed;
+          card.append(note);
+        }
+        list.append(card);
+      });
+
+      $("#count").textContent = `${shown.length} ${shown.length === 1 ? t().count1 : t().countN}`;
+      $("#empty").hidden = shown.length !== 0;
+    }
+
+    document.querySelectorAll("#lang button").forEach(b => {
+      b.addEventListener("click", () => {
+        lang = b.dataset.lang;
+        try { localStorage.setItem("lang", lang); } catch (e) {}
+        applyLang();
+      });
+    });
+    $("#search").addEventListener("input", renderServices);
+    applyLang();
+  </script>
+</body>
+</html>
