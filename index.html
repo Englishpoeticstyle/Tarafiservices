@@ -22,91 +22,120 @@
     --mustard: #F2C14E;
     --sky: #8FC7D6;
     --sage: #A8C5A0;
+    --plum: #9B5DE5;
     --line: #E6DCCB;
     --muted: #6B7A7C;
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0; font-family: 'Cairo', system-ui, sans-serif;
-    background: var(--paper); color: var(--ink); min-height: 100vh;
+    margin: 0; min-height: 100vh; font-family: 'Cairo', system-ui, sans-serif; color: var(--ink);
+    background:
+      radial-gradient(circle at 8% 0%, #FFE6B3 0, transparent 36%),
+      radial-gradient(circle at 96% 12%, #CDEBF2 0, transparent 34%),
+      var(--paper);
   }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 22px 14px 30px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 22px 14px 34px; }
   .ar { font-family: 'Noto Naskh Arabic', 'Cairo', serif; }
+  button:focus-visible, input:focus-visible { outline: 3px solid var(--terra); outline-offset: 3px; }
 
   /* Header */
   .hero {
     position: relative; overflow: hidden; background: var(--teal); color: #fff;
-    border-radius: 30px; padding: 28px 26px 24px;
-    box-shadow: 0 18px 34px -22px rgba(31,59,64,.7);
+    border-radius: 30px; padding: 26px 26px 22px; box-shadow: 0 18px 34px -22px rgba(31,59,64,.7);
   }
   .ribbon {
     position: absolute; top: 18px; left: -44px; transform: rotate(-35deg);
     background: var(--mustard); color: var(--ink); font-weight: 900; padding: 6px 56px; font-size: .9rem;
   }
-  .hero h1 { margin: 0 0 6px; font-size: clamp(1.9rem, 4.5vw, 2.6rem); font-weight: 900; }
-  .dedication { margin: 0; font-size: 1rem; letter-spacing: .08em; text-transform: uppercase; opacity: .85; font-family: 'Cairo', sans-serif; }
-  .honor { margin: 6px 0 18px; font-size: clamp(1.25rem, 3vw, 1.6rem); font-weight: 900; line-height: 1.35; }
+  .hero h1 { margin: 0 0 4px; font-size: clamp(1.9rem, 4.5vw, 2.6rem); font-weight: 900; }
+  .dedication { margin: 0; font-size: 1rem; letter-spacing: .08em; text-transform: uppercase; opacity: .85; }
+  .honor { margin: 6px 0 16px; font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 900; line-height: 1.35; }
+  .welcome { background: rgba(255,255,255,.14); border: 2px dashed rgba(255,255,255,.6); border-radius: 20px; padding: 12px 16px; margin: 10px 0 14px; }
+  .wtitle { margin: 0; font-size: clamp(1.3rem, 3.6vw, 1.9rem); font-weight: 900; }
+  .wsub { margin: 4px 0 0; font-size: clamp(1rem, 2.6vw, 1.2rem); font-weight: 700; opacity: .95; }
   .setup { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-  .setup .group { display: flex; flex-wrap: wrap; gap: 6px; }
+  .group { display: flex; flex-wrap: wrap; gap: 6px; }
   .pill {
-    font: inherit; font-weight: 700; font-size: .95rem; padding: 7px 14px;
-    border-radius: 999px; cursor: pointer; border: 2px solid rgba(255,255,255,.7);
-    background: transparent; color: #fff;
+    font: inherit; font-weight: 700; font-size: .95rem; padding: 7px 14px; border-radius: 999px;
+    cursor: pointer; border: 2px solid rgba(255,255,255,.7); background: transparent; color: #fff;
   }
   .pill[aria-pressed="true"] { background: #fff; color: var(--ink); border-color: #fff; }
-  .name-input {
-    font: inherit; padding: 8px 14px; border-radius: 999px; border: none; min-width: 200px; color: var(--ink);
-  }
+  .name-input { font: inherit; padding: 8px 14px; border-radius: 999px; border: none; min-width: 190px; color: var(--ink); }
+  .rewards { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 14px; font-weight: 800; }
+  .chip { background: #fff; color: var(--ink); border-radius: 999px; padding: 5px 14px; }
+  .ladder { width: 100%; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .rung { background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.4); border-radius: 999px; padding: 4px 10px; font-size: .82rem; font-weight: 700; }
+  .rung.done { background: rgba(255,255,255,.36); }
+  .rung.on { background: var(--mustard); color: var(--ink); border-color: var(--ink); }
 
-  /* Languages and tabs */
-  .langs { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 14px; }
+  /* Languages */
+  .langs { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 16px; }
   .lang-btn {
     font: inherit; font-weight: 800; font-size: 1rem; padding: 8px 16px; border-radius: 14px;
     cursor: pointer; border: 2px solid var(--line); background: var(--card); color: var(--ink);
   }
   .lang-btn[aria-pressed="true"] { background: var(--mustard); border-color: var(--ink); box-shadow: 0 3px 0 var(--ink); }
-  nav.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-  .tab {
-    font: inherit; font-weight: 800; font-size: 1rem; padding: 9px 16px; border-radius: 14px;
-    cursor: pointer; border: 2px solid var(--ink); background: transparent; color: var(--ink);
-  }
-  .tab[aria-selected="true"] { background: var(--ink); color: #fff; }
-  button:focus-visible, input:focus-visible { outline: 3px solid var(--terra); outline-offset: 3px; }
 
   /* Panel */
   .panel {
-    background: var(--card); border-radius: 28px; padding: 24px 20px; min-height: 460px;
+    background: var(--card); border-radius: 28px; padding: 24px 20px; min-height: 480px;
     box-shadow: 0 1px 0 rgba(31,59,64,.08), 0 16px 34px -22px rgba(31,59,64,.45);
   }
+  .intro { text-align: center; font-size: 1.25rem; font-weight: 800; margin: 0 0 18px; }
+  .cat { margin-bottom: 22px; }
+  .cat h2 { display: flex; align-items: center; gap: 10px; font-size: 1.3rem; font-weight: 900; margin: 0 0 12px; }
+  .cat h2 .bar-c { width: 10px; height: 26px; border-radius: 6px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .gcard {
+    font: inherit; text-align: center; cursor: pointer; padding: 16px 12px 14px; border-radius: 20px;
+    background: #fff; border: 2px solid var(--line); border-top: 8px solid var(--c, var(--teal));
+    box-shadow: 0 6px 0 var(--line); display: flex; flex-direction: column; gap: 4px; align-items: center;
+    transition: transform .12s;
+  }
+  .gcard:hover { transform: translateY(-3px); }
+  .gcard:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--line); }
+  .gcard .ge { font-size: 2.6rem; line-height: 1.1; }
+  .gcard b { font-size: 1.1rem; font-weight: 900; }
+  .gcard small { color: var(--muted); font-weight: 700; }
+  .c-words { --c: var(--teal); }
+  .c-math { --c: var(--mustard); }
+  .c-create { --c: var(--terra); }
+  .c-faith { --c: var(--sage); }
+
+  /* Game chrome */
+  .gamehead { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+  .gamehead h2 { margin: 0; font-size: 1.5rem; font-weight: 900; }
+  .back {
+    font: inherit; font-weight: 800; padding: 8px 16px; border-radius: 12px; cursor: pointer;
+    border: 2px solid var(--ink); background: #fff; color: var(--ink);
+  }
+  .gamefoot { display: flex; justify-content: center; margin-top: 22px; }
+  .btn {
+    font: inherit; font-weight: 800; font-size: 1.05rem; padding: 10px 20px; border-radius: 14px;
+    cursor: pointer; border: 2px solid var(--ink); background: var(--mustard); color: var(--ink); box-shadow: 0 4px 0 var(--ink);
+  }
+  .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+  .btn.ghost { background: #fff; box-shadow: 0 4px 0 var(--line); border-color: var(--line); }
   .hint { margin: 0 0 14px; color: var(--muted); font-size: 1.1rem; text-align: center; }
   .bar { display: flex; justify-content: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
   .stat { font-weight: 800; background: var(--mustard); border: 2px solid var(--ink); border-radius: 999px; padding: 4px 16px; }
-  .center { display: flex; justify-content: center; margin-top: 16px; }
+  .center { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
   .msg { min-height: 2em; text-align: center; font-weight: 800; font-size: 1.25rem; margin: 14px 0 0; }
   .msg.ok { color: var(--teal); }
   .msg.bad { color: var(--terra); }
-  .btn {
-    font: inherit; font-weight: 800; font-size: 1.05rem; padding: 10px 20px; border-radius: 14px;
-    cursor: pointer; border: 2px solid var(--ink); background: var(--mustard); color: var(--ink);
-    box-shadow: 0 4px 0 var(--ink);
-  }
-  .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
-
-  /* Speaker buttons */
   .spk {
-    font: inherit; width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
-    border: 2px solid var(--ink); background: var(--sky); font-size: 1.1rem;
-    box-shadow: 0 3px 0 var(--ink); vertical-align: middle; margin-inline-start: 6px;
+    font: inherit; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; border: 2px solid var(--ink);
+    background: var(--sky); font-size: 1.1rem; box-shadow: 0 3px 0 var(--ink); vertical-align: middle; margin-inline-start: 6px;
   }
-  .spk:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+  .spk.big { width: 74px; height: 74px; font-size: 2rem; margin: 0 0 10px; }
+  .sound-note { text-align: center; color: var(--muted); font-size: .95rem; margin: 0 0 12px; }
 
-  /* Match cards */
+  /* Match */
   .mgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 640px; margin: 0 auto; }
   .mcard {
     font: inherit; aspect-ratio: 3 / 4; padding: 6px; cursor: pointer; border-radius: 18px;
     border: 2px solid var(--ink); background: var(--teal); color: #fff;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-    box-shadow: 0 5px 0 var(--ink);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; box-shadow: 0 5px 0 var(--ink);
   }
   .mcard .q { font-size: 2rem; opacity: .85; }
   .mcard.open { background: #fff; color: var(--ink); }
@@ -114,7 +143,7 @@
   .mcard:disabled { cursor: default; }
   .cw { font-size: 1.35rem; font-weight: 900; direction: ltr; text-align: center; word-break: break-word; }
   .cp { font-size: .8rem; color: var(--muted); }
-  .pic { font-size: 2.4rem; line-height: 1; }
+  .pic { font-size: 2.6rem; line-height: 1; }
   .cm { font-size: .9rem; font-weight: 800; }
 
   /* Builders */
@@ -124,26 +153,49 @@
   .pron { font-size: 1.1rem; color: var(--teal); font-weight: 700; }
   .row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 8px; }
   .tile {
-    font: inherit; font-weight: 800; font-size: 1.8rem; color: var(--ink); min-width: 50px; height: 60px;
-    padding: 0 10px; cursor: pointer; border: 2px solid var(--ink); border-radius: 14px;
-    background: #fff; box-shadow: 0 4px 0 var(--ink);
+    font: inherit; font-weight: 800; font-size: 1.8rem; color: var(--ink); min-width: 50px; height: 60px; padding: 0 10px;
+    cursor: pointer; border: 2px solid var(--ink); border-radius: 14px; background: #fff; box-shadow: 0 4px 0 var(--ink);
   }
   .tile.word { height: auto; font-size: 1.3rem; padding: 10px 14px; }
   .tile:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
   .tile:disabled { opacity: .22; cursor: default; box-shadow: none; }
   .slot { min-width: 50px; height: 60px; border-radius: 14px; border: 2px dashed #C9BFA9; background: #FBF8F1; }
+  .steps-list { padding-inline-start: 24px; margin: 0; }
+  .steps-list li { margin-bottom: 4px; }
 
-  /* Math and quiz */
-  .equation { font-size: clamp(2.4rem, 8vw, 3.6rem); font-weight: 900; text-align: center; margin: 10px 0 18px; direction: ltr; }
-  .choices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 520px; margin: 0 auto; }
+  /* Quizzes */
+  .qbox { font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 900; text-align: center; margin: 8px 0 18px; }
+  .qbox .equation { direction: ltr; font-size: clamp(2.4rem, 8vw, 3.6rem); }
+  .qbox .bigdigit { font-size: clamp(3.5rem, 12vw, 5rem); line-height: 1.1; }
+  .qtext { margin: 0; }
+  .choices { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 620px; margin: 0 auto; }
   .choice {
-    font: inherit; font-size: 1.6rem; font-weight: 900; padding: 14px 10px; cursor: pointer;
-    border: 2px solid var(--ink); border-radius: 16px; background: #fff; box-shadow: 0 4px 0 var(--ink);
+    font: inherit; font-size: 1.5rem; font-weight: 900; padding: 14px 10px; min-height: 84px; cursor: pointer;
+    border: 2px solid var(--ink); border-radius: 18px; background: #fff; box-shadow: 0 4px 0 var(--ink);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--ink);
   }
-  .choice:disabled { opacity: .5; cursor: default; }
-  .quiz-q { font-size: 1.5rem; font-weight: 900; text-align: center; margin: 10px 0 20px; }
-  .quiz-c { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-  .quiz-c .choice { min-width: 140px; font-size: 1.2rem; }
+  .choice small { font-size: .85rem; color: var(--muted); font-weight: 700; }
+  .choice.good { background: #E9FBEA; }
+  .choice.bad { background: #FBE3DC; }
+  .choice:disabled { cursor: default; }
+  .showrow { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .showitem { font-size: 3.6rem; background: #FBF8F1; border: 2px solid var(--line); border-radius: 20px; padding: 10px 16px; }
+  .finish { text-align: center; padding: 20px 0; }
+  .finish .big { font-size: 5.5rem; }
+  .finish h2 { font-size: 2rem; font-weight: 900; margin: 6px 0; }
+
+  /* Listing words, classify */
+  .cls-card {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    background: #fff; border: 2px solid var(--line); border-radius: 18px; padding: 12px 14px; margin-bottom: 10px;
+  }
+  .cls-card .pic { font-size: 2.4rem; }
+  .cls-card .w { font-size: 1.3rem; font-weight: 900; direction: ltr; }
+  .cls-btns { display: flex; gap: 8px; }
+  .cls-btn { font: inherit; font-weight: 800; padding: 10px 14px; border-radius: 14px; border: 2px solid var(--ink); background: #fff; cursor: pointer; }
+  .cls-btn.picked { background: var(--sky); }
+  .cls-card.good { background: #E9FBEA; }
+  .cls-card.bad { background: #FBE3DC; }
 
   /* Drawing */
   .tools { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-bottom: 12px; }
@@ -157,49 +209,49 @@
   }
   .draw-prompt { font-size: 1.3rem; font-weight: 900; text-align: center; margin-bottom: 12px; }
 
+  /* Pixel art */
+  .pgrid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 3px; max-width: 380px; margin: 0 auto 14px; background: var(--ink); padding: 3px; border-radius: 12px; }
+  .pcell { aspect-ratio: 1; border: none; border-radius: 4px; background: #fff; cursor: pointer; padding: 0; }
+
+  /* Character */
+  .avatar { width: 200px; height: 240px; margin: 0 auto; background: #FBF8F1; border: 2px solid var(--line); border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 3.2rem; line-height: 1.1; }
+  .char-row { margin-bottom: 14px; }
+  .char-row h4 { margin: 0 0 6px; font-weight: 900; text-align: center; }
+  .char-opts { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .char-opt { font-size: 1.7rem; width: 56px; height: 56px; border-radius: 14px; border: 2px solid var(--ink); background: #fff; cursor: pointer; }
+  .char-opt[aria-pressed="true"] { background: var(--mustard); }
+
   /* Story */
   .dice { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 640px; margin: 0 auto; }
   .die { background: #fff; border: 2px solid var(--line); border-bottom: 6px solid var(--sky); border-radius: 18px; padding: 14px; text-align: center; }
   .die small { display: block; color: var(--muted); font-weight: 800; margin-bottom: 4px; }
   .die b { font-size: 1.3rem; }
-
-  /* Listen list */
-  .lrow {
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 10px 14px; margin-bottom: 10px;
-  }
-  .lrow .w { font-size: 1.4rem; font-weight: 900; direction: ltr; }
-  .lrow .p { color: var(--teal); font-weight: 700; }
-  .lrow .m { color: var(--muted); font-weight: 700; }
-  .lsec { font-size: 1.2rem; font-weight: 900; margin: 18px 0 10px; }
+  .story-start { font-size: 1.3rem; font-weight: 800; background: #FBF8F1; border-radius: 18px; padding: 16px; text-align: center; margin-bottom: 16px; line-height: 1.8; }
+  .endings { display: grid; gap: 10px; max-width: 560px; margin: 0 auto; }
+  .ending { font: inherit; font-size: 1.15rem; font-weight: 800; padding: 14px; border-radius: 16px; border: 2px solid var(--ink); background: #fff; cursor: pointer; text-align: center; }
+  .ending[aria-pressed="true"] { background: var(--sky); }
 
   /* Prayer */
   .sub { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 18px; }
+  .sub .tab { font: inherit; font-weight: 800; padding: 9px 16px; border-radius: 14px; cursor: pointer; border: 2px solid var(--ink); background: transparent; color: var(--ink); }
   .grid-pray { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-  .pcard {
-    background: #fff; border: 2px solid var(--line); border-bottom: 6px solid var(--sage);
-    border-radius: 18px; padding: 14px; text-align: center;
-  }
+  .pcard { background: #fff; border: 2px solid var(--line); border-bottom: 6px solid var(--sage); border-radius: 18px; padding: 14px; text-align: center; }
   .pcard .emo { font-size: 2.4rem; }
   .pcard h3 { margin: 6px 0 2px; font-size: 1.4rem; font-weight: 900; }
   .pcard .sm { color: var(--muted); font-weight: 700; font-size: .95rem; }
   .pcard .rak { color: var(--teal); font-weight: 900; margin-top: 6px; }
-  .info {
-    background: #FBF8F1; border: 2px dashed var(--line); border-radius: 18px;
-    padding: 16px 20px; margin-top: 18px; line-height: 2; font-size: 1.1rem; font-weight: 700;
-  }
+  .info { background: #FBF8F1; border: 2px dashed var(--line); border-radius: 18px; padding: 16px 20px; margin-top: 18px; line-height: 2; font-size: 1.1rem; font-weight: 700; }
   .info h3 { margin: 0 0 6px; font-size: 1.3rem; font-weight: 900; color: var(--teal); }
-  .steps-list { padding-inline-start: 24px; margin: 0; }
-  .steps-list li { margin-bottom: 4px; }
 
   footer { margin-top: 22px; text-align: center; color: var(--muted); font-weight: 700; }
 
   @media (max-width: 560px) {
     .mgrid { grid-template-columns: repeat(3, 1fr); }
-    .choices { grid-template-columns: repeat(2, 1fr); }
+    .choices { grid-template-columns: 1fr; }
     .dice { grid-template-columns: 1fr; }
     .panel { padding: 16px 12px; }
     .ribbon { display: none; }
+    .cards { grid-template-columns: repeat(2, 1fr); }
   }
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
@@ -213,21 +265,31 @@
     <div class="ribbon">🎁 A Gift</div>
     <h1>استوديو التعلم الممتع</h1>
     <p class="dedication">A gift from my best friend</p>
+    <div class="welcome">
+      <p class="wtitle">Welcome to Mohamed Learning Studio</p>
+      <p class="wsub">مرحباً بكم في استوديو محمد للتعلم: متعة، تعليم، وأحلام كبيرة</p>
+    </div>
     <p class="honor">For Mohamed and his children, with respect, love and warm wishes</p>
     <div class="setup">
       <div class="group" id="levels"></div>
       <div class="group" id="kids"></div>
       <input class="name-input" id="kidName" type="text" placeholder="اسم الطفل (اختياري)" autocomplete="off">
     </div>
+    <div class="rewards">
+      <span class="chip">⭐ <span id="starCount">0</span></span>
+      <span class="chip" id="badge"></span>
+      <span class="chip" id="next"></span>
+      <div class="ladder" id="ladder"></div>
+    </div>
   </header>
 
   <div class="langs" id="langs"></div>
-  <nav class="tabs" id="tabs"></nav>
   <section class="panel" id="panel" aria-live="polite"></section>
 
   <footer>Made with love for Mohamed and his children 💛</footer>
 </div>
 
+<script src="./db.js"></script>
 <script>
   // ============ TARGET LANGUAGES ============
   // words: [word, pronunciation in Arabic letters, meaning, emoji]
@@ -322,27 +384,70 @@
       sent: [["Il gatto dorme","القطة تنام"],["Ho una mela","عندي تفاحة"],["Il sole è caldo","الشمس دافئة"]] }
   ];
 
-  // ============ PRAYER CONTENT ============
-  const PRAYERS = [
-    { name: "صلاة الفجر",  tr: "Salat al-Fajr",    time: "من طلوع الفجر إلى قبل شروق الشمس", rak: 2, emoji: "🌅" },
-    { name: "صلاة الظهر",  tr: "Salat ad-Dhuhr",   time: "بعد زوال الشمس عن كبد السماء",   rak: 4, emoji: "☀️" },
-    { name: "صلاة العصر",  tr: "Salat al-Asr",     time: "في وسط النهار إلى قبل الغروب",   rak: 4, emoji: "🌤️" },
-    { name: "صلاة المغرب", tr: "Salat al-Maghrib", time: "بعد غروب الشمس مباشرة",          rak: 3, emoji: "🌇" },
-    { name: "صلاة العشاء", tr: "Salat al-Isha",    time: "بعد غياب الشفق الأحمر",          rak: 4, emoji: "🌙" }
+  // ============ GAMES (20 activities in 4 groups) ============
+  const CATS = [
+    { id: "words",  title: "الحروف والكلمات", cls: "c-words",  bar: "var(--teal)" },
+    { id: "math",   title: "الأرقام والحساب", cls: "c-math",   bar: "var(--mustard)" },
+    { id: "create", title: "الإبداع والخيال", cls: "c-create", bar: "var(--terra)" },
+    { id: "faith",  title: "الدين والقيم",    cls: "c-faith",  bar: "var(--sage)" },
+    { id: "life",   title: "المستقبل والعائلة", cls: "c-words", bar: "var(--plum)" }
+  ];
+  const GAMES = [
+    { id: "match",    cat: "words",  emoji: "🧩", title: "مطابقة الصور",        desc: "طابق الكلمة مع صورتها" },
+    { id: "spell",    cat: "words",  emoji: "🔤", title: "تهجئة الكلمات",       desc: "رتّب الحروف لتكتب الكلمة" },
+    { id: "sent",     cat: "words",  emoji: "✍️", title: "ترتيب الجمل",         desc: "كوّن جملة من كلماتها" },
+    { id: "listen",   cat: "words",  emoji: "👂", title: "استمع واختر",         desc: "اسمع الكلمة واختر صورتها" },
+    { id: "odd",      cat: "words",  emoji: "🔍", title: "الكلمة الغريبة",      desc: "من الذي يختلف عن البقية؟" },
+    { id: "flash",    cat: "words",  emoji: "🧠", title: "ذاكرة الصور",         desc: "تذكّر الصور قبل أن تختفي" },
+    { id: "classify", cat: "words",  emoji: "🌿", title: "الحيوانات والطبيعة",  desc: "صنّف الكلمات في مجموعاتها" },
+    { id: "mathq",    cat: "math",   emoji: "➕", title: "جمع وطرح سريع",       desc: "10 أسئلة وتحدٍّ ممتع" },
+    { id: "count",    cat: "math",   emoji: "🍎", title: "عدّ الصور",           desc: "كم عدد الأشياء؟" },
+    { id: "order",    cat: "math",   emoji: "📶", title: "رتّب الأعداد",        desc: "من الأصغر إلى الأكبر" },
+    { id: "wordprob", cat: "math",   emoji: "📖", title: "مسألة من الحياة",     desc: "حل المسألة الكلامية" },
+    { id: "times",    cat: "math",   emoji: "✖️", title: "جدول الضرب",          desc: "سباق الضرب الممتع" },
+    { id: "numlang",  cat: "math",   emoji: "🌍", title: "الأرقام بلغات العالم", desc: "تعلّم الأرقام بلغتك المختارة" },
+    { id: "draw",     cat: "create", emoji: "🎨", title: "الرسم الحر",          desc: "ارسم ولوّن بخيالك" },
+    { id: "pixel",    cat: "create", emoji: "🟥", title: "رسم بالمربعات",       desc: "لوّن اللوحة مربعاً مربعاً" },
+    { id: "story",    cat: "create", emoji: "💡", title: "مكعب القصص",          desc: "أدِر المكعب واحكِ قصة" },
+    { id: "endstory", cat: "create", emoji: "📚", title: "أكمل القصة",          desc: "اختر النهاية التي تحبها" },
+    { id: "char",     cat: "create", emoji: "🧑‍🎨", title: "صمّم شخصيتك",         desc: "اختر الوجه والقبعة والملابس" },
+    { id: "pray",     cat: "faith",  emoji: "🕌", title: "الصلاة",              desc: "الصلوات الخمس وخطواتها" },
+    { id: "manners",  cat: "faith",  emoji: "🤝", title: "الآداب والقيم",       desc: "أسئلة عن حسن الخلق" },
+    { id: "dreams",   cat: "life",   emoji: "🌟", title: "أحلام المستقبل",      desc: "ماذا تريد أن تصبح؟" },
+    { id: "jobs",     cat: "life",   emoji: "🧰", title: "المهن وأدواتها",      desc: "أي أداة تحتاجها كل مهنة؟" },
+    { id: "family",   cat: "life",   emoji: "👨‍👩‍👧", title: "أفراد العائلة",        desc: "تعلّم أسماء العائلة بلغتك" }
   ];
 
-  // Steps of one rak'ah and the final sitting, in order. "say" is what the child hears.
-  const PRAY_STEPS = [
-    { label: "النية في القلب",            say: "النية في القلب. أنوي أن أصلي لله تعالى" },
-    { label: "تكبيرة الإحرام",            say: "الله أكبر" },
-    { label: "القيام وقراءة الفاتحة",     say: "أقف وأقرأ سورة الفاتحة" },
-    { label: "الركوع",                    say: "أركع وأقول: سبحان ربي العظيم" },
-    { label: "الاعتدال",                  say: "أرفع رأسي وأقول: سمع الله لمن حمده" },
-    { label: "السجود",                    say: "أسجد وأقول: سبحان ربي الأعلى" },
-    { label: "الجلوس بين السجدتين",       say: "أجلس وأقول: رب اغفر لي" },
-    { label: "السجدة الثانية",            say: "أسجد السجدة الثانية وأقول: سبحان ربي الأعلى" },
-    { label: "التشهد في الجلسة الأخيرة",   say: "أجلس وأقرأ التشهد: التحيات لله والصلوات والطيبات" },
-    { label: "التسليم",                   say: "السلام عليكم ورحمة الله. ألتفت يميناً ثم يساراً" }
+  // ============ CONTENT FOR GAMES ============
+  const ANIMAL_IDX = [0, 1, 7, 9];      // cat, dog, butterfly, elephant (same order in every language)
+  const NATURE_IDX = [3, 4, 6];         // sun, water, flower
+  const OTHER_IDX  = [2, 3, 4, 5, 6, 8];
+
+  const STORIES = [
+    { start: "وجدتُ صندوقاً صغيراً تحت السرير، وعليه قفل لامع...",
+      ends: ["فتحته فوجدت كنزاً من الذهب ⭐", "فتحته فخرج منه قط صغير يضحك 🐱", "فتحته فإذا فيه خريطة إلى مغامرة جديدة 🗺️"] },
+    { start: "في صباح العيد، استيقظتُ فوجدت بالوناً كبيراً أمام نافذتي...",
+      ends: ["ركبتُه فطار بي فوق المدينة 🎈", "أمسكت خيطه فوجدت رسالة من صديق بعيد 💌", "انفجر بهدوء وخرج منه مليون فراشة 🦋"] },
+    { start: "قال لي الحارس: هذه الغابة فيها سر عجيب...",
+      ends: ["ومشيت وحدي حتى وجدت بحيرة من الضوء 💧", "فوجدت شجرة تتكلم بلغة الطيور 🐦", "فاكتشفت أن الأسد صديقي الجديد 🦁"] }
+  ];
+
+  const CHAR_ROWS = [
+    { name: "الوجه",    opts: ["😀","😊","😎","🥳","🤩"] },
+    { name: "القبعة",   opts: ["","🎩","👑","🧢","🎓","⛑️"] },
+    { name: "الملابس",  opts: ["👕","👗","🥋","🦸","🧥"] },
+    { name: "الصديق",   opts: ["","🐶","🐱","🐰","🐉","🦄","🐢"] }
+  ];
+
+  const MANNERS = [
+    { q: "ماذا تقول عند تلقي هدية؟", c: ["شكراً جزيلاً", "لا أريدها"], a: 0 },
+    { q: "كيف تحيّي أمك في الصباح؟", c: ["صباح الخير يا أمي", "أتجاهلها"], a: 0 },
+    { q: "عندما يتكلم شخص ما، ماذا تفعل؟", c: ["أستمع إليه باحترام", "أقاطعه"], a: 0 },
+    { q: "إذا أخطأت في حق صديقك، ماذا تقول؟", c: ["أعتذر منه", "أتكبر عليه"], a: 0 },
+    { q: "أين نرمي الأوراق والفضلات؟", c: ["في سلة المهملات", "في الشارع"], a: 0 },
+    { q: "ماذا نقول بعد العطاس؟", c: ["الحمد لله", "لا شيء أبداً"], a: 0 },
+    { q: "كيف نتعامل مع الضيف؟", c: ["نرحب به ونكرمه", "نتجاهله"], a: 0 },
+    { q: "هل نساعد الآخرين عندما نستطيع؟", c: ["نعم، بفرح", "لا"], a: 0 }
   ];
 
   const QUIZ = [
@@ -358,23 +463,47 @@
     { q: "بماذا تنتهي الصلاة؟", c: ["بالتسليم","بالسجود","بالدعاء فقط"], a: 0 }
   ];
 
+  // ============ PRAYER CONTENT ============
+  const PRAYERS = [
+    { name: "صلاة الفجر",  tr: "Salat al-Fajr",    time: "من طلوع الفجر إلى قبل شروق الشمس", rak: 2, emoji: "🌅" },
+    { name: "صلاة الظهر",  tr: "Salat ad-Dhuhr",   time: "بعد زوال الشمس عن كبد السماء",   rak: 4, emoji: "☀️" },
+    { name: "صلاة العصر",  tr: "Salat al-Asr",     time: "في وسط النهار إلى قبل الغروب",   rak: 4, emoji: "🌤️" },
+    { name: "صلاة المغرب", tr: "Salat al-Maghrib", time: "بعد غروب الشمس مباشرة",          rak: 3, emoji: "🌇" },
+    { name: "صلاة العشاء", tr: "Salat al-Isha",    time: "بعد غياب الشفق الأحمر",          rak: 4, emoji: "🌙" }
+  ];
+  const PRAY_STEPS = [
+    { label: "النية في القلب",            say: "النية في القلب. أنوي أن أصلي لله تعالى" },
+    { label: "تكبيرة الإحرام",            say: "الله أكبر" },
+    { label: "القيام وقراءة الفاتحة",     say: "أقف وأقرأ سورة الفاتحة" },
+    { label: "الركوع",                    say: "أركع وأقول: سبحان ربي العظيم" },
+    { label: "الاعتدال",                  say: "أرفع رأسي وأقول: سمع الله لمن حمده" },
+    { label: "السجود",                    say: "أسجد وأقول: سبحان ربي الأعلى" },
+    { label: "الجلوس بين السجدتين",       say: "أجلس وأقول: رب اغفر لي" },
+    { label: "السجدة الثانية",            say: "أسجد السجدة الثانية وأقول: سبحان ربي الأعلى" },
+    { label: "التشهد في الجلسة الأخيرة",   say: "أجلس وأقرأ التشهد: التحيات لله والصلوات والطيبات" },
+    { label: "التسليم",                   say: "السلام عليكم ورحمة الله. ألتفت يميناً ثم يساراً" }
+  ];
+
   const UI = {
-    matchHint: "طابق كل كلمة مع صورتها ومعناها. اضغط البطاقة لتسمع الكلمة",
+    matchHint: "طابق كل كلمة مع صورتها. اضغط البطاقة لتسمع الكلمة",
     spellHint: "رتّب الحروف لتكتب الكلمة الصحيحة",
     sentHint: "رتّب الكلمات لتكوّن الجملة الصحيحة",
     prayHint: "رتّب خطوات الصلاة بالترتيب الصحيح",
-    mathHint: "اختر الجواب الصحيح",
+    orderHint: "رتّب الأعداد من الأصغر إلى الأكبر",
     drawHint: "ارسم بخيالك! اختر لونك ثم ابدأ",
+    pixelHint: "اختر لوناً ثم اضغط المربعات لتلوينها",
+    charHint: "صمّم شخصيتك كما تحب",
     storyHint: "أدِر المكعب وابدأ قصتك",
-    listenHint: "اضغط على الزر لتسمع النطق الصحيح",
-    next: "التالي", again: "العب مرة أخرى", moves: "الحركات",
-    done: "أحسنت! وجدت كل الأزواج 🏆", wrong: "ليس تماماً، حاول مرة أخرى", correct: "أحسنت! 🎉",
+    classifyHint: "اضغط الزر المناسب: حيوان أم طبيعة؟",
+    soundNote: "إذا لم تسمع الصوت، تأكد من مستوى الصوت ثم اضغط أي زر مرة واحدة",
+    home: "← الرئيسية", next: "التالي", nextGame: "اللعبة التالية ➜", again: "العب مرة أخرى",
+    moves: "الحركات", done: "أحسنت! وجدت كل الأزواج 🏆", wrong: "ليس تماماً، حاول مرة أخرى",
+    correct: "أحسنت! 🎉", finish: "عرض النتيجة 🏁", allDone: "أحسنت! أكملت اللعبة كلها 🏆",
     roll: "أدِر المكعب 🎲", newDraw: "كلمة جديدة 🎲", clear: "امسح الرسم", save: "احفظ الرسم 💾",
-    story: "اكتب قصتك الآن!", hero: "البطل", place: "المكان", thing: "الشيء", act: "الحدث",
-    levels: [["primary","ابتدائي"],["middle","متوسط"]],
+    newStory: "قصة جديدة 📖", hero: "البطل", place: "المكان", thing: "الشيء", act: "الحدث",
+    story: "اكتب قصتك الآن!", clearPix: "امسح اللوحة",
+    levels: [["primary","ابتدائي"],["middle","متوسط"],["high","ثانوي"],["uni","جامعي"],["adult","الكبار والأسرة"]],
     kids: [["boy","👦 ولد"],["girl","👧 بنت"]],
-    tabs: [["match","🧩 مطابقة"],["spell","🔤 تهجئة"],["sent","✍️ جمل"],["math","🔢 حساب"],
-           ["draw","🎨 رسم"],["story","💡 خيال"],["listen","🔊 استمع"],["pray","🕌 الصلاة"]],
     praySubs: [["five","الصلوات الخمس"],["steps","رتّب خطوات الصلاة"],["quiz","أسئلة وأحكام"]],
     rules: ["الوضوء قبل الصلاة، فهو شرط لصحتها","ستر العورة بلباس طاهر ونظيف","مكان طاهر تقف فيه","دخول وقت الصلاة قبل أن تبدأ","استقبال القبلة","النية في القلب عند البدء","الطمأنينة في الركوع والسجود، أي الهدوء","الخشوع وعدم الكلام أو الضحك أثناء الصلاة"],
     finishTitle: "كيف تنتهي الصلاة؟",
@@ -389,6 +518,7 @@
   const THINGS = ["🗝️ مفتاح سحري","🪄 عصا مضيئة","📦 صندوق غامض","🐉 تنين صغير","🧭 بوصلة ذهبية","🎈 بالون طائر"];
   const ACTS = ["وجد كنزاً مخفياً","صنع صديقاً جديداً","رسم خريطة للمغامرة","حلّ لغزاً صعباً","طار عالياً فوق المدينة","اخترع شيئاً عجيباً"];
   const PALETTE = ["#1F3B40","#E07A5F","#F2C14E","#2A7F7A","#8FC7D6","#A8C5A0","#9B5DE5","#FFFFFF"];
+  const BADGES = [[0,"🌱 High Level | مستوى عالٍ"],[10,"🥉 Adventurer | مغامر"],[25,"🥈 Little Star | نجم صغير"],[40,"🌟 Star Explorer | مستكشف النجوم"],[60,"🎓 Scholar | عالم صغير"],[80,"🥇 Learning Champion | بطل التعلم"],[110,"💎 Diamond | الماسة"],[150,"🚀 Space Hero | بطل الفضاء"],[200,"👑 Royal Master | سيد المعرفة"],[300,"🏆 Legend | أسطورة الاستوديو"]];
   const VOICE = { en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE", tr: "tr-TR", ru: "ru-RU", ar: "ar-SA", it: "it-IT" };
 
   // ============ STATE ============
@@ -396,7 +526,7 @@
   let level = "primary";
   let kid = "boy";
   let kidName = "";
-  let mode = "match";
+  let view = "home";
   let pSub = "five";
   let game = null;
   let score = 0;
@@ -408,29 +538,46 @@
   const isArabic = () => L().code === "ar";
 
   // ============ SOUND ============
-  // Uses the device's built-in voices. Clear, slow speech suited to children.
+  const SPEECH_OK = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  let voices = [];
+  let soundUnlocked = false;
+  function loadVoices() { if (SPEECH_OK) voices = speechSynthesis.getVoices(); }
+  if (SPEECH_OK) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+  function unlockSound() {
+    if (!SPEECH_OK || soundUnlocked) return;
+    soundUnlocked = true;
+    const u = new SpeechSynthesisUtterance(" ");
+    u.volume = 0;
+    speechSynthesis.speak(u);
+  }
+  document.addEventListener("pointerdown", unlockSound);
+  function pickVoice(lang) {
+    const prefix = lang.slice(0, 2).toLowerCase();
+    return voices.find(v => v.lang.toLowerCase() === lang.toLowerCase())
+        || voices.find(v => v.lang.toLowerCase().startsWith(prefix)) || null;
+  }
   function speak(text, code) {
-    if (!("speechSynthesis" in window) || !text) return;
+    if (!SPEECH_OK || !text) return;
+    const lang = VOICE[code] || "en-US";
+    if (speechSynthesis.paused) speechSynthesis.resume();
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    const lang = VOICE[code] || "en-US";
-    u.lang = lang;
-    u.rate = 0.75;
-    u.pitch = 1;
-    const v = speechSynthesis.getVoices().find(x => x.lang.toLowerCase().startsWith(lang.slice(0, 2)));
+    u.lang = lang; u.rate = 0.75; u.pitch = 1; u.volume = 1;
+    const v = pickVoice(lang);
     if (v) u.voice = v;
+    u.onerror = e => console.warn("Speech error:", e.error);
     speechSynthesis.speak(u);
   }
   const speakAr = text => speak(text, "ar");
 
+  // ============ HELPERS ============
   function shuffle(a) {
     const r = a.slice();
-    for (let i = r.length - 1; i > 0; i--) {
-      const j = rand(i + 1);
-      [r[i], r[j]] = [r[j], r[i]];
-    }
+    for (let i = r.length - 1; i > 0; i--) { const j = rand(i + 1); [r[i], r[j]] = [r[j], r[i]]; }
     return r;
   }
+  function pickN(arr, n) { return shuffle(arr).slice(0, n); }
+  function pickOne(arr) { return arr[rand(arr.length)]; }
   function scrambledOrder(n) {
     let o;
     do { o = shuffle([...Array(n).keys()]); } while (n > 1 && o.every((v, i) => v === i));
@@ -440,17 +587,32 @@
     const n = kidName.trim() ? " " + kidName.trim() : "";
     return kid === "girl" ? `برافو يا أميرتي${n}! 🌟` : `برافو يا بطل${n}! 🌟`;
   }
-  function wordsPool() {
-    return L().words.slice(0, level === "primary" ? 6 : 10);
+  function wordsPool() { return L().words.slice(0, level === "primary" ? 10 : L().words.length); }
+  function addScore(n = 1) { score += n; }
+  function badgeOf(s) { let b = BADGES[0][1]; for (const [t, name] of BADGES) if (s >= t) b = name; return b; }
+  function distractors(ans, count, min = 0) {
+    const set = new Set();
+    let guard = 0;
+    while (set.size < count && guard++ < 500) {
+      const d = ans + (rand(9) - 4);
+      if (d >= min && d !== ans) set.add(d);
+    }
+    return [...set];
+  }
+  function mkChoices(correct, wrongs) {
+    return shuffle([{ t: correct, ok: true }, ...wrongs.map(w => ({ t: w, ok: false }))]);
   }
 
-  // ============ MATCH ============
+  // ============ BUILDERS (spell, sentence, ordering, prayer steps) ============
+  function makeBuild(kind, tokens, text, meaning, pron, sep) {
+    return { kind, sep, tokens, order: scrambledOrder(tokens.length), answer: [], status: "", text, meaning, pron };
+  }
   function newMatch() {
     const pool = wordsPool();
     const n = Math.min(pool.length, level === "primary" ? 6 : 8);
-    const picked = shuffle(pool).slice(0, n);
+    const picked = pickN(pool, n);
     const cards = shuffle(picked.flatMap((w, k) => [{ k, face: "w" }, { k, face: "p" }]));
-    game = { items: picked, cards, open: [], matched: [], moves: 0 };
+    game = { type: "match", items: picked, cards, open: [], matched: [], moves: 0 };
   }
   function flip(i) {
     const g = game;
@@ -464,6 +626,7 @@
       if (g.cards[a].k === g.cards[b].k && g.cards[a].face !== g.cards[b].face) {
         g.matched.push(g.cards[a].k);
         g.open = [];
+        addScore();
       } else {
         render();
         setTimeout(() => { if (game === g) { g.open = []; render(); } }, 900);
@@ -472,19 +635,22 @@
     }
     render();
   }
-
-  // ============ BUILDERS (spell, sentence, prayer steps) ============
-  function makeBuild(kind, tokens, text, meaning, pron, sep) {
-    return { kind, sep, tokens, order: scrambledOrder(tokens.length), answer: [], status: "", text, meaning, pron };
-  }
   function newSpell() {
     const pool = wordsPool();
-    const w = pool[rand(pool.length)];
+    const w = pickOne(pool);
     game = makeBuild("spell", [...w[0]], w[0], w[2], w[1], "");
   }
   function newSent() {
-    const s = L().sent[rand(L().sent.length)];
+    const s = pickOne(L().sent);
     game = makeBuild("sent", s[0].split(" "), s[0], s[1], "", " ");
+  }
+  function newOrder() {
+    const max = level === "primary" ? 20 : 100;
+    const n = level === "primary" ? 4 : 6;
+    const set = new Set();
+    while (set.size < n) set.add(1 + rand(max));
+    const sorted = [...set].sort((a, b) => a - b);
+    game = makeBuild("ordered", sorted.map(String), "", "", "", " ");
   }
   function newPray() {
     const steps = level === "primary" ? PRAY_STEPS.slice(0, 6) : PRAY_STEPS;
@@ -492,7 +658,7 @@
     game.steps = steps;
   }
   function isCorrect(g) {
-    if (g.kind === "pray") return g.answer.every((p, k) => p === k);
+    if (g.kind === "pray" || g.kind === "ordered") return g.answer.every((p, k) => p === k);
     return g.answer.map(q => g.tokens[q]).join(g.sep) === g.tokens.join(g.sep);
   }
   function pick(p) {
@@ -502,7 +668,7 @@
     if (g.answer.length === g.tokens.length) {
       if (isCorrect(g)) {
         g.status = "ok";
-        score++;
+        addScore();
         if (g.kind === "spell" || g.kind === "sent") speak(g.text, L().code);
         if (g.kind === "pray") speakAr("صلاتك تبدأ بالنية ثم تكبيرة الإحرام");
       } else {
@@ -520,52 +686,227 @@
     game.status = "";
     render();
   }
-
-  // ============ QUIZ ============
-  function newQuiz() {
-    game = { kind: "quiz", q: QUIZ[rand(QUIZ.length)], status: "", picked: -1 };
+  function nextBuild() {
+    const k = game.kind;
+    if (k === "spell") newSpell();
+    else if (k === "sent") newSent();
+    else if (k === "ordered") newOrder();
+    else if (k === "pray") newPray();
   }
-  function answerQuiz(i) {
-    if (game.status === "ok") return;
-    game.picked = i;
-    if (i === game.q.a) { game.status = "ok"; score++; }
-    else game.status = "bad";
+
+  // ============ QUIZ ENGINE ============
+  // A generator returns { q: html, c: [{t, ok}], say?, show? }. The engine handles rounds, score and results.
+  function startQuiz(gen, total = 10) {
+    game = { type: "quiz", gen, total, round: 0, correct: 0, cur: null, phase: "ask", status: "", picked: -1, done: false };
+    nextRound();
+  }
+  function nextRound() {
+    const g = game;
+    g.round++;
+    g.status = "";
+    g.picked = -1;
+    g.cur = g.gen();
+    if (g.cur.show) {
+      g.phase = "show";
+      setTimeout(() => { if (game === g && view !== "home") { g.phase = "ask"; render(); } }, 2800);
+    } else g.phase = "ask";
+  }
+  function quizAnswer(i) {
+    const g = game;
+    if (g.phase !== "ask" || g.status === "ok") return;
+    g.picked = i;
+    if (g.cur.c[i].ok) { g.status = "ok"; g.correct++; addScore(); speakAr("أحسنت"); }
+    else g.status = "bad";
+    render();
+  }
+  function quizNext() {
+    const g = game;
+    if (g.round >= g.total) g.done = true;
+    else nextRound();
     render();
   }
 
-  // ============ MATH ============
-  function newMath() {
-    let a, b, op, ans;
-    if (level === "primary") {
-      a = 1 + rand(9); b = 1 + rand(10 - a); op = "+"; ans = a + b;
-    } else {
-      const r = Math.random();
-      if (r < 0.35) { op = "+"; a = 10 + rand(60); b = 10 + rand(40); ans = a + b; }
-      else if (r < 0.7) { op = "−"; a = 10 + rand(90); b = 1 + rand(a - 1); ans = a - b; }
-      else { op = "×"; a = 2 + rand(11); b = 2 + rand(11); ans = a * b; }
-    }
-    const set = new Set([ans]);
-    while (set.size < 4) {
-      const d = ans + (rand(9) - 4);
-      if (d >= 0 && d !== ans) set.add(d);
-    }
-    game = { a, b, op, ans, choices: shuffle([...set]), status: "" };
+  // Quiz generators
+  function genListen() {
+    const pool = wordsPool();
+    const w = pickOne(pool);
+    const others = pickN(pool.filter(x => x !== w), 3);
+    const c = mkChoices(`<span class="pic">${w[3]}</span><small>${w[2]}</small>`,
+                        others.map(o => `<span class="pic">${o[3]}</span><small>${o[2]}</small>`));
+    return { q: `<p class="qtext">اسمع الكلمة واختر الصورة الصحيحة</p>`, say: w[0], c };
   }
-  function answerMath(v) {
-    if (game.status === "ok") return;
-    if (v === game.ans) {
-      game.status = "ok";
-      score++;
-      if (v >= 1 && v <= 10) speak(L().nums[v - 1], L().code);
-    } else game.status = "bad";
-    render();
+  function genOdd() {
+    const animals = pickN(ANIMAL_IDX, 3);
+    const other = pickOne(OTHER_IDX);
+    const idxs = shuffle([...animals, other]);
+    const c = idxs.map(i => {
+      const w = L().words[i];
+      return { t: `<span class="pic">${w[3]}</span><small>${w[2]}</small>`, ok: i === other };
+    });
+    return { q: `<p class="qtext">أيّ شيء لا يشبه البقية؟</p>`, c };
   }
-
-  // ============ DRAW ============
-  function newDrawWord() {
+  function genFlash() {
     const pool = L().words;
-    game = { drawWord: pool[rand(pool.length)] };
+    const shown = pickN(pool, 4);
+    const notShown = pool.filter(w => !shown.includes(w));
+    const target = pickOne(shown);
+    const wrongs = pickN(notShown, 3).map(w => `<span class="pic">${w[3]}</span><small>${w[2]}</small>`);
+    const c = mkChoices(`<span class="pic">${target[3]}</span><small>${target[2]}</small>`, wrongs);
+    return { q: `<p class="qtext">أيّ هذه الصور كانت معروضة؟</p>`, show: shown, c };
   }
+  function genMath() {
+    let a, b, op, ans;
+    if (level === "primary") { a = 1 + rand(9); b = 1 + rand(10 - a); op = "+"; ans = a + b; }
+    else {
+      const r = Math.random();
+      if (r < 0.4) { op = "+"; a = 10 + rand(60); b = 10 + rand(40); ans = a + b; }
+      else { op = "−"; a = 10 + rand(90); b = 1 + rand(a - 1); ans = a - b; }
+    }
+    const c = mkChoices(String(ans), distractors(ans, 3).map(String));
+    return { q: `<div class="equation">${a} ${op} ${b} = ?</div>`, c };
+  }
+  function genCount() {
+    const emoji = pickOne(["🍎","⭐","🐟","🌸","🎈"]);
+    const n = 1 + rand(level === "primary" ? 8 : 14);
+    const row = Array(n).fill(`<span>${emoji}</span>`).join(" ");
+    const c = mkChoices(String(n), distractors(n, 3, 1).map(String));
+    return { q: `<div class="showrow" style="font-size:2.2rem">${row}</div><p class="qtext" style="margin-top:12px">كم عدد ${emoji}؟</p>`, c };
+  }
+  function genWord() {
+    if (level === "adult") return genBudget();
+    const it = pickOne(["🍎","🍪","⭐","🎈","📚"]);
+    let q, ans;
+    if (Math.random() < 0.5) {
+      const a = 1 + rand(9), b = 1 + rand(level === "primary" ? 9 - (a > 5 ? 4 : 0) : 9);
+      ans = a + b;
+      q = `عندي ${a} ${it} وأعطاني صديقي ${b}. كم أصبح عندي؟`;
+    } else {
+      const a = 3 + rand(8), b = 1 + rand(a - 1);
+      ans = a - b;
+      q = `كان عندي ${a} ${it} وأعطيت صديقي ${b}. كم بقي معي؟`;
+    }
+    const c = mkChoices(String(ans), distractors(ans, 3, 0).map(String));
+    return { q: `<p class="qtext">${q}</p>`, c };
+  }
+  function genTimes() {
+    const maxA = level === "primary" ? 5 : 9;
+    const a = 2 + rand(maxA - 1), b = 2 + rand(9);
+    const ans = a * b;
+    const c = mkChoices(String(ans), distractors(ans, 3, 1).map(String));
+    return { q: `<div class="equation">${a} × ${b} = ?</div>`, c };
+  }
+  function genNum() {
+    const n = 1 + rand(10);
+    const L_ = L();
+    const word = L_.nums[n - 1];
+    const wrongIdx = pickN([...Array(10).keys()].filter(i => i !== n - 1), 3);
+    const fmt = i => `${L_.nums[i]}${L_.numsP[i] ? `<small>${L_.numsP[i]}</small>` : ""}`;
+    const c = mkChoices(fmt(n - 1), wrongIdx.map(fmt));
+    return { q: `<div class="bigdigit">${n}</div><p class="qtext">ما اسم هذا الرقم؟</p>`, say: word, c };
+  }
+  function genManners() {
+    const m = pickOne(MANNERS);
+    const c = shuffle(m.c.map((t, i) => ({ t, ok: i === m.a })));
+    return { q: `<p class="qtext">${m.q}</p>`, c };
+  }
+  function genPray() {
+    const item = pickOne(QUIZ);
+    const c = shuffle(item.c.map((t, i) => ({ t, ok: i === item.a })));
+    return { q: `<p class="qtext ar">${item.q}</p>`, c };
+  }
+  const QUIZ_GENS = { listen: genListen, odd: genOdd, flash: genFlash, mathq: genMath, count: genCount,
+                      wordprob: genWord, times: genTimes, numlang: genNum, manners: genManners, jobs: genJob, family: genFamily };
+
+  // Job and tool quiz
+  function genJob() {
+    const P = DB.professions;
+    const p = pickOne(P);
+    const others = pickN(P.filter(x => x !== p), 3);
+    const tool = t => `<span class="pic">${t}</span>`;
+    const c = mkChoices(tool(p.tools[0]), others.map(o => tool(o.tools[0])));
+    return { q: `<p class="qtext">أيّ أداة يستعملها ${p.names[L().code]} ${p.emoji}؟</p>`, say: p.names[L().code], c };
+  }
+  // Family members quiz
+  function genFamily() {
+    const F = DB.family;
+    const m = pickOne(F);
+    const others = pickN(F.filter(x => x !== m), 3);
+    const label = x => `${x.names[L().code]}<small>${x.ar}</small>`;
+    const c = mkChoices(label(m), others.map(label));
+    return { q: `<div class="picture">${m.emoji}</div><p class="qtext">ما اسم هذا الفرد؟</p>`, say: m.names[L().code], c };
+  }
+  // Adult budget problem (housewife, family shopping)
+  function genBudget() {
+    const kg = 1 + rand(6), price = 2 + rand(9);
+    const ans = kg * price;
+    const c = mkChoices(String(ans), distractors(ans, 3, 1).map(String));
+    return { q: `<p class="qtext">اشترت ربة البيت ${kg} كيلو من الأرز بسعر ${price} دنانير للكيلو. كم دفعت؟</p>`, c };
+  }
+  // Dreams: choose a profession and set it as a dream
+  function viewDreams() {
+    const g = game, P = DB.professions, code = L().code;
+    const grid = P.map((p, i) =>
+      `<button class="gcard c-words" data-act="dpick" data-idx="${i}"><span class="ge">${p.emoji}</span><b>${p.names[code]}</b></button>`).join("");
+    let detail = "";
+    if (g.picked >= 0) {
+      const p = P[g.picked];
+      detail = `<div class="qbox">
+        <div class="picture">${p.emoji}</div>
+        <div class="meaning">${p.names[code]} <button class="spk" data-act="speakjob" data-idx="${g.picked}" aria-label="استمع">🔊</button></div>
+        <p class="qtext">${p.what}</p>
+        <div class="picture" style="font-size:2.4rem">${p.tools.join(" ")}</div>
+        <div class="center"><button class="btn" data-act="dream" data-idx="${g.picked}">أحلم أن أصبح ${p.names.ar} ⭐</button></div>
+      </div>`;
+    }
+    const dream = g.dream >= 0 ? `<p class="msg ok">حلمك: ${P[g.dream].names.ar} ${P[g.dream].emoji} — ${praise()}</p>` : "";
+    return `<p class="hint">ماذا تريد أن تصبح عندما تكبر؟</p>${dream}<div class="cards">${grid}</div>${detail}`;
+  }
+
+  // ============ OTHER GAMES ============
+  function newClassify() {
+    const pool = shuffle([...ANIMAL_IDX, ...NATURE_IDX]).slice(0, 6);
+    game = { type: "classify", items: pool.map(i => ({ i, ans: null, locked: false })) };
+  }
+  function classifyPick(idx) {
+    const it = Math.floor(idx / 2), ch = idx % 2;
+    const item = game.items[it];
+    if (item.locked) return;
+    item.ans = ch;
+    const right = (ANIMAL_IDX.includes(item.i) ? 0 : 1) === ch;
+    if (right) { item.locked = true; addScore(); speakAr("أحسنت"); }
+    render();
+  }
+  function newEnd() { game = { type: "end", s: pickOne(STORIES), picked: -1 }; }
+  function newDrawWord() { game = { type: "draw", drawWord: pickOne(L().words) }; }
+  function rollStory() {
+    const hero = kidName.trim() ? "👤 " + kidName.trim() : pickOne(HEROES);
+    game = { type: "story", hero, place: pickOne(PLACES), thing: pickOne(THINGS), act: pickOne(ACTS) };
+  }
+  function initGame(id) {
+    game = null;
+    if (QUIZ_GENS[id]) return startQuiz(QUIZ_GENS[id], 10);
+    switch (id) {
+      case "match": return newMatch();
+      case "spell": return newSpell();
+      case "sent": return newSent();
+      case "order": return newOrder();
+      case "classify": return newClassify();
+      case "dreams": game = { type: "dreams", picked: -1, dream: -1 }; return;
+      case "pixel": game = { type: "pixel", grid: Array(64).fill(""), color: PALETTE[1] }; return;
+      case "char": game = { type: "char", sel: [0, 0, 0, 0] }; return;
+      case "endstory": return newEnd();
+      case "draw": return newDrawWord();
+      case "story": return rollStory();
+      case "pray":
+        if (pSub === "steps") return newPray();
+        if (pSub === "quiz") return startQuiz(genPray, 10);
+        return;
+    }
+  }
+  function openGame(id) { view = id; initGame(id); render(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+  function goHome() { view = "home"; game = null; render(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+
+  // ============ CANVAS (drawing) ============
   function initCanvas() {
     const c = $("cv");
     if (!c) return;
@@ -578,23 +919,15 @@
       return [(e.clientX - r.left) * c.width / r.width, (e.clientY - r.top) * c.height / r.height];
     };
     c.addEventListener("pointerdown", e => {
-      drawing = true;
-      c.setPointerCapture(e.pointerId);
+      drawing = true; c.setPointerCapture(e.pointerId);
       const [x, y] = pos(e);
-      ctx.strokeStyle = brush.color;
-      ctx.lineWidth = brush.size;
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
-      ctx.beginPath();
-      ctx.moveTo(x, y);
+      ctx.strokeStyle = brush.color; ctx.lineWidth = brush.size; ctx.lineCap = "round"; ctx.lineJoin = "round";
+      ctx.beginPath(); ctx.moveTo(x, y);
     });
     c.addEventListener("pointermove", e => {
       if (!drawing) return;
       const [x, y] = pos(e);
-      ctx.lineTo(x, y);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(x, y);
+      ctx.lineTo(x, y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(x, y);
     });
     const stop = () => { drawing = false; };
     c.addEventListener("pointerup", stop);
@@ -615,15 +948,21 @@
     a.href = c.toDataURL("image/png");
     a.click();
   }
-
-  // ============ STORY ============
-  function rollStory() {
-    const pick = arr => arr[rand(arr.length)];
-    const hero = kidName.trim() ? "👤 " + kidName.trim() : pick(HEROES);
-    game = { hero, place: pick(PLACES), thing: pick(THINGS), act: pick(ACTS) };
-  }
+  function promptText(w) { return `${w[3]} ${w[2]}${isArabic() ? "" : " ← " + w[0]}`; }
 
   // ============ VIEWS ============
+  function viewHome() {
+    const sections = CATS.map(c => {
+      const cards = GAMES.filter(g => g.cat === c.id).map(g =>
+        `<button class="gcard ${c.cls}" data-game="${g.id}">
+           <span class="ge">${g.emoji}</span><b>${g.title}</b><small>${g.desc}</small>
+         </button>`).join("");
+      return `<section class="cat"><h2><span class="bar-c" style="background:${c.bar}"></span>${c.title}</h2>
+              <div class="cards">${cards}</div></section>`;
+    }).join("");
+    return `<p class="intro">اختر لعبة وابدأ المغامرة! 🎉</p>${sections}`;
+  }
+
   function viewMatch() {
     const g = game;
     const done = g.matched.length === g.items.length;
@@ -640,116 +979,150 @@
     }).join("");
     return `
       <p class="hint">${UI.matchHint}</p>
+      <div class="sound-note">${UI.soundNote}</div>
       <div class="bar"><span class="stat">${UI.moves}: ${g.moves}</span></div>
       <div class="mgrid" dir="${L().dir}">${cards}</div>
       ${done ? `<p class="msg ok">${UI.done}</p><div class="center"><button class="btn" data-act="again">${UI.again}</button></div>` : ""}`;
   }
 
   function viewBuild() {
-    const g = game;
-    const isSpell = g.kind === "spell";
-    const isSent = g.kind === "sent";
-    const isPray = g.kind === "pray";
-    const tile = isSpell ? "tile" : "tile word";
-    const dir = isPray ? "rtl" : L().dir;
-    const ar = (isArabic() || isPray) ? "ar" : "";
-    const slots = g.tokens.map((_, k) =>
-      k < g.answer.length
-        ? `<button class="${tile} ${ar}" data-act="unpick" data-idx="${k}">${g.tokens[g.answer[k]]}</button>`
-        : `<span class="slot"></span>`
-    ).join("");
+    const g = game, k = g.kind;
+    const tile = k === "spell" ? "tile" : "tile word";
+    const dir = k === "ordered" ? "ltr" : k === "pray" ? "rtl" : L().dir;
+    const ar = (isArabic() || k === "pray") ? "ar" : "";
+    const slots = g.tokens.map((_, i) =>
+      i < g.answer.length
+        ? `<button class="${tile} ${ar}" data-act="unpick" data-idx="${i}">${g.tokens[g.answer[i]]}</button>`
+        : `<span class="slot"></span>`).join("");
     const pool = g.order.map(p => {
       const used = g.answer.includes(p);
       return `<button class="${tile} ${ar}" data-act="pick" data-idx="${p}" ${used ? "disabled" : ""}>${g.tokens[p]}</button>`;
     }).join("");
     const revealed = g.status === "ok";
-
-    let picture = "";
-    let stage = "";
-    let reveal = "";
-    if (isSpell) {
-      picture = `<div class="picture">${pictureFor(g)}</div>`;
+    let stage = "", reveal = "", hint = "";
+    if (k === "spell") {
+      hint = UI.spellHint;
+      stage = `<div class="picture">${pictureFor(g)}</div><div class="meaning">${g.meaning}</div>`;
+      if (revealed) reveal = `<div class="meaning ${ar}" dir="${L().dir}">${g.text}<button class="spk" data-act="speakcur">🔊</button></div>${g.pron ? `<div class="pron">${g.pron}</div>` : ""}`;
+    } else if (k === "sent") {
+      hint = UI.sentHint;
       stage = `<div class="meaning">${g.meaning}</div>`;
       if (revealed) reveal = `<div class="meaning ${ar}" dir="${L().dir}">${g.text}<button class="spk" data-act="speakcur">🔊</button></div>`;
-    } else if (isSent) {
-      stage = `<div class="meaning">${g.meaning}</div>`;
-      if (revealed) reveal = `<div class="meaning ${ar}" dir="${L().dir}">${g.text}<button class="spk" data-act="speakcur">🔊</button></div>`;
+    } else if (k === "ordered") {
+      hint = UI.orderHint;
+      stage = `<div class="picture">🔢</div>`;
     } else {
-      picture = `<div class="picture">🕌</div>`;
-      if (revealed) {
-        reveal = `<ol class="steps-list" style="text-align:right">${g.steps.map((s, k) =>
-          `<li>${s.label} <button class="spk" data-act="speakstep" data-idx="${k}">🔊</button></li>`).join("")}</ol>`;
-      }
+      hint = UI.prayHint;
+      stage = `<div class="picture">🕌</div>`;
+      if (revealed) reveal = `<ol class="steps-list" style="text-align:right">${g.steps.map((s, i) =>
+        `<li>${s.label} <button class="spk" data-act="speakstep" data-idx="${i}">🔊</button></li>`).join("")}</ol>`;
     }
-    const hint = isSpell ? UI.spellHint : isSent ? UI.sentHint : UI.prayHint;
     const msg = revealed ? `<p class="msg ok">${UI.correct}</p>`
               : g.status === "bad" ? `<p class="msg bad">${UI.wrong}</p>` : `<p class="msg"></p>`;
-    const next = revealed && !isPray ? `<div class="center"><button class="btn" data-act="next">${UI.next}</button></div>` : "";
-    const restart = revealed && isPray ? `<div class="center"><button class="btn" data-act="prayagain">${UI.next}</button></div>` : "";
+    const next = revealed ? `<div class="center"><button class="btn" data-act="next">${UI.next}</button></div>` : "";
     return `
       <p class="hint">${hint}</p>
-      <div class="bar"><span class="stat">⭐ ${score}</span></div>
-      <div class="stage">${picture}${stage}${reveal}</div>
+      <div class="stage">${stage}${reveal}</div>
       <div class="row" dir="${dir}">${slots}</div>
       <div class="row" dir="${dir}">${pool}</div>
-      ${msg}${next}${restart}`;
+      ${msg}${next}`;
   }
   function pictureFor(g) {
     const w = L().words.find(x => x[0] === g.text);
     return w ? w[3] : "";
   }
 
-  function viewQuiz() {
+  function viewQuizGame() {
     const g = game;
-    const choices = g.q.c.map((c, i) => {
-      let style = "";
-      if (g.status === "ok" && i === g.q.a) style = "background:#E9FBEA;";
-      if (g.status === "bad" && i === g.picked) style = "background:#FBE3DC;";
-      return `<button class="choice" style="${style}" data-act="quiz" data-idx="${i}" ${g.status === "ok" ? "disabled" : ""}>${c}</button>`;
+    if (!g) return "";
+    if (g.done) {
+      const pct = Math.round(g.correct / g.total * 100);
+      const star = pct >= 80 ? "🏆" : pct >= 50 ? "🌟" : "💪";
+      return `<div class="finish"><div class="big">${star}</div>
+        <h2>${g.correct} / ${g.total}</h2><p class="intro">${praise()}</p>
+        <div class="center"><button class="btn" data-act="again">${UI.again}</button></div></div>`;
+    }
+    const cur = g.cur;
+    const bar = `<div class="bar"><span class="stat">السؤال ${g.round} / ${g.total}</span><span class="stat">⭐ ${g.correct}</span></div>`;
+    if (g.phase === "show") {
+      return bar + `<p class="hint">تذكّر الصور جيداً! 👀</p>
+        <div class="showrow">${cur.show.map(w => `<span class="showitem">${w[3]}</span>`).join("")}</div>`;
+    }
+    const choices = cur.c.map((c, i) => {
+      let cls = "";
+      if (g.picked === i && !c.ok) cls = "bad";
+      if (g.status === "ok" && c.ok) cls = "good";
+      return `<button class="choice ${cls}" data-act="qa" data-idx="${i}" ${g.status === "ok" ? "disabled" : ""}>${c.t}</button>`;
     }).join("");
+    const say = cur.say ? `<button class="spk big" data-act="speakq" aria-label="استمع">🔊</button>` : "";
     const msg = g.status === "ok" ? `<p class="msg ok">${UI.correct}</p>`
               : g.status === "bad" ? `<p class="msg bad">${UI.wrong}</p>` : `<p class="msg"></p>`;
-    const next = g.status === "ok" ? `<div class="center"><button class="btn" data-act="nextquiz">${UI.next}</button></div>` : "";
-    return `
-      <p class="hint">أجب عن السؤال</p>
-      <div class="bar"><span class="stat">⭐ ${score}</span></div>
-      <div class="quiz-q ar">${g.q.q}</div>
-      <div class="quiz-c">${choices}</div>
-      ${msg}${next}`;
+    const next = g.status === "ok"
+      ? `<div class="center"><button class="btn" data-act="qnext">${g.round >= g.total ? UI.finish : UI.next}</button></div>` : "";
+    return bar + `<div class="qbox">${say}${cur.q}</div><div class="choices">${choices}</div>${msg}${next}`;
   }
 
-  function viewMath() {
+  function viewClassify() {
     const g = game;
-    const word = g.ans >= 1 && g.ans <= 10 ? L().nums[g.ans - 1] : "";
-    const pronN = g.ans >= 1 && g.ans <= 10 ? L().numsP[g.ans - 1] : "";
-    const choices = g.choices.map(v =>
-      `<button class="choice" data-act="ans" data-idx="${v}" ${g.status === "ok" ? "disabled" : ""}>${v}</button>`
-    ).join("");
-    let msg = `<p class="msg"></p>`;
-    let next = "";
-    if (g.status === "ok") {
-      msg = `<p class="msg ok">${praise()}</p>`;
-      next = `<div class="center"><button class="btn" data-act="nextmath">${UI.next}</button></div>`;
-    } else if (g.status === "bad") msg = `<p class="msg bad">${UI.wrong}</p>`;
-    const numLine = g.status === "ok" && word
-      ? `<div class="meaning" dir="${L().dir}">${g.ans} = ${word}${pronN ? ` <span class="pron">(${pronN})</span>` : ""}</div>`
-      : "";
-    return `
-      <p class="hint">${UI.mathHint}</p>
-      <div class="bar"><span class="stat">⭐ ${score}</span></div>
-      <div class="equation">${g.a} ${g.op} ${g.b} = ?</div>
-      <div class="choices">${choices}</div>
-      ${numLine}${msg}${next}`;
+    const allDone = g.items.every(it => it.locked);
+    const rows = g.items.map((it, i) => {
+      const w = L().words[it.i];
+      const st = it.locked ? "good" : it.ans !== null ? "bad" : "";
+      const b0 = it.ans === 0 ? "picked" : "", b1 = it.ans === 1 ? "picked" : "";
+      return `<div class="cls-card ${st}">
+        <div><span class="pic">${w[3]}</span> <span class="w ${isArabic() ? "ar" : ""}">${w[0]}</span> <span class="meaning" style="font-size:1rem">${w[2]}</span></div>
+        <div class="cls-btns">
+          <button class="spk" data-act="speakword" data-idx="${it.i}" aria-label="استمع">🔊</button>
+          <button class="cls-btn ${b0}" data-act="cls" data-idx="${i * 2}" ${it.locked ? "disabled" : ""}>🐾 حيوان</button>
+          <button class="cls-btn ${b1}" data-act="cls" data-idx="${i * 2 + 1}" ${it.locked ? "disabled" : ""}>🌿 طبيعة</button>
+        </div></div>`;
+    }).join("");
+    return `<p class="hint">${UI.classifyHint}</p>
+      <div class="bar"><span class="stat">⭐ ${score}</span></div>${rows}
+      ${allDone ? `<p class="msg ok">${UI.allDone}</p><div class="center"><button class="btn" data-act="again">${UI.again}</button></div>` : ""}`;
+  }
+
+  function viewPixel() {
+    const g = game;
+    const cells = g.grid.map((c, i) =>
+      `<button class="pcell" style="background:${c || "#fff"}" data-act="pix" data-idx="${i}" aria-label="مربع"></button>`).join("");
+    const sw = PALETTE.map((c, i) =>
+      `<button class="swatch" style="background:${c}" data-act="pcol" data-idx="${i}" aria-label="لون" aria-pressed="${c === g.color}"></button>`).join("");
+    return `<p class="hint">${UI.pixelHint}</p>
+      <div class="tools">${sw}</div>
+      <div class="pgrid">${cells}</div>
+      <div class="center"><button class="btn" data-act="pclear">${UI.clearPix}</button></div>`;
+  }
+
+  function viewChar() {
+    const g = game;
+    const parts = CHAR_ROWS.map((row, r) => row.opts[g.sel[r]]);
+    const preview = `<div class="avatar"><div>${parts[1]}</div><div>${parts[0]}</div><div>${parts[2]}</div><div>${parts[3]}</div></div>`;
+    const rows = CHAR_ROWS.map((row, r) => `
+      <div class="char-row"><h4>${row.name}</h4>
+        <div class="char-opts">${row.opts.map((o, i) =>
+          `<button class="char-opt" data-act="char" data-idx="${r * 10 + i}" aria-pressed="${g.sel[r] === i}">${o || "✖"}</button>`).join("")}</div>
+      </div>`).join("");
+    return `<p class="hint">${UI.charHint}</p>${preview}
+      <p class="intro" style="margin-top:12px">${kidName.trim() || "شخصيتي"}</p>${rows}`;
+  }
+
+  function viewEnd() {
+    const g = game;
+    const endings = g.s.ends.map((e, i) =>
+      `<button class="ending" data-act="endpick" data-idx="${i}" aria-pressed="${g.picked === i}">${e}</button>`).join("");
+    return `<p class="hint">${UI.storyHint}</p>
+      <div class="story-start">${g.s.start}</div>
+      <div class="endings">${endings}</div>
+      ${g.picked >= 0 ? `<p class="msg ok">اختيار رائع! قصتك مميزة ✨</p><div class="center"><button class="btn" data-act="endnew">${UI.newStory}</button></div>` : ""}`;
   }
 
   function viewDraw() {
     const w = game.drawWord;
     const swatches = PALETTE.map((c, i) =>
-      `<button class="swatch" style="background:${c}" data-act="color" data-idx="${i}" aria-label="لون" aria-pressed="${c === brush.color}"></button>`
-    ).join("");
+      `<button class="swatch" style="background:${c}" data-act="color" data-idx="${i}" aria-label="لون" aria-pressed="${c === brush.color}"></button>`).join("");
     const sizes = [4, 10, 20].map(s =>
-      `<button class="size-btn" data-act="size" data-idx="${s}" aria-pressed="${s === brush.size}">${s === 4 ? "•" : s === 10 ? "●" : "⬤"}</button>`
-    ).join("");
+      `<button class="size-btn" data-act="size" data-idx="${s}" aria-pressed="${s === brush.size}">${s === 4 ? "•" : s === 10 ? "●" : "⬤"}</button>`).join("");
     return `
       <p class="hint">${UI.drawHint}</p>
       <div class="draw-prompt" id="drawPrompt">${promptText(w)}</div>
@@ -762,52 +1135,21 @@
         <button class="btn" data-act="save">${UI.save}</button>
       </div>`;
   }
-  function promptText(w) {
-    return `${w[3]} ${w[2]}${isArabic() ? "" : " ← " + w[0]}`;
-  }
 
   function viewStory() {
     const g = game;
     const card = (label, val) => `<div class="die"><small>${label}</small><b>${val}</b></div>`;
-    return `
-      <p class="hint">${UI.storyHint}</p>
-      <div class="dice">
-        ${card(UI.hero, g.hero)}${card(UI.place, g.place)}${card(UI.thing, g.thing)}${card(UI.act, g.act)}
-      </div>
+    return `<p class="hint">${UI.storyHint}</p>
+      <div class="dice">${card(UI.hero, g.hero)}${card(UI.place, g.place)}${card(UI.thing, g.thing)}${card(UI.act, g.act)}</div>
       <p class="msg ok" style="margin-top:20px">${UI.story}</p>
       <div class="center"><button class="btn" data-act="roll">${UI.roll}</button></div>`;
   }
 
-  function viewListen() {
-    const L_ = L();
-    const words = L_.words.map((w, i) => `
-      <div class="lrow">
-        <div>
-          <div class="w ${isArabic() ? "ar" : ""}">${w[0]}</div>
-          ${w[1] ? `<div class="p">${w[1]}</div>` : ""}
-          <div class="m">${w[3]} ${w[2]}</div>
-        </div>
-        <button class="spk" data-act="speakword" data-idx="${i}" aria-label="استمع">🔊</button>
-      </div>`).join("");
-    const sents = L_.sent.map((s, i) => `
-      <div class="lrow">
-        <div>
-          <div class="w ${isArabic() ? "ar" : ""}">${s[0]}</div>
-          <div class="m">${s[1]}</div>
-        </div>
-        <button class="spk" data-act="speaksent" data-idx="${i}" aria-label="استمع">🔊</button>
-      </div>`).join("");
-    return `
-      <p class="hint">${UI.listenHint}</p>
-      <div class="lsec">الكلمات</div>${words}
-      <div class="lsec">الجمل</div>${sents}`;
-  }
-
   function viewPray() {
     const subs = `<div class="sub">${UI.praySubs.map(([k, label]) =>
-      `<button class="tab" data-psub="${k}" aria-selected="${pSub === k}" style="${pSub === k ? "background:var(--ink);color:#fff" : ""}">${label}</button>`).join("")}</div>`;
+      `<button class="tab" data-psub="${k}" style="${pSub === k ? "background:var(--ink);color:#fff" : ""}">${label}</button>`).join("")}</div>`;
     if (pSub === "steps") return `${subs}${viewBuild()}`;
-    if (pSub === "quiz") return `${subs}${viewQuiz()}`;
+    if (pSub === "quiz") return `${subs}${viewQuizGame()}`;
     const prayers = PRAYERS.map((p, i) => `
       <div class="pcard">
         <div class="emo">${p.emoji}</div>
@@ -817,8 +1159,7 @@
         <div class="rak">${p.rak} ${UI.rak} ${UI.fardh}</div>
       </div>`).join("");
     const rules = `<ul class="steps-list">${UI.rules.map(r => `<li>${r}</li>`).join("")}</ul>`;
-    return `
-      ${subs}
+    return `${subs}
       <p class="hint">${UI.fiveTitle}</p>
       <div class="grid-pray">${prayers}</div>
       <div class="info"><h3>${UI.rulesTitle}</h3>${rules}</div>
@@ -827,48 +1168,56 @@
       </div>`;
   }
 
-  const VIEWS = { match: viewMatch, spell: viewBuild, sent: viewBuild, math: viewMath,
-                  draw: viewDraw, story: viewStory, listen: viewListen, pray: viewPray };
+  function viewGame() {
+    const info = GAMES.find(g => g.id === view);
+    const idx = GAMES.indexOf(info);
+    const next = GAMES[(idx + 1) % GAMES.length];
+    let body = "";
+    switch (view) {
+      case "match": body = viewMatch(); break;
+      case "spell": case "sent": case "order": body = viewBuild(); break;
+      case "classify": body = viewClassify(); break;
+      case "pixel": body = viewPixel(); break;
+      case "char": body = viewChar(); break;
+      case "endstory": body = viewEnd(); break;
+      case "draw": body = viewDraw(); break;
+      case "story": body = viewStory(); break;
+      case "pray": body = viewPray(); break;
+      case "dreams": body = viewDreams(); break;
+      default: body = viewQuizGame();
+    }
+    return `
+      <div class="gamehead">
+        <button class="back" data-act="home">${UI.home}</button>
+        <h2>${info.emoji} ${info.title}</h2>
+      </div>
+      ${body}
+      <div class="gamefoot"><button class="btn ghost" data-game="${next.id}">${UI.nextGame.replace("اللعبة التالية", "اللعبة التالية: " + next.title)}</button></div>`;
+  }
 
-  // ============ RENDER AND CONTROL ============
+  // ============ RENDER ============
   function chrome() {
     document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(Number(b.dataset.lang) === T)));
     document.querySelectorAll("[data-level]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.level === level)));
     document.querySelectorAll("[data-kid]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.kid === kid)));
-    document.querySelectorAll(".tabs [data-mode]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.mode === mode)));
+    $("starCount").textContent = score;
+    $("badge").textContent = badgeOf(score);
+    const cur = BADGES.filter(b => score >= b[0]).length - 1;
+    const nxt = BADGES[cur + 1];
+    $("next").textContent = nxt ? `⬆️ ${nxt[1]} عند ${nxt[0]} ⭐` : "🏆 وصلت لأعلى مستوى!";
+    $("ladder").innerHTML = BADGES.map((b, i) =>
+      `<span class="rung${i === cur ? " on" : i < cur ? " done" : ""}">${b[1]} · ${b[0]}⭐</span>`).join("");
   }
-
   function render() {
     chrome();
-    $("panel").innerHTML = VIEWS[mode]();
-    if (mode === "draw") initCanvas();
-  }
-
-  function startGame(m) {
-    if (m === "match") newMatch();
-    if (m === "spell") newSpell();
-    if (m === "sent") newSent();
-    if (m === "math") newMath();
-    if (m === "draw") newDrawWord();
-    if (m === "story") rollStory();
-    if (m === "pray") {
-      if (pSub === "steps") newPray();
-      if (pSub === "quiz") newQuiz();
-    }
-  }
-
-  function setMode(m) {
-    mode = m;
-    if (m === "pray") pSub = "five";
-    startGame(m);
-    render();
+    $("panel").innerHTML = view === "home" ? viewHome() : viewGame();
+    if (view === "draw") initCanvas();
   }
 
   function buildStatic() {
     $("levels").innerHTML = UI.levels.map(([k, label]) => `<button class="pill" data-level="${k}">${label}</button>`).join("");
     $("kids").innerHTML = UI.kids.map(([k, label]) => `<button class="pill" data-kid="${k}">${label}</button>`).join("");
     $("langs").innerHTML = LANGS.map((l, i) => `<button class="lang-btn" data-lang="${i}">${l.name}</button>`).join("");
-    $("tabs").innerHTML = UI.tabs.map(([k, label]) => `<button class="tab" role="tab" data-mode="${k}">${label}</button>`).join("");
   }
 
   // ============ EVENTS ============
@@ -876,35 +1225,35 @@
     const t = e.target.closest("button");
     if (!t || t.disabled) return;
     const d = t.dataset;
-    if (d.lang !== undefined) { T = Number(d.lang); startGame(mode); render(); return; }
-    if (d.level !== undefined) { level = d.level; startGame(mode); render(); return; }
+    if (d.lang !== undefined) { T = Number(d.lang); if (view !== "home") initGame(view); render(); return; }
+    if (d.level !== undefined) { level = d.level; if (view !== "home") initGame(view); render(); return; }
     if (d.kid !== undefined) { kid = d.kid; render(); return; }
-    if (d.mode !== undefined) { setMode(d.mode); return; }
-    if (d.psub !== undefined) {
-      pSub = d.psub;
-      startGame("pray");
-      render();
-      return;
-    }
+    if (d.game !== undefined) { openGame(d.game); return; }
+    if (d.psub !== undefined) { pSub = d.psub; initGame("pray"); render(); return; }
     if (d.act === undefined) return;
     const idx = Number(d.idx);
     switch (d.act) {
+      case "home": goHome(); break;
+      case "again": initGame(view); render(); break;
       case "flip": flip(idx); break;
       case "pick": pick(idx); break;
       case "unpick": unpick(idx); break;
-      case "next": startGame(game.kind); render(); break;
-      case "prayagain": newPray(); render(); break;
-      case "again": newMatch(); render(); break;
-      case "ans": answerMath(idx); break;
-      case "nextmath": newMath(); render(); break;
-      case "quiz": answerQuiz(idx); break;
-      case "nextquiz": newQuiz(); render(); break;
+      case "next": nextBuild(); render(); break;
+      case "qa": quizAnswer(idx); break;
+      case "qnext": quizNext(); break;
+      case "speakq": speak(game.cur.say, L().code); break;
       case "speakcur": speak(game.text, L().code); break;
       case "speakstep": speakAr(game.steps[idx].say); break;
       case "speakword": speak(L().words[idx][0], L().code); break;
-      case "speaksent": speak(L().sent[idx][0], L().code); break;
       case "speakname": speakAr(PRAYERS[idx].name); break;
       case "speakfinish": speakAr(UI.finishText); break;
+      case "cls": classifyPick(idx); break;
+      case "pix": game.grid[idx] = game.grid[idx] ? "" : game.color; render(); break;
+      case "pcol": game.color = PALETTE[idx]; render(); break;
+      case "pclear": game.grid = Array(64).fill(""); render(); break;
+      case "char": { const r = Math.floor(idx / 10), o = idx % 10; game.sel[r] = o; render(); break; }
+      case "endpick": game.picked = idx; render(); break;
+      case "endnew": newEnd(); render(); break;
       case "color":
         brush.color = PALETTE[idx];
         document.querySelectorAll(".swatch").forEach((s, i) => s.setAttribute("aria-pressed", String(i === idx)));
@@ -915,26 +1264,29 @@
         break;
       case "clear": clearCanvas(); break;
       case "save": saveDrawing(); break;
-      case "newdraw":
-        newDrawWord();
-        $("drawPrompt").textContent = promptText(game.drawWord);
-        break;
+      case "newdraw": newDrawWord(); $("drawPrompt").textContent = promptText(game.drawWord); break;
       case "roll": rollStory(); render(); break;
+      case "dpick": game.picked = idx; speak(DB.professions[idx].names[L().code], L().code); render(); break;
+      case "speakjob": speak(DB.professions[idx].names[L().code], L().code); break;
+      case "dream": game.dream = idx; addScore(2); speakAr(DB.professions[idx].names.ar); render(); break;
     }
   });
 
   $("kidName").addEventListener("input", e => { kidName = e.target.value; });
 
-  buildStatic();
-  setMode("match");
-</script>
-<script>
-  // Save the studio on this device so it works offline after the first online visit.
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./sw.js").catch(err => console.warn("Offline mode not available:", err));
+  // ============ MERGE THE EXTRA DATABASE (db.js) ============
+  if (typeof DB !== "undefined") {
+    LANGS.forEach(l => {
+      l.words = l.words.concat(DB.words[l.code] || []);
+      l.sent = l.sent.concat(DB.sentences[l.code] || []);
     });
+    STORIES.push(...(DB.stories || []));
+    MANNERS.push(...(DB.manners || []));
+    QUIZ.push(...(DB.prayerQuiz || []));
   }
+
+  buildStatic();
+  render();
 </script>
 </body>
 </html>

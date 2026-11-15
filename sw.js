@@ -1,9 +1,9 @@
-// Offline support for the Tarafi Kids Studio.
+// Offline support for the Learning Studio.
 // The first visit (online) saves the app and fonts on the device.
-// After that, the app opens and works without internet.
+// After that, the studio opens and works without internet.
 
-const CACHE = "tarafi-studio-v1";
-const CORE = ["./", "./index.html", "./manifest.json", "./icon.svg"];
+const CACHE = "tarafi-studio-v4";
+const CORE = ["./", "./index.html", "./db.js", "./manifest.json", "./icon.svg"];
 
 self.addEventListener("install", event => {
   event.waitUntil(
@@ -23,7 +23,7 @@ self.addEventListener("fetch", event => {
   const req = event.request;
   if (req.method !== "GET") return;
 
-  // Pages: try the network first so updates arrive, fall back to the saved copy offline.
+  // Pages: network first so updates arrive, saved copy when offline.
   if (req.mode === "navigate") {
     event.respondWith(
       fetch(req)
@@ -37,7 +37,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // Everything else (files, fonts): use the saved copy if there is one, otherwise go to the network and save it.
+  // Files and fonts: saved copy first, otherwise fetch and save it.
   event.respondWith(
     caches.match(req).then(hit => {
       if (hit) return hit;
