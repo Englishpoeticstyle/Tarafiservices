@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Learning Studio - A Gift for Mohamed's Children</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2A7F7A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Learning Studio">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
@@ -94,7 +99,6 @@
     box-shadow: 0 3px 0 var(--ink); vertical-align: middle; margin-inline-start: 6px;
   }
   .spk:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
-  .sound-note { text-align: center; color: var(--muted); font-size: .95rem; margin: 0 0 12px; }
 
   /* Match cards */
   .mgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 640px; margin: 0 auto; }
@@ -363,7 +367,6 @@
     drawHint: "ارسم بخيالك! اختر لونك ثم ابدأ",
     storyHint: "أدِر المكعب وابدأ قصتك",
     listenHint: "اضغط على الزر لتسمع النطق الصحيح",
-    soundNote: "إذا لم تسمع الصوت، تأكد من مستوى الصوت في الجهاز ثم اضغط على أي زر مرة واحدة",
     next: "التالي", again: "العب مرة أخرى", moves: "الحركات",
     done: "أحسنت! وجدت كل الأزواج 🏆", wrong: "ليس تماماً، حاول مرة أخرى", correct: "أحسنت! 🎉",
     roll: "أدِر المكعب 🎲", newDraw: "كلمة جديدة 🎲", clear: "امسح الرسم", save: "احفظ الرسم 💾",
@@ -405,50 +408,17 @@
   const isArabic = () => L().code === "ar";
 
   // ============ SOUND ============
-  // Uses the device's built-in voices, spoken slowly for children.
-  // Browsers only allow speech after the user touches the page, so the first
-  // tap "unlocks" sound; every later speak() call happens inside a tap too.
-  const SPEECH_OK = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
-  let voices = [];
-  let soundUnlocked = false;
-
-  function loadVoices() {
-    if (SPEECH_OK) voices = speechSynthesis.getVoices();
-  }
-  if (SPEECH_OK) {
-    loadVoices();
-    speechSynthesis.onvoiceschanged = loadVoices;
-  }
-
-  function unlockSound() {
-    if (!SPEECH_OK || soundUnlocked) return;
-    soundUnlocked = true;
-    const u = new SpeechSynthesisUtterance(" ");
-    u.volume = 0;
-    speechSynthesis.speak(u);
-  }
-  document.addEventListener("pointerdown", unlockSound, { once: false });
-
-  function pickVoice(lang) {
-    const prefix = lang.slice(0, 2).toLowerCase();
-    return voices.find(v => v.lang.toLowerCase() === lang.toLowerCase())
-        || voices.find(v => v.lang.toLowerCase().startsWith(prefix))
-        || null;
-  }
-
+  // Uses the device's built-in voices. Clear, slow speech suited to children.
   function speak(text, code) {
-    if (!SPEECH_OK || !text) return;
-    const lang = VOICE[code] || "en-US";
-    if (speechSynthesis.paused) speechSynthesis.resume();
+    if (!("speechSynthesis" in window) || !text) return;
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
+    const lang = VOICE[code] || "en-US";
     u.lang = lang;
     u.rate = 0.75;
     u.pitch = 1;
-    u.volume = 1;
-    const v = pickVoice(lang);
+    const v = speechSynthesis.getVoices().find(x => x.lang.toLowerCase().startsWith(lang.slice(0, 2)));
     if (v) u.voice = v;
-    u.onerror = e => console.warn("Speech error:", e.error);
     speechSynthesis.speak(u);
   }
   const speakAr = text => speak(text, "ar");
@@ -670,7 +640,6 @@
     }).join("");
     return `
       <p class="hint">${UI.matchHint}</p>
-      <div class="sound-note">${UI.soundNote}</div>
       <div class="bar"><span class="stat">${UI.moves}: ${g.moves}</span></div>
       <div class="mgrid" dir="${L().dir}">${cards}</div>
       ${done ? `<p class="msg ok">${UI.done}</p><div class="center"><button class="btn" data-act="again">${UI.again}</button></div>` : ""}`;
@@ -830,7 +799,6 @@
       </div>`).join("");
     return `
       <p class="hint">${UI.listenHint}</p>
-      <div class="sound-note">${UI.soundNote}</div>
       <div class="lsec">الكلمات</div>${words}
       <div class="lsec">الجمل</div>${sents}`;
   }
@@ -959,6 +927,14 @@
 
   buildStatic();
   setMode("match");
+</script>
+<script>
+  // Save the studio on this device so it works offline after the first online visit.
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js").catch(err => console.warn("Offline mode not available:", err));
+    });
+  }
 </script>
 </body>
 </html>

@@ -1,0 +1,18 @@
+{
+  "name": "Learning Studio - A Gift for Mohamed's Children",
+  "short_name": "Learning Studio",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FBF5EA",
+  "theme_color": "#2A7F7A",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
